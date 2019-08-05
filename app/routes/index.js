@@ -15,29 +15,17 @@ module.exports = (app, passport, cors) => {
 	
 	let handleServer = new Server();
   
-	var options = ({
-		origin : 'https://intelligent-astronaut.glitch.me',
+	let options = ({
+		origin : 'https://glitch-night-owls.glitch.me',
 		preflightContinue: true,
 		optionsSuccessStatus: 200
 	})  
-	
-	// app.route('/*')
-	// 	.get( (req, res) => {
-	// 		res.sendFile(process.cwd() + '/dist/index.html');
-	// 	});
-	// app.route('/milo')
-	// .get( (req, res) => {
-	// console.log(req)
-	// res.sendFile(path.join(__dirname, 'api', './public/index.html'))
-	// });
   
-	// app.route( '/login/:user' ) // '/login/:user'
+	// app.route( '/login/:user' ) 
 	// 	.get(isLoggedIn, (req, res) => {
-	// console.log(req.user.twitter)
-	// //res.redirect('/user/' + req.user.twitter['location']);
+	//    console.log(req.user.twitter)
 	// 		res.sendFile( process.cwd() + './public/index.html' );
-	// //res.sendFile(path.join(__dirname, './public/index.html'))
-	// //res.json({success: req.url, user: req.user.twitter['username']})
+	//    res.sendFile(path.join(__dirname, './public/index.html'))
 	// 	});
 		
 	app.route( '/user/:location' )	
@@ -55,11 +43,9 @@ module.exports = (app, passport, cors) => {
 	app.route( '/auth/twitter/callback' )
 		.get( cors(), passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
         (req, res) => {
-    console.log('successful callback')
+    
           let user = req.user.twitter['username'];
-       
     	    res.redirect('/login/' + user);
-          //res.redirect('/')
 		});	
 		
 

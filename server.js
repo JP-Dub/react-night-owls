@@ -28,7 +28,6 @@ mongoose.connect(process.env.MONGO_URI, {
 mongoose.Promise = global.Promise;
 
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-	//open: true,
 	stats: {
 		colors: true
 	},
@@ -37,25 +36,10 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 const server = new webpackDevServer(compiler, devServerOptions);
 
 app.use('/api', proxy({
-  //target: 'https://intelligent-astronaut.glitch.me',
   target : 'localhost',
   port: 3000
   })
 );
-
-// app.use(
-// 	require("webpack-dev-middleware")(
-//     compiler, {
-//       noInfo    : true,
-//       publicPath: webpackConfig.output.publicPath	
-//     }
-// 	)
-// );
-
-//app.use(require("webpack-hot-middleware")(compiler));
-
-//app.use('/', express.static(process.cwd() + '/app/dist'));
-//app.use(express.static(path.join(__dirname, 'api') ));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -88,7 +72,16 @@ server.listen(serverPort, '127.0.0.1', () => {
 	console.log('Webpack Dev Server listening on ' +  serverPort + '...')
 });
 
-//HOSTNAME
-//'8f7bbb40c193'
-//'127.0.0.1'
-//'172.17.0.1' - HOST_ADDRESS
+// app.use(
+// 	require("webpack-dev-middleware")(
+//     compiler, {
+//       noInfo    : true,
+//       publicPath: webpackConfig.output.publicPath	
+//     }
+// 	)
+// );
+
+//app.use(require("webpack-hot-middleware")(compiler));
+
+//app.use('/', express.static(process.cwd() + '/app/dist'));
+//app.use(express.static(path.join(__dirname, 'api') ));
