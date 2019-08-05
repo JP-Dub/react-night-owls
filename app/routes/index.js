@@ -16,7 +16,7 @@ module.exports = (app, passport, cors) => {
 	let handleServer = new Server();
   
 	var options = ({
-		origin : 'https://glitch.night-owls.glitch.me',
+		origin : 'https://intelligent-astronaut.glitch.me',
 		preflightContinue: true,
 		optionsSuccessStatus: 200
 	})  
@@ -25,9 +25,10 @@ module.exports = (app, passport, cors) => {
 	// 	.get( (req, res) => {
 	// 		res.sendFile(process.cwd() + '/dist/index.html');
 	// 	});
-	app.route('/*')
+	app.route('/milo')
       .get( (req, res) => {
-        res.sendFile(path.join(__dirname, 'dist', './public/index.html'))
+        console.log(req)
+        res.sendFile(path.join(__dirname, 'api', './public/index.html'))
   });
   
 	app.route( '/login/:user' ) // '/login/:user'
@@ -42,7 +43,7 @@ module.exports = (app, passport, cors) => {
 		.get( handleServer.userLocation );
 			
 	app.route( '/api/businesses/:search' )
-		.post( handleServer.getNightlife );
+		.post( cors(options), handleServer.getNightlife );
 	
 	app.route( '/api/:id/clicks' )
 		.get(  handleServer.getClicks )

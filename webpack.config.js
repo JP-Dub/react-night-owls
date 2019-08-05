@@ -20,22 +20,22 @@ module.exports = {
       port: 3000,
       //host: 'https://glitch-night-owls.glitch.me',
       //host: '172.17.0.1',
-      public: 'glitch-night-owls.glitch.me',
-      allowedHosts: ['https://glitch-night-owls.glitch.me',
-                     'http://glitch-night-owls.glitch.me',
+      public: 'intelligent-astronaut.glitch.me',
+      allowedHosts: ['https://intelligent-astronaut.glitch.me',
+                     'http://intelligent-astronaut.glitch.me',
                      'https://api.glitch.com',
                      'https://glitch.com'],
-      // proxy: {
-      //    '/api' : {
-      //       target: 'https://glitch-night-owls.glitch.me',
-      //       //target: 'http://localhost:8080',
-      //       //target: 'https://api.glitch.com:8080',
-      //       //target: 'https://172.17.0.1:8080',
-      //       //target: 'node',
-      //       pathRewrite : {'^/api' : ''},
-      //       secure: true
-      //    }
-      // }     
+      proxy: {
+         '/api' : {
+            target: 'https://intelligent-astronaut.glitch.me:8081',
+            //target: 'http://localhost:8080',
+            //target: 'https://api.glitch.com:8080',
+            //target: 'https://172.17.0.1:8080',
+            //target: 'node',
+            pathRewrite : {'^/api' : ''},
+            secure: true
+         }
+      }     
    },
    module: {
       rules: [

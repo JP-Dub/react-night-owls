@@ -37,7 +37,7 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 const server = new webpackDevServer(compiler, devServerOptions);
 
 // app.use('/api', proxy({
-//   target: 'https://glitch-night-owls.glitch.me'
+//   target: 'https://intelligent-astronaut.glitch.me'
 //   })
 // );
 
@@ -53,7 +53,7 @@ const server = new webpackDevServer(compiler, devServerOptions);
 //app.use(require("webpack-hot-middleware")(compiler));
 
 //app.use('/', express.static(process.cwd() + '/app/dist'));
-app.use(express.static(path.join(__dirname, 'dist') ));
+app.use(express.static(path.join(__dirname, 'api') ));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
