@@ -68,9 +68,6 @@ module.exports = {
          showErrors: true,
          cache : true
       }),
-      // new webpack.HotModuleReplacementPlugin({
-      //    multiStep: false
-      // })
    ]
 }
 
