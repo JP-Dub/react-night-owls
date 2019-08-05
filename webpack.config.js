@@ -20,9 +20,9 @@ module.exports = {
       port: 3000,
       //host: 'https://glitch-night-owls.glitch.me',
       //host: '172.17.0.1',
-      public: 'intelligent-astronaut.glitch.me',
-      allowedHosts: ['https://intelligent-astronaut.glitch.me',
-                     'http://intelligent-astronaut.glitch.me',
+      public: 'glitch-night-owls.glitch.me',
+      allowedHosts: ['https://glitch-night-owls.glitch.me',
+                     'http://glitch-night-owls.glitch.me',
                      'https://api.glitch.com',
                      'https://glitch.com'],
       proxy: {

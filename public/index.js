@@ -365,6 +365,7 @@ class Main extends Component {
           <Route exact path='/user' strict render={ () => {
               return (<h1>Hello!</h1>)
               }} />
+          <Route exact path='/login/:user' component={App} />
         </BrowserRouter>
         );
     }

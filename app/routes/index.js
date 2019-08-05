@@ -31,14 +31,14 @@ module.exports = (app, passport, cors) => {
 	// res.sendFile(path.join(__dirname, 'api', './public/index.html'))
 	// });
   
-	app.route( '/login/:user' ) // '/login/:user'
-		.get(isLoggedIn, (req, res) => {
-      console.log(req.user.twitter)
-      //res.redirect('/user/' + req.user.twitter['location']);
-			//res.sendFile( process.cwd() + '/public/index.html' );
-     res.sendFile(path.join(__dirname, './public/index.html'))
-    //res.json({success: req.url, user: req.user.twitter['username']})
-		});
+	// app.route( '/login/:user' ) // '/login/:user'
+	// 	.get(isLoggedIn, (req, res) => {
+	// console.log(req.user.twitter)
+	// //res.redirect('/user/' + req.user.twitter['location']);
+	// 		res.sendFile( process.cwd() + './public/index.html' );
+	// //res.sendFile(path.join(__dirname, './public/index.html'))
+	// //res.json({success: req.url, user: req.user.twitter['username']})
+	// 	});
 		
 	app.route( '/user/:location' )	
 		.get( handleServer.userLocation );
@@ -55,6 +55,7 @@ module.exports = (app, passport, cors) => {
 	app.route( '/auth/twitter/callback' )
 		.get( cors(), passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
         (req, res) => {
+    console.log('successful callback')
           let user = req.user.twitter['username'];
        
     	    res.redirect('/login/' + user);
