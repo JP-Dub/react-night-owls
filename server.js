@@ -36,10 +36,12 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 
 const server = new webpackDevServer(compiler, devServerOptions);
 
-// app.use('/api', proxy({
-//   target: 'https://intelligent-astronaut.glitch.me'
-//   })
-// );
+app.use('/api', proxy({
+  //target: 'https://intelligent-astronaut.glitch.me',
+  target : 'localhost',
+  port: 3000
+  })
+);
 
 // app.use(
 // 	require("webpack-dev-middleware")(
