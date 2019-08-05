@@ -27,9 +27,9 @@ module.exports = {
                      'https://glitch.com'],
       proxy: {
          '/api' : {
-            target: 'https://intelligent-astronaut.glitch.me:8081',
+            //target: 'https://intelligent-astronaut.glitch.me',
             //target: 'http://localhost:8080',
-            //target: 'https://api.glitch.com:8080',
+            target: 'https://api.glitch.com',
             //target: 'https://172.17.0.1:8080',
             //target: 'node',
             pathRewrite : {'^/api' : ''},

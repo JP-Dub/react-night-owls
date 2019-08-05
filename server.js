@@ -53,7 +53,7 @@ const server = new webpackDevServer(compiler, devServerOptions);
 //app.use(require("webpack-hot-middleware")(compiler));
 
 //app.use('/', express.static(process.cwd() + '/app/dist'));
-app.use(express.static(path.join(__dirname, 'api') ));
+//app.use(express.static(path.join(__dirname, 'api') ));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

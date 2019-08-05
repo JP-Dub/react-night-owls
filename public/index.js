@@ -57,7 +57,7 @@ export default class App extends Component {
         url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
                                           : locale;
         
-        let data = !this.userId ? null : {user: this.userId};
+        let data = !this.userId ? {} : {user: this.userId};
        
         ajax.ready(ajax.request("POST", url, data, (res) => {
             let obj = JSON.parse(res);
@@ -327,8 +327,6 @@ const ajax = {
   
         if (typeof fn !== 'function') return;
         if (document.readyState === 'complete') return fn();
-      
-console.log('ajax ready')
       
         document.addEventListener('DOMContentLoaded', fn, false);
     },

@@ -25,11 +25,11 @@ module.exports = (app, passport, cors) => {
 	// 	.get( (req, res) => {
 	// 		res.sendFile(process.cwd() + '/dist/index.html');
 	// 	});
-	app.route('/milo')
-      .get( (req, res) => {
-        console.log(req)
-        res.sendFile(path.join(__dirname, 'api', './public/index.html'))
-  });
+	// app.route('/milo')
+	// .get( (req, res) => {
+	// console.log(req)
+	// res.sendFile(path.join(__dirname, 'api', './public/index.html'))
+	// });
   
 	app.route( '/login/:user' ) // '/login/:user'
 		.get(isLoggedIn, (req, res) => {
