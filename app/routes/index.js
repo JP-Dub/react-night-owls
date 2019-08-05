@@ -45,7 +45,7 @@ module.exports = (app, passport, cors) => {
 	app.route( '/businesses/:search' )
 		.post( cors(options), handleServer.getNightlife );
 	
-	app.route( '/api/:id/clicks' )
+	app.route( '/:id/clicks' )
 		.get(  handleServer.getClicks )
 		.post( handleServer.addClick );		
 		
