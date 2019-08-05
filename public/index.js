@@ -52,7 +52,6 @@ export default class App extends Component {
     }
 
     yelpHandler(locale) {
-        let web = 'https://glitch-night-owls.glitch.me';
         let url = '/api/businesses/search?term=bars&location=';        
         url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
                                           : locale;

@@ -42,7 +42,7 @@ module.exports = (app, passport, cors) => {
 	app.route( '/user/:location' )	
 		.get( handleServer.userLocation );
 			
-	app.route( '/api/businesses/:search' )
+	app.route( '/businesses/:search' )
 		.post( cors(options), handleServer.getNightlife );
 	
 	app.route( '/api/:id/clicks' )
