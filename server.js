@@ -7,6 +7,7 @@ const express    = require('express'),
 	    session    = require('express-session'),
       cors       = require('cors'),
       proxy      = require('http-proxy-middleware'),
+      path       = require('path'),
 	    app        = express();
 	
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
@@ -52,6 +53,7 @@ const server = new webpackDevServer(compiler, devServerOptions);
 //app.use(require("webpack-hot-middleware")(compiler));
 
 //app.use('/', express.static(process.cwd() + '/app/dist'));
+app.use(express.static(path.join(__dirname, 'dist') ));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
