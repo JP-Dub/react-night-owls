@@ -44,11 +44,11 @@ class App extends Component {
     twitterHandler(evt) {
         evt.preventDefault();
         console.log('just clicked')
-        window.location.href = '/api/auth/twitter';
+        window.location.href = '/auth/auth/twitter';
     }
 
     yelpHandler(locale) {
-        let url = '/api/businesses/search?term=bars&location=';        
+        let url = '/auth/businesses/search?term=bars&location=';        
         url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
                                           : locale;
         
@@ -73,7 +73,7 @@ class App extends Component {
     loadBttnEvents() {
         let twitterBttn = document.getElementsByClassName('bttn'),
             bttnLength  = twitterBttn.length,
-            url         = '/api/:id/clicks';
+            url         = '/auth/clicks';
 
         ajax.ready(ajax.request("GET", url, null, (clicks) => {
             clicks.forEach( id => {
@@ -195,7 +195,7 @@ const SearchResults =  (props) => {
             '$$$' : 'Pricey',
             '$$$$': 'Ultra High End',
             ''    : 'Unavailable'
-    };
+          };
     
     const data = function(arr) {
         const results = arr.map( (key, i) => {

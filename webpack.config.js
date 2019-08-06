@@ -26,9 +26,9 @@ module.exports = {
                     '*.glitch.com'
                    ],
      proxy: {
-       '/api' : {
+       '/auth' : {
          target: 'http://localhost:8080',
-         pathRewrite : {'^/api' : ''},
+         pathRewrite : {'^/auth' : ''},
          secure: true
        }
      }     

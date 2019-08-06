@@ -34,18 +34,18 @@ module.exports = (app, passport, cors) => {
 	app.route( '/businesses/:search' )
 		.post( cors(options), handleServer.getNightlife );
 	
-	app.route( '/:id/clicks' )
+	app.route( '/clicks' )
 		.get(  handleServer.getClicks )
 		.post( handleServer.addClick );		
 		
 	app.get('/auth/twitter', passport.authenticate( 'twitter' ) );
 
-	app.route('/auth/twitter/callback' )
+	app.route('/twitter/callback' )
 		.get( passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
         (req, res) => {
         let user = req.user.twitter['username'];
     console.log('post twitter call', user)
-    	   // res.redirect('/login/' + user);
+    	  res.redirect('/auth/login/' + user);
 		});	
 		
 
