@@ -316,48 +316,45 @@ class ErrorBoundary extends Component {
 }; 
 
 // Configure ajax call
-  const ajax = {
-    ready: function ready(fn) {
+const ajax = {
+  ready: function ready(fn) {
         
-        if (typeof fn !== 'function') return;
-        if (document.readyState === 'complete') return fn();
+    if (typeof fn !== 'function') return;
+    if (document.readyState === 'complete') return fn();
 
-        document.addEventListener('DOMContentLoaded', fn, false);
-    },
-    request: function ajaxRequest(method, url, data, callback) {
-        let xmlhttp = new XMLHttpRequest();
+    document.addEventListener('DOMContentLoaded', fn, false);
+  },
+  request: function ajaxRequest(method, url, data, callback) {
+    let xmlhttp = new XMLHttpRequest();
         
-        let params = typeof data === 'string' ? data 
-                   : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
+    let params = typeof data === 'string' ? data 
+               : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
 
-        xmlhttp.open(method, url, true);
+    xmlhttp.open(method, url, true);
 
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-              let res = JSON.parse(xmlhttp.response);
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+          let res = JSON.parse(xmlhttp.response);
               
-              if(res.statusCode === 400) return alert(res.response.body)
-              
-              callback(res);
-            }
-        };
+          if(res.statusCode === 400) return alert(res.response.body)
+             
+          callback(res);
+        }
+    };
 
-        xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-        xmlhttp.send(params);
-        return xmlhttp;
-    }
-  };
+    xmlhttp.send(params);
+    return xmlhttp;
+  }
+};
 
 class Main extends Component {
     render() {
       return (
         <BrowserRouter>
           <Route exact path='/' strict component={App} />
-          <Route exact path='/user' strict render={ () => {
-              return (<h1>Hello!</h1>)
-              }} />
           <Route exact path='/login/:user' component={App} />
         </BrowserRouter>
         );
