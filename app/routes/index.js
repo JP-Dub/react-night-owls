@@ -31,16 +31,15 @@ module.exports = (app, passport, cors) => {
 	
 	app.route( '/clicks' )
 		.get(  handleServer.getClicks )
-		.post( handleServer.addClick );		
+		.post( isLoggedIn, handleServer.addClick );		
 		
 	app.get('/auth/twitter', passport.authenticate( 'twitter' ) );
 
 	app.route('/twitter/callback' )
 		.get( passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
         (req, res) => {
-        let user = req.user.twitter['username'];
-    console.log('post twitter call', user)
-    	  res.redirect('/login/' + user);
+
+    	  res.redirect('/login/' + req.user.twitter['username']);
 		});	
 		
 
