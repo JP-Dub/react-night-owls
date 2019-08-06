@@ -5,7 +5,7 @@ import '../public/css/style.css';
 import noImage from '../public/img/NoProductImage_300.jpg';
 
 
-export default class App extends Component {
+class App extends Component {
     constructor(props) {
         super(props);
         this.changeHandler  = this.changeHandler.bind(this);
@@ -45,10 +45,6 @@ export default class App extends Component {
         evt.preventDefault();
         console.log('just clicked')
         window.location.href = '/api/auth/twitter';
-        //window.location.assign('/auth/twitter');
-      // ajax.ready(ajax.request("GET", '/auth/twitter', {}, (login) => {
-      //     console.log(login);                   
-      // }))
     }
 
     yelpHandler(locale) {
