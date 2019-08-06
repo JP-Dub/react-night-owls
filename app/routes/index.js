@@ -21,12 +21,12 @@ module.exports = (app, passport, cors) => {
 		optionsSuccessStatus: 200
 	})  
   
-	// app.route( '/login/:user' ) 
-	// 	.get(isLoggedIn, (req, res) => {
-	//    console.log(req.user.twitter)
-	// 		res.sendFile( process.cwd() + './public/index.html' );
-	//    res.sendFile(path.join(__dirname, './public/index.html'))
-	// 	});
+	app.route( '/login/:user' ) 
+		.get(isLoggedIn, (req, res) => {
+	   console.log(req.user.twitter)
+		 //res.sendFile( process.cwd() + './public/index.html' );
+	   res.sendFile(path.join(__dirname, './public/index.html'))
+		});
 		
 	app.route( '/user/:location' )	
 		.get( handleServer.userLocation );

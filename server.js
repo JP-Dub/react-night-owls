@@ -15,7 +15,8 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig);	
      
-app.options('/api', cors());  
+//app.options('/api', cors());  
+app.use(cors());
 
 require('dotenv').config();
 require('./app/config/passport')(passport);
@@ -53,6 +54,8 @@ app.use(session({
 	    secure: true
 		}
 }));
+
+app.use(express.static(path.join(__dirname, 'login')))
 
 app.use(passport.initialize());
 app.use(passport.session());
