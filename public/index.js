@@ -74,7 +74,7 @@ class App extends Component {
             bttnLength  = twitterBttn.length,
             url         = '/auth/clicks';
 
-        ajax.ready(ajax.request("GET", url, null, (clicks) => {
+        ajax.ready(ajax.request("GET", url, {}, (clicks) => {
             clicks.forEach( id => {
                 let bttnId = document.getElementById(id),
                     count  = 0;
@@ -109,11 +109,11 @@ class App extends Component {
         }; // for(loop)         
     }
 
-    getLocation(next) {
+    getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
            
-          postResults({
+          SearchResults({
             latitude : position.coords.latitude,
             longitude: position.coords.longitude
           });
