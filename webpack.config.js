@@ -21,10 +21,10 @@ module.exports = {
      inline: true,
      port: 3000,
      public: 'glitch-night-owls.glitch.me',
-     allowedHosts: ['https://glitch-night-owls.glitch.me',
-                    'http://glitch-night-owls.glitch.me',
-                    'https://api.glitch.com',
-                    'https://glitch.com'],
+     allowedHosts: ['*.glitch-night-owls.glitch.me',
+                    '*.api.glitch.com',
+                    '*.glitch.com'
+                   ],
      proxy: {
        '/api' : {
          target: 'http://localhost:8080',
