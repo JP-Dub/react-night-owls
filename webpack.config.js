@@ -20,8 +20,8 @@ module.exports = {
      historyApiFallback: true,
      inline: true,
      port: 3000,
-     public: 'glitch-night-owls.glitch.me',
-     allowedHosts: ['*.glitch-night-owls.glitch.me',
+     public: 'react-night-owls.glitch.me',
+     allowedHosts: ['*.react-night-owls.glitch.me',
                     '*.api.glitch.com',
                     '*.glitch.com'
                    ],
