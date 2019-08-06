@@ -158,7 +158,7 @@ class App extends Component {
                                     <i className="fa fa-twitter"></i>
                                 </button>
                             </div>
-                            <input id="input" 
+                            <input id="location-input" 
                                    className="form-control"  
                                    type="text" 
                                    placeholder="Search location" 
@@ -197,6 +197,7 @@ const SearchResults =  (props) => {
           };
     
     const data = function(arr) {
+      console.log('arr', typeof arr, arr)
         const results = arr.map( (key, i) => {
             
             if(!obj[i].price) {
