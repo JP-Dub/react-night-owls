@@ -14,25 +14,20 @@ module.exports = (app, passport, cors) => {
 	}
 	
 	let handleServer = new Server();
+ 
   
-	let options = ({
-		origin : 'https://glitch-night-owls.glitch.me',
-		preflightContinue: true,
-		optionsSuccessStatus: 200
-	})  
-  
-	app.route( '/login/:user' ) 
-		.get(isLoggedIn, (req, res) => {
-	   console.log(req.user.twitter)
-		 //res.sendFile( process.cwd() + './public/index.html' );
-	   res.sendFile(path.join(__dirname, 'dist', './public/index.html'))
-		});
+	// app.route( '/login/:user' ) 
+	// 	.get(isLoggedIn, (req, res) => {
+	//    console.log(req.user.twitter)
+	// 	 res.sendFile( process.cwd() + './public/index.html' );
+	//    //res.sendFile(path.join(__dirname, 'dist', './public/index.html'))
+	// 	});
 		
 	app.route( '/user/:location' )	
 		.get( handleServer.userLocation );
 			
 	app.route( '/businesses/:search' )
-		.post( cors(options), handleServer.getNightlife );
+		.post( handleServer.getNightlife );
 	
 	app.route( '/clicks' )
 		.get(  handleServer.getClicks )
@@ -45,7 +40,7 @@ module.exports = (app, passport, cors) => {
         (req, res) => {
         let user = req.user.twitter['username'];
     console.log('post twitter call', user)
-    	  res.redirect('/auth/login/' + user);
+    	  res.redirect('/login/' + user);
 		});	
 		
 
