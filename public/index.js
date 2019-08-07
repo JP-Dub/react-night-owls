@@ -230,7 +230,7 @@ const SearchResults =  (props) => {
                     <a href   = {obj[i].url}
                        target ='_blank'
                        rel    ='external'
-                       dangerouslySetInnerHTML={{__html: obj[i].name}} />
+                       dangerouslySetInnerHTML = {{__html: obj[i].name}} />
                   </h2>
                   <div className='img-holder'>
                     <img className ='img-thumbnail' 
@@ -240,42 +240,46 @@ const SearchResults =  (props) => {
                         <button className = 'bttn'
                                 title     = 'Let people know you are going by pushing the button'
                                 type      = 'button'
-                                value     = 'submit'>Going <span id={obj[i].id} className = 'badge'>0</span>
+                                value     = 'submit'
+                                data-id   = {i}>Going <span id={obj[i].id} className = 'badge'>0</span>
                         </button>
                     </div>
                     <div className='business'>
-                        <h2 title='Visit Website'>
-                            <a href={obj[i].url}
-                               target='_blank'
-                               rel='external'
-                               dangerouslySetInnerHTML={{__html: obj[i].name}} />
+                        <h2 className = 'avgScreen' title = 'Visit Website'>
+                            <a href   = {obj[i].url}
+                               target = '_blank'
+                               rel    = 'external'
+                               dangerouslySetInnerHTML = {{__html: obj[i].name}} />
                         </h2>
                         <br />
-                        <p className='address'>
-                            <a href={'https://www.yelp.com/map/' + obj[i].alias}
-                                target='_blank'
-                                title='Get Directions'
-                                rel='external'
-                                dangerouslySetInnerHTML={{__html:  
+                        <p className = 'address'>
+                            <a href    = {'https://www.yelp.com/map/' + obj[i].alias}
+                                target = '_blank'
+                                title  = 'Get Directions'
+                                rel    = 'external'
+                                dangerouslySetInnerHTML = {{__html:  
                                     obj[i].location.address1 + `.<br>` 
                                     + obj[i].location.city + `, ` 
                                     + obj[i].location.state + `. ` 
                                     + obj[i].location.zip_code }} />
                             <br />
-                            <span className='phone'>Telephone:
-                            <a href={obj[i].phone}
-                                target='_blank'
-                                title='Call Number'
-                                dangerouslySetInnerHTML={{__html:
-                                    ` ` + obj[i].display_phone}} />
+                            <span className = 'phone'>Telephone:
+                            <a href    = {obj[i].phone}
+                                target = '_blank'
+                                title  = 'Call Number'
+                                dangerouslySetInnerHTML={
+                                  {__html : ` ` + obj[i].display_phone}
+                                } />
                             </span>
                             <br />
-                            <span className='rate'
-                                  dangerouslySetInnerHTML={{__html:
-                                    `Price: ` + obj[i].price + ` `  + costDescription[obj[i].price] }} />
+                            <span className = 'rate'
+                                  dangerouslySetInnerHTML = {
+                              {__html : `Price: ` + obj[i].price + ` `  + costDescription[obj[i].price]}
+                            } />
                             <br />
-                            <span dangerouslySetInnerHTML={{__html: 
-                                    `Rating: `+ obj[i].rating}} />
+                            <span dangerouslySetInnerHTML = {
+                              {__html : `Rating: `+ obj[i].rating}
+                            } />
                         </p>
                     </div>
                 </div>
