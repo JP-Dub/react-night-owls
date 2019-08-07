@@ -29,7 +29,7 @@ module.exports = (app, passport, cors) => {
 	app.route( '/businesses/:search' )
 		.post( handleServer.getNightlife );
 	
-	app.route( '/clicks' )
+	app.route( '/rsvp/clicks' )
 		.get(  handleServer.getClicks )
 		.post( isLoggedIn, handleServer.addClick );		
 		

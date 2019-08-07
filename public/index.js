@@ -43,8 +43,7 @@ class App extends Component {
 
     twitterHandler(evt) {
         evt.preventDefault();
-        window.location.href = '/api/auth/twitter';
-     
+        window.location.href = '/api/auth/twitter';     
     }
 
     yelpHandler(locale) {
@@ -73,20 +72,23 @@ class App extends Component {
     loadBttnEvents() {
         let twitterBttn = document.getElementsByClassName('bttn'),
             bttnLength  = twitterBttn.length,
-            path         = '/clicks';
+            path        = '/rsvp/clicks';
 
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
-            clicks.forEach( id => {
-                let bttnId = document.getElementById(id),
-                    count  = 0;
-            
+          console.log('clicks', clicks, path)
+            clicks.forEach( item => {
+                let bttnId = document.getElementById(item.id)
+//                     count  = 0;
                 if(bttnId) {
-                    //count=0;
-                    for(var i=0; i < clicks.length; i++) {                      
-                        if(id === clicks[i]) count++;
-                    }
-                    bttnId.innerHTML = count;
-                };       
+                  bttnId.innerHTML = item.count;
+                }; 
+//                 if(bttnId) {
+//                     //count=0;
+//                     for(var i=0; i < clicks.length; i++) {                      
+//                         if(id === clicks[i]) count++;
+//                     }
+//                     bttnId.innerHTML = count;
+//                 };       
             });        
         }));          
         
@@ -338,7 +340,7 @@ const ajax = {
   },
   request: function ajaxRequest(method, path, data, callback) {
     let xmlhttp = new XMLHttpRequest();
-    let url = '/api' + path;        
+    let url = '../api' + path;        
     let params = typeof data === 'string' ? data 
                : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
 
