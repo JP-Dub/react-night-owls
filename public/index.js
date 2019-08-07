@@ -177,6 +177,7 @@ class App extends Component {
                 </div>
                 <br />
                 <div id="main"/>
+                <div id="load"/>
                 <br />
                 <p id="credit">Powered by Yelp&copy; Fusion | jDub's Code Studio&copy; 2019 | font courtesy of <a href="https://www.fontspring.com/">Fontspring</a></p>
             </ErrorBoundary>
@@ -381,5 +382,3 @@ function maintenanceUpdate(obj, event) {
 // } else {
 //   maintenanceUpdate(document, 'DOMContentedLoaded');  
 // }
-
-
