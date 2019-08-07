@@ -16,15 +16,17 @@ class App extends Component {
     }
 
     componentDidMount() {
-        console.log('componentDidMount')
+        
         this.bars = [],
         this.userId = '';
         this.searchInput = document.getElementById('search'),
 
         this.searchInput.addEventListener('click', (evt)  => {
             evt.preventDefault();
+          console.log('componentDidMount')
 
-            let location = document.getElementById("location").elements[1].value;
+            //let location = document.getElementById("location").elements[1].value;
+            let location = this.state.value;
             if(this.bars.length) this.bars = [];     
             !location ? this.getLocation( geoLocation => this.yelpHandler(geoLocation)) 
                       : this.yelpHandler(location);            
@@ -101,7 +103,6 @@ class App extends Component {
                 
                 //let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
                 let index = this.getAttribute('data-id');
-                console.log('index', index)
                 this.bars[index].userId = this.userId;
                 
                 ajax.ready(ajax.request("POST", path, this.bars[index], (bar) => {
@@ -233,7 +234,6 @@ class Main extends Component {
 
 
 const SearchResults = (props) => {
-  console.log('props', props)
     let obj    = props.data,
         locale = props.searchLocation;
 
