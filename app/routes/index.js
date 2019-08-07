@@ -9,7 +9,7 @@ module.exports = (app, passport, cors) => {
 		if (req.isAuthenticated()) {
 			return next()
 		} else {
-			res.redirect('/auth/twitter')
+			res.redirect('/api/auth/twitter')
 		}
 	}
 	
@@ -35,7 +35,7 @@ module.exports = (app, passport, cors) => {
 		
 	app.get('/auth/twitter', passport.authenticate( 'twitter' ) );
 
-	app.route('/twitter/callback' )
+	app.route('/auth/twitter/callback' )
 		.get( passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
         (req, res) => {
 

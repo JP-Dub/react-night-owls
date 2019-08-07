@@ -44,16 +44,17 @@ class App extends Component {
     twitterHandler(evt) {
         evt.preventDefault();
         window.location.href = '/api/auth/twitter';
+     
     }
 
     yelpHandler(locale) {
-        let url = '/api/businesses/search?term=bars&location=';        
-        url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
+        let path = '/businesses/search?term=bars&location=';        
+        path += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
                                           : locale;
         
         let data = !this.userId ? {} : {user: this.userId};
        
-        ajax.ready(ajax.request("POST", url, data, (res) => {
+        ajax.ready(ajax.request("POST", path, data, (res) => {
             let obj = JSON.parse(res);
             if(obj.error) return alert(res);
 
@@ -72,9 +73,9 @@ class App extends Component {
     loadBttnEvents() {
         let twitterBttn = document.getElementsByClassName('bttn'),
             bttnLength  = twitterBttn.length,
-            url         = '/api/clicks';
+            path         = '/clicks';
 
-        ajax.ready(ajax.request("GET", url, {}, (clicks) => {
+        ajax.ready(ajax.request("GET", path, {}, (clicks) => {
             clicks.forEach( id => {
                 let bttnId = document.getElementById(id),
                     count  = 0;
@@ -98,7 +99,7 @@ class App extends Component {
                 let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
                 this.bars[index].userId = this.userId;
                 
-                ajax.ready(ajax.request("POST", url, this.bars[index], (bar) => {
+                ajax.ready(ajax.request("POST", path, this.bars[index], (bar) => {
                 let going = document.getElementById(bar.id),            
                     sum   = bar.count === 0 ?  -1 :  1;
 
@@ -335,9 +336,9 @@ const ajax = {
 
     document.addEventListener('DOMContentLoaded', fn, false);
   },
-  request: function ajaxRequest(method, url, data, callback) {
+  request: function ajaxRequest(method, path, data, callback) {
     let xmlhttp = new XMLHttpRequest();
-        
+    let url = '/api' + path;        
     let params = typeof data === 'string' ? data 
                : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
 
