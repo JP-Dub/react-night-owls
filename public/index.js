@@ -16,6 +16,7 @@ class App extends Component {
     }
 
     componentDidMount() {
+        console.log('componentDidMount')
         this.bars = [],
         this.userId = '';
         this.searchInput = document.getElementById('search'),
@@ -30,8 +31,15 @@ class App extends Component {
         });       
      
     }
+  
+    componentDidUpdate(prevProps, prevState) {
+        console.log('cDU', prevProps, prevState)
+    }
 
-    componentWillUnmount() {}
+    componentWillUnmount(a, b) {
+      console.log('cWU', a, b)
+      console.log('cWU', this.bars)
+    }
     
     changeHandler(evt) {
         evt.preventDefault();
@@ -140,7 +148,6 @@ class App extends Component {
     }      
 
     render() {
-      console.log('bars', this.bars)
         return (
             <ErrorBoundary>
                 <div id ="heading" className="container">
