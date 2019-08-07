@@ -43,11 +43,11 @@ class App extends Component {
 
     twitterHandler(evt) {
         evt.preventDefault();
-        window.location.href = '/auth/auth/twitter';
+        window.location.href = '/api/auth/twitter';
     }
 
     yelpHandler(locale) {
-        let url = '/auth/businesses/search?term=bars&location=';        
+        let url = '/api/businesses/search?term=bars&location=';        
         url += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
                                           : locale;
         
@@ -72,7 +72,7 @@ class App extends Component {
     loadBttnEvents() {
         let twitterBttn = document.getElementsByClassName('bttn'),
             bttnLength  = twitterBttn.length,
-            url         = '/auth/clicks';
+            url         = '/api/clicks';
 
         ajax.ready(ajax.request("GET", url, {}, (clicks) => {
             clicks.forEach( id => {
