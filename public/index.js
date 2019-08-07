@@ -25,8 +25,8 @@ class App extends Component {
             evt.preventDefault();
           console.log('componentDidMount')
 
-            //let location = document.getElementById("location").elements[1].value;
-            let location = this.state.value;
+            let location = document.getElementById("location").elements[1].value;
+            //let location = this.state.value;
             if(this.bars.length) this.bars = [];     
             !location ? this.getLocation( geoLocation => this.yelpHandler(geoLocation)) 
                       : this.yelpHandler(location);            
@@ -234,6 +234,7 @@ class Main extends Component {
 
 
 const SearchResults = (props) => {
+    
     let obj    = props.data,
         locale = props.searchLocation;
 
@@ -246,7 +247,7 @@ const SearchResults = (props) => {
           };
     
     const data = function(arr) {
-      console.log('arr', typeof arr, arr)
+      
         const results = arr.map( (key, i) => {
             
             if(!obj[i].price) {
