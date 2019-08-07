@@ -75,30 +75,25 @@ class App extends Component {
             path        = '/rsvp/clicks';
 
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
-          console.log('clicks', clicks, path)
+         
             clicks.forEach( item => {
-                let bttnId = document.getElementById(item.id)
-//                     count  = 0;
+                let bttnId = document.getElementById(item.id);
+              
                 if(bttnId) {
                   bttnId.innerHTML = item.count;
-                }; 
-//                 if(bttnId) {
-//                     //count=0;
-//                     for(var i=0; i < clicks.length; i++) {                      
-//                         if(id === clicks[i]) count++;
-//                     }
-//                     bttnId.innerHTML = count;
-//                 };       
+                };    
             });        
         }));          
         
-        for(var i = 0; i < bttnLength; i++) {                  
+        for(let i = 0; i < bttnLength; i++) {                  
             twitterBttn[i].addEventListener('click', function(event) {
                 //event.preventDefault();
                 
                 if(!this.userId) return alert('You have to be logged in to perform this action!');
                 
-                let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
+                //let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
+                let index = this.getAttribute('data-id');
+                console.log(index)
                 this.bars[index].userId = this.userId;
                 
                 ajax.ready(ajax.request("POST", path, this.bars[index], (bar) => {
@@ -187,6 +182,47 @@ class App extends Component {
         )
     }
 }
+
+// Error class React Component
+class ErrorBoundary extends Component {
+		
+		constructor(props) {
+			super(props);
+			this.state = { hasError: false };
+		}
+    
+    static getDerivedStateFromError(error) {
+      // Update state so the next render will show the fallback UI.
+      return { hasError: true };
+    }
+		
+    componentDidCatch(error, info) {
+			// Display fallback UI
+			this.setState({ hasError: true });
+			// log the error to console 
+			console.log(error, info);   
+		}
+		render() {
+			if (this.state.hasError) {
+				// You can render any custom fallback UI
+				return <h3>Um...Something went wrong.</h3>;
+			}
+			return this.props.children;
+		};
+}; 
+
+// Used with BrowserRouter for React Paths
+class Main extends Component {
+    render() {
+      return (
+        <BrowserRouter>
+          <Route exact path='/' strict component={App} />
+          <Route exact path='/login/:user' component={App} />
+        </BrowserRouter>
+        );
+    }
+  }
+
 
 const SearchResults =  (props) => {
     let obj    = props.data,
@@ -301,34 +337,6 @@ const SearchResults =  (props) => {
  
 }
 
-// Error class React Component
-class ErrorBoundary extends Component {
-		
-		constructor(props) {
-			super(props);
-			this.state = { hasError: false };
-		}
-    
-    static getDerivedStateFromError(error) {
-      // Update state so the next render will show the fallback UI.
-      return { hasError: true };
-    }
-		
-    componentDidCatch(error, info) {
-			// Display fallback UI
-			this.setState({ hasError: true });
-			// log the error to console 
-			console.log(error, info);   
-		}
-		render() {
-			if (this.state.hasError) {
-				// You can render any custom fallback UI
-				return <h3>Um...Something went wrong.</h3>;
-			}
-			return this.props.children;
-		};
-}; 
-
 // Configure ajax call
 const ajax = {
   ready: function ready(fn) {
@@ -339,10 +347,10 @@ const ajax = {
     document.addEventListener('DOMContentLoaded', fn, false);
   },
   request: function ajaxRequest(method, path, data, callback) {
-    let xmlhttp = new XMLHttpRequest();
-    let url = '../api' + path;        
-    let params = typeof data === 'string' ? data 
-               : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
+    let xmlhttp = new XMLHttpRequest(),
+        url     = '../api' + path,        
+        params  = typeof data === 'string' ? data 
+                  : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
 
     xmlhttp.open(method, url, true);
 
@@ -364,17 +372,7 @@ const ajax = {
   }
 };
 
-class Main extends Component {
-    render() {
-      return (
-        <BrowserRouter>
-          <Route exact path='/' strict component={App} />
-          <Route exact path='/login/:user' component={App} />
-        </BrowserRouter>
-        );
-    }
-  }
-  
+
 ReactDOM.render(
     <Main />, 
     document.getElementById('root')

@@ -124,7 +124,7 @@ function ClickHandler () {
         // return restaurant id and total 'going' count for all users
         results.forEach((array, idx) => {
           let arr = array.twitter.nightlife;
-          if(arr.length < 20) {
+          if(arr.length) {
             for(let i = 0; i < arr.length; i++) {
               let item = arr[i];
               if(item.count) {
