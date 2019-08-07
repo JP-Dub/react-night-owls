@@ -140,6 +140,7 @@ class App extends Component {
     }      
 
     render() {
+      console.log('bars', this.bars)
         return (
             <ErrorBoundary>
                 <div id ="heading" className="container">
@@ -224,7 +225,8 @@ class Main extends Component {
   }
 
 
-const SearchResults =  (props) => {
+const SearchResults = (props) => {
+  console.log('props', props)
     let obj    = props.data,
         locale = props.searchLocation;
 
@@ -262,7 +264,7 @@ const SearchResults =  (props) => {
             // no image will revert to 'no image available' icon
             if(!obj[i].image_url) obj[i].image_url = noImage;         
             
-            var businesscard = 'businesscard_' + i;
+            let businesscard = 'businesscard_' + i;
             return (
                 <div id = {businesscard} className = 'container' key = {i}>
                   <h2 className = 'smallScreen' title = 'Visit Website'>
@@ -280,7 +282,7 @@ const SearchResults =  (props) => {
                                 title = 'Let people know you are going by pushing the button'
                                  type = 'button'
                                 value = 'submit'
-                              data-id = {i}>Going <span id={obj[i].id} className = 'badge'>0</span>
+                              data-id = {i} >Going <span id={obj[i].id} className = 'badge'>0</span>
                     </button>
                   </div>
                   <div className='business'>
