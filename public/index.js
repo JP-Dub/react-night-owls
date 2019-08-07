@@ -225,16 +225,22 @@ const SearchResults =  (props) => {
             
             var businesscard = 'businesscard_' + i;
             return (
-                <div id={businesscard} className='container' key={i}>
-                    <div className='img-holder'>
-                        <img className='img-thumbnail' 
-                                alt='img-url'
-                                src={obj[i].image_url} />
+                <div id = {businesscard} className = 'container' key = {i}>
+                  <h2 className = 'smallScreen' title = 'Visit Website'>
+                    <a href   = {obj[i].url}
+                       target ='_blank'
+                       rel    ='external'
+                       dangerouslySetInnerHTML={{__html: obj[i].name}} />
+                  </h2>
+                  <div className='img-holder'>
+                    <img className ='img-thumbnail' 
+                               alt ='img-url'
+                               src ={obj[i].image_url} />
                         <br />
-                        <button className='bttn'
-                                title='Let people know you are going by pushing the button'
-                                type='button'
-                                value='submit'>Going <span id={obj[i].id} className='badge'>0</span>
+                        <button className = 'bttn'
+                                title     = 'Let people know you are going by pushing the button'
+                                type      = 'button'
+                                value     = 'submit'>Going <span id={obj[i].id} className = 'badge'>0</span>
                         </button>
                     </div>
                     <div className='business'>
