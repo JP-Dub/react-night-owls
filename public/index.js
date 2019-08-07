@@ -93,7 +93,7 @@ class App extends Component {
                 
                 //let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
                 let index = this.getAttribute('data-id');
-                console.log(index)
+                console.log('index', index)
                 this.bars[index].userId = this.userId;
                 
                 ajax.ready(ajax.request("POST", path, this.bars[index], (bar) => {

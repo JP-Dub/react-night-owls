@@ -32,7 +32,7 @@ function ClickHandler () {
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
 			.exec((err, results) => {
 				if (err) throw err;
-      
+        console.log(results)
          // demo obj to populate 'going' data for zip code 33467     
         let demoObj = { twitter: {
             nightlife: [
@@ -120,7 +120,7 @@ function ClickHandler () {
           }  
         };
         results.push(demoObj);
-
+        
         // return restaurant id and total 'going' count for all users
         results.forEach((array, idx) => {
           let arr = array.twitter.nightlife;
@@ -141,7 +141,7 @@ function ClickHandler () {
             }
           }
         });
-     
+   
 		res.json(nightlife);
 		}); 
   }; // getClicks
