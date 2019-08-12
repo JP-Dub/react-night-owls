@@ -41,11 +41,13 @@ class App extends Component {
         // checks if user is logged in /  returns previous session
         if( loggedIn ) {     
           ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
-
+             
              let user        = req.twitter,
                  location    = user.previousSession || sessionStorage.getItem('current');     
                  //this.setState({userId : user.id});
-                 this.userId = user.id; 
+             this.userId = user.id; 
+            
+          
              return this.yelpHandler(location || user.location);
           }));
         } else {
@@ -56,7 +58,7 @@ class App extends Component {
     }
   
     componentDidUpdate(prevProps, prevState) {
-        //console.log('cDU', prevProps, prevState)
+      console.log(prevState)
     }
 
     componentWillUnmount(a, b) {
@@ -122,7 +124,7 @@ class App extends Component {
         for(let i = 0; i < bttnLength; i++) {                  
             twitterBttn[i].addEventListener('click', function(event) {
                 //event.preventDefault();
-                
+                console.log('twitterbttn', this.userId)
                 if(!this.userId) return alert('You have to be logged in to perform this action!');
                 
                 //let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
@@ -135,8 +137,8 @@ class App extends Component {
                       name   : this.getAttribute('data-name'),
                       userId : this.userId
                     };
-                
-                ajax.ready(ajax.request("POST", path, this.bars[index], (bar) => {
+                                                    //this.bars[index]
+                ajax.ready(ajax.request("POST", path, obj, (bar) => {
                 let going = document.getElementById(bar.id),            
                     sum   = bar.count === 0 ?  -1 :  1;
 
@@ -326,7 +328,7 @@ const SearchResults = (props) => {
                             title = 'Let people know you are going by pushing the button'
                              type = 'button'
                             value = 'submit'
-                          data-id = {i} >Going <span id={obj[i].id} className = 'badge'>0</span>
+                        data-name = {obj[i].name}>Going <span id={obj[i].id} className = 'badge'>0</span>
                 </button>
               </div>
               <div className='business'>
