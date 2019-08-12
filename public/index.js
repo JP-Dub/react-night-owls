@@ -19,20 +19,20 @@ class App extends Component {
     componentDidMount() {
         const regex    = RegExp('^/login/.*'),
               loggedIn = regex.test(window.location.pathname);
-        console.log("userID", this.state.userId)
+       
         // this.setState({
         //   load : document.getElementById('load'),
         //   input: document.getElementById('location-input')
         // })
-        this.load = document.getElementById('load');
+        this.load  = document.getElementById('load');
         this.input = document.getElementById('location-input');
         this.searchInput = document.getElementById('search'),
 
         this.searchInput.addEventListener('click', (evt)  => {
             evt.preventDefault();
 
-            let location = document.getElementById("location").elements[1].value;
-            //let location = this.state.value;
+            //let location = document.getElementById("location").elements[1].value;
+            let location = this.state.value;
             // if(this.bars.length) this.bars = [];     
             !location ? this.getLocation( geoLocation => this.yelpHandler(geoLocation)) 
                       : this.yelpHandler(location);            
@@ -44,22 +44,23 @@ class App extends Component {
 
              let user        = req.twitter,
                  location    = user.previousSession || sessionStorage.getItem('current');     
-                 this.setState({userId : user.id});
-
+                 //this.setState({userId : user.id});
+                 this.userId = user.id; 
              return this.yelpHandler(location || user.location);
           }));
         } else {
-          this.setState({userId: ''});
+          //this.setState({userId : ''});
+          this.userId = "";
         }  
 
     }
   
     componentDidUpdate(prevProps, prevState) {
-        console.log('cDU', prevProps, prevState)
+        //console.log('cDU', prevProps, prevState)
     }
 
     componentWillUnmount(a, b) {
-      console.log('cWU', a, b)
+      //console.log('cWU', a, b)
       console.log('cWU', this.bars)
       this.searchInput.removeEventListener('click');
     }
@@ -125,8 +126,15 @@ class App extends Component {
                 if(!this.userId) return alert('You have to be logged in to perform this action!');
                 
                 //let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
-                let index = this.getAttribute('data-id');
-                this.bars[index].userId = this.userId;
+                // let index = this.getAttribute('data-id');
+                // this.bars[index].userId = this.userId;
+              
+                let barId = this.firstElementChild.getAttribute('id'),
+                    obj   = {
+                      id     : barId,
+                      name   : this.getAttribute('data-name'),
+                      userId : this.userId
+                    };
                 
                 ajax.ready(ajax.request("POST", path, this.bars[index], (bar) => {
                 let going = document.getElementById(bar.id),            
