@@ -239,7 +239,7 @@ class Main extends Component {
 
 // build the search results UI
 const SearchResults = (props) => {
-    const input = document.getElementById('input');
+    const input = document.getElementById('location-input');
     let obj    = props.data,
         locale = props.searchLocation,
         dist   = obj[obj.length-1].distance,
@@ -271,11 +271,11 @@ const SearchResults = (props) => {
           dist = obj[i].distance;
           city = obj[i].location.city;       
         } else {
-          city = obj[length-1].location.city;
+          city = obj[obj.length-1].location.city;
         }
 
         // write value of city or zip code to search bar
-        if(i === length -1) {
+        if(i === obj.length -1) {
           sessionStorage.setItem('current', input.value || city);
           input.placeholder = !input.value ? city : locale, input.value = '';   
         }  
@@ -289,11 +289,11 @@ const SearchResults = (props) => {
             //props.bars.push(identity);
             
             // check if var locale is object
-            if(locale) {
-                obj[i].alias += '?start=';
-                obj[i].alias += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude
-                                                           : locale;
-            }
+            // if(locale) {
+            //     obj[i].alias += '?start=';
+            //     obj[i].alias += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude
+            //                                                : locale;
+            // }
 
             // no image will revert to 'no image available' icon
             if(!obj[i].image_url) obj[i].image_url = noImage;         
@@ -348,7 +348,7 @@ const SearchResults = (props) => {
                       <br />
                       <span className = 'rate'
                             dangerouslySetInnerHTML = {
-                        {__html : `Price: ` + obj[i].price + ` `  + costDescription[obj[i].price]}
+                        {__html : `Price: ` + price + ` `  + costDescription[price.length]}
                       } />
                       <br />
                       <span dangerouslySetInnerHTML = {
