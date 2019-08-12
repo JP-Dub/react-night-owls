@@ -11,7 +11,8 @@ class App extends Component {
         this.changeHandler  = this.changeHandler.bind(this);
         this.twitterHandler = this.twitterHandler.bind(this);
         this.state = {
-            value: ""
+          load: "",
+          value: ""
         }
     }
 
@@ -19,6 +20,9 @@ class App extends Component {
         
         this.bars = [],
         this.userId = '';
+        this.setState({
+          load : document.getElementById('load')
+        })
         this.searchInput = document.getElementById('search'),
 
         this.searchInput.addEventListener('click', (evt)  => {
@@ -234,33 +238,38 @@ class Main extends Component {
 
 // build the search results UI
 const SearchResults = (props) => {
-    
+    console.log(props)
     let obj    = props.data,
-        locale = props.searchLocation;
+        locale = props.searchLocation,
+        city;
 
     const costDescription = {
-            '$'   : 'Inexpensive',
-            '$$'  : 'Moderate',
-            '$$$' : 'Pricey',
-            '$$$$': 'Ultra High End',
-            ''    : 'Unavailable'
+          0 : 'Unavailable',
+          1 : 'Inexpensive',
+          2 : 'Moderate',
+          3 : 'Pricey',
+          4 : 'Ultra High End'
           };
     
     const data = function(arr) {
-      
+         
+        //if(load.classList.value === 'loading') load.classList.remove('loading');
+        
         const results = arr.map( (key, i) => {
             
-            if(!obj[i].price) {
-                obj[i].price = '';         
-            }
+            // if(!obj[i].price) {
+            //     obj[i].price = '';         
+            // }
+            let price = obj[i].price;
+            if(!price) price = "";
 
             // nightlife cache
-            let identity = {
-                "id"  : obj[i].id,
-                "name": obj[i].name
-                };
+            // let identity = {
+            //     "id"  : obj[i].id,
+            //     "name": obj[i].name
+            //     };
                 
-            props.bars.push(identity);
+            //props.bars.push(identity);
             
             // check if var locale is object
             if(locale) {
