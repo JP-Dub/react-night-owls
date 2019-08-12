@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import '../public/css/style.css';
 import noImage from '../public/img/NoProductImage_300.jpg';
 
-
+// Main Component
 class App extends Component {
     constructor(props) {
         super(props);
@@ -232,7 +232,7 @@ class Main extends Component {
     }
   }
 
-
+// build the search results UI
 const SearchResults = (props) => {
     
     let obj    = props.data,
