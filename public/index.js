@@ -12,7 +12,8 @@ class App extends Component {
         this.twitterHandler = this.twitterHandler.bind(this);
         this.state = {
           load: "",
-          value: ""
+          value: "",
+          input: ""
         }
     }
 
@@ -20,9 +21,12 @@ class App extends Component {
         
         this.bars = [],
         this.userId = '';
-        this.setState({
-          load : document.getElementById('load')
-        })
+        // this.setState({
+        //   load : document.getElementById('load'),
+        //   input: document.getElementById('location-input')
+        // })
+        this.load = document.getElementById('load');
+        this.input = document.getElementById('location-input');
         this.searchInput = document.getElementById('search'),
 
         this.searchInput.addEventListener('click', (evt)  => {
@@ -61,7 +65,7 @@ class App extends Component {
     }
 
     yelpHandler(locale) {
-      
+        this.load.classList.add('loading');  
         if(typeof locale === 'object') locale = locale.latitude + '%20' + locale.longitude ;
                                      
         let path = '/businesses/search?term=bars&location=' + locale;   
@@ -75,16 +79,17 @@ class App extends Component {
             ReactDOM.render(
                 <SearchResults 
                     data={obj}
-                    bars={this.bars}
+                    load={this.load}
+                    input={this.input}
                     searchLocation={locale} />,
                     document.getElementById('main')
             );
-               
+            //let zip = typeof locale === 'string'? locale : '';   
             this.loadBttnEvents();                
         }));
     }
 
-    loadBttnEvents() {
+    loadBttnEvents(zip) {
         let twitterBttn = document.getElementsByClassName('bttn'),
             bttnLength  = twitterBttn.length,
             path        = '/rsvp/clicks';
@@ -239,10 +244,12 @@ class Main extends Component {
 
 // build the search results UI
 const SearchResults = (props) => {
-    const input = document.getElementById('location-input');
+    //const input = document.getElementById('location-input');
     let obj    = props.data,
         locale = props.searchLocation,
         dist   = obj[obj.length-1].distance,
+        iput   = props.input,
+        load   = props.load,
         city;
 
     const costDescription = {
@@ -255,13 +262,9 @@ const SearchResults = (props) => {
     
     const data = function(arr) {
            
-        //if(load.classList.value === 'loading') load.classList.remove('loading');
+        if(load.classList.value === 'loading') load.classList.remove('loading');
         
       const results = arr.map( (key, i) => {
-            
-            // if(!obj[i].price) {
-            //     obj[i].price = '';         
-            // }
           
         let price = obj[i].price;
         if(!price) price = "";
