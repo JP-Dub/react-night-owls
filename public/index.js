@@ -11,16 +11,15 @@ class App extends Component {
         this.changeHandler  = this.changeHandler.bind(this);
         this.twitterHandler = this.twitterHandler.bind(this);
         this.state = {
-          load: "",
-          value: "",
-          input: ""
+          value  : "",
+          userId : ""
         }
     }
 
     componentDidMount() {
-        
-        this.bars = [],
-        this.userId = '';
+        const regex    = RegExp('^/login/.*'),
+              loggedIn = regex.test(window.location.pathname);
+        console.log("userID", this.state.userId)
         // this.setState({
         //   load : document.getElementById('load'),
         //   input: document.getElementById('location-input')
@@ -31,15 +30,28 @@ class App extends Component {
 
         this.searchInput.addEventListener('click', (evt)  => {
             evt.preventDefault();
-          console.log('componentDidMount')
 
             let location = document.getElementById("location").elements[1].value;
             //let location = this.state.value;
-            if(this.bars.length) this.bars = [];     
+            // if(this.bars.length) this.bars = [];     
             !location ? this.getLocation( geoLocation => this.yelpHandler(geoLocation)) 
                       : this.yelpHandler(location);            
-        });       
-     
+        });
+      
+        // checks if user is logged in /  returns previous session
+        if( loggedIn ) {     
+          ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
+
+             let user        = req.twitter,
+                 location    = user.previousSession || sessionStorage.getItem('current');     
+                 this.setState({userId : user.id});
+
+             return this.yelpHandler(location || user.location);
+          }));
+        } else {
+          this.setState({userId: ''});
+        }  
+
     }
   
     componentDidUpdate(prevProps, prevState) {
