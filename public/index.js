@@ -61,9 +61,10 @@ class App extends Component {
     }
 
     yelpHandler(locale) {
-        let path = '/businesses/search?term=bars&location=';        
-        path += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude 
-                                          : locale;
+            console.log(locale, typeof locale) 
+        if(typeof locale === 'object') locale.latitude + '%20' + locale.longitude ;
+                                          
+        let path = '/businesses/search?term=bars&location=' + locale;   
         
         let data = !this.userId ? {} : {user: this.userId};
        
@@ -120,11 +121,14 @@ class App extends Component {
         }; // for(loop)         
     }
 
-    getLocation() {
+    getLocation(next) {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-           
-          SearchResults({
+           console.log({
+            latitude : position.coords.latitude,
+            longitude: position.coords.longitude
+          })
+          next({
             latitude : position.coords.latitude,
             longitude: position.coords.longitude
           });
