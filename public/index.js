@@ -239,7 +239,7 @@ class Main extends Component {
 
 // build the search results UI
 const SearchResults = (props) => {
-    console.log(props)
+    const input = document.getElementById('input');
     let obj    = props.data,
         locale = props.searchLocation,
         dist   = obj[obj.length-1].distance,
@@ -254,18 +254,31 @@ const SearchResults = (props) => {
           };
     
     const data = function(arr) {
-         
+           
         //if(load.classList.value === 'loading') load.classList.remove('loading');
         
-        const results = arr.map( (key, i) => {
+      const results = arr.map( (key, i) => {
             
             // if(!obj[i].price) {
             //     obj[i].price = '';         
             // }
-            let price = obj[i].price;
-            if(!price) price = "";
           
-          
+        let price = obj[i].price;
+        if(!price) price = "";
+         
+            // find closest zip code to coordinates
+        if(dist > obj[i].distance) {
+          dist = obj[i].distance;
+          city = obj[i].location.city;       
+        } else {
+          city = obj[length-1].location.city;
+        }
+
+        // write value of city or zip code to search bar
+        if(i === length -1) {
+          sessionStorage.setItem('current', input.value || city);
+          input.placeholder = !input.value ? city : locale, input.value = '';   
+        }  
 
             // nightlife cache
             // let identity = {
