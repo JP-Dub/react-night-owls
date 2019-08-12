@@ -66,10 +66,10 @@ class App extends Component {
 
     yelpHandler(locale) {
         this.load.classList.add('loading');  
+      
         if(typeof locale === 'object') locale = locale.latitude + '%20' + locale.longitude ;
                                      
-        let path = '/businesses/search?term=bars&location=' + locale;   
-        
+        let path = '/businesses/search?term=bars&location=' + locale;        
         let data = !this.userId ? {} : {user: this.userId};
        
         ajax.ready(ajax.request("POST", path, data, (res) => {
@@ -89,7 +89,7 @@ class App extends Component {
         }));
     }
 
-    loadBttnEvents(zip) {
+    loadBttnEvents() {
         let twitterBttn = document.getElementsByClassName('bttn'),
             bttnLength  = twitterBttn.length,
             path        = '/rsvp/clicks';
@@ -248,7 +248,7 @@ const SearchResults = (props) => {
     let obj    = props.data,
         locale = props.searchLocation,
         dist   = obj[obj.length-1].distance,
-        iput   = props.input,
+        input   = props.input,
         load   = props.load,
         city;
 
