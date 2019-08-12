@@ -61,9 +61,9 @@ class App extends Component {
     }
 
     yelpHandler(locale) {
-            console.log(locale, typeof locale) 
-        if(typeof locale === 'object') locale.latitude + '%20' + locale.longitude ;
-                                          
+      
+        if(typeof locale === 'object') locale = locale.latitude + '%20' + locale.longitude ;
+                                     
         let path = '/businesses/search?term=bars&location=' + locale;   
         
         let data = !this.userId ? {} : {user: this.userId};
@@ -124,10 +124,7 @@ class App extends Component {
     getLocation(next) {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-           console.log({
-            latitude : position.coords.latitude,
-            longitude: position.coords.longitude
-          })
+          
           next({
             latitude : position.coords.latitude,
             longitude: position.coords.longitude
@@ -245,6 +242,7 @@ const SearchResults = (props) => {
     console.log(props)
     let obj    = props.data,
         locale = props.searchLocation,
+        dist   = obj[obj.length-1].distance,
         city;
 
     const costDescription = {
@@ -266,6 +264,8 @@ const SearchResults = (props) => {
             // }
             let price = obj[i].price;
             if(!price) price = "";
+          
+          
 
             // nightlife cache
             // let identity = {
