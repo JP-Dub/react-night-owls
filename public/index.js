@@ -49,6 +49,7 @@ class App extends Component {
     componentWillUnmount(a, b) {
       console.log('cWU', a, b)
       console.log('cWU', this.bars)
+      this.searchInput.removeEventListener('click');
     }
     
     changeHandler(evt) {
@@ -264,104 +265,90 @@ const SearchResults = (props) => {
            
         if(load.classList.value === 'loading') load.classList.remove('loading');
         
-      const results = arr.map( (key, i) => {
-          
-        let price = obj[i].price;
-        if(!price) price = "";
-         
-            // find closest zip code to coordinates
-        if(dist > obj[i].distance) {
-          dist = obj[i].distance;
-          city = obj[i].location.city;       
-        } else {
-          city = obj[obj.length-1].location.city;
-        }
+        const results = arr.map( (key, i) => {
 
-        // write value of city or zip code to search bar
-        if(i === obj.length -1) {
-          sessionStorage.setItem('current', input.value || city);
-          input.placeholder = !input.value ? city : locale, input.value = '';   
-        }  
+          let price = obj[i].price;
+          if(!price) price = "";
 
-            // nightlife cache
-            // let identity = {
-            //     "id"  : obj[i].id,
-            //     "name": obj[i].name
-            //     };
-                
-            //props.bars.push(identity);
+              // find closest zip code to coordinates
+          if(dist > obj[i].distance) {
+            dist = obj[i].distance;
+            city = obj[i].location.city;       
+          } else {
+            city = obj[obj.length-1].location.city;
+          }
+
+          // write value of city or zip code to search bar
+          if(i === obj.length -1) {
+            sessionStorage.setItem('current', input.value || city);
+            input.placeholder = !input.value ? city : locale, input.value = '';   
+          }  
+
+
+          // no image will revert to 'no image available' icon
+          if(!obj[i].image_url) obj[i].image_url = noImage;         
             
-            // check if var locale is object
-            // if(locale) {
-            //     obj[i].alias += '?start=';
-            //     obj[i].alias += typeof locale === 'object' ? locale.latitude + '%20' + locale.longitude
-            //                                                : locale;
-            // }
-
-            // no image will revert to 'no image available' icon
-            if(!obj[i].image_url) obj[i].image_url = noImage;         
-            
-            let businesscard = 'businesscard_' + i;
-            return (
-                <div id = {businesscard} className = 'container' key = {i}>
-                  <h2 className = 'smallScreen' title = 'Visit Website'>
-                    <a href   = {obj[i].url}
-                       target ='_blank'
-                       rel    ='external'
-                       dangerouslySetInnerHTML = {{__html: obj[i].name}} />
-                  </h2>
-                  <div className='img-holder'>
-                    <img className ='img-thumbnail' 
-                               alt ='img-url'
-                               src ={obj[i].image_url} />
-                    <br />
-                    <button className = 'bttn'
-                                title = 'Let people know you are going by pushing the button'
-                                 type = 'button'
-                                value = 'submit'
-                              data-id = {i} >Going <span id={obj[i].id} className = 'badge'>0</span>
-                    </button>
-                  </div>
-                  <div className='business'>
-                    <h2 className = 'avgScreen' title = 'Visit Website'>
-                      <a href   = {obj[i].url}
-                         target = '_blank'
-                         rel    = 'external'
-                         dangerouslySetInnerHTML = {{__html: obj[i].name}} />
-                    </h2>
-                    <p className = 'address'>
-                      <a href    = {'https://www.yelp.com/map/' + obj[i].alias}
-                         target = '_blank'
-                         title  = 'Get Directions'
-                         rel    = 'external'
-                         dangerouslySetInnerHTML = {{__html:  
-                             obj[i].location.address1 + `.<br>` 
-                             + obj[i].location.city + `, ` 
-                             + obj[i].location.state + `. ` 
-                             + obj[i].location.zip_code }} />
-                      <br />
-                      <span className = 'phone'>Telephone:
-                        <a href    = {obj[i].phone}
-                           target = '_blank'
-                           title  = 'Call Number'
-                           dangerouslySetInnerHTML={
+          let businesscard = 'businesscard_' + i;
+          return (
+            <div id = {businesscard} className = 'container' key = {i}>
+              <h2 className = 'smallScreen' title = 'Visit Website'>
+                <a href   = {obj[i].url}
+                   target ='_blank'
+                   rel    ='external'
+                   dangerouslySetInnerHTML = {{__html: obj[i].name}} />
+              </h2>
+              <div className='img-holder'>
+                <img className ='img-thumbnail' 
+                           alt ='img-url'
+                           src ={obj[i].image_url} />
+                <br />
+                <button className = 'bttn'
+                            title = 'Let people know you are going by pushing the button'
+                             type = 'button'
+                            value = 'submit'
+                          data-id = {i} >Going <span id={obj[i].id} className = 'badge'>0</span>
+                </button>
+              </div>
+              <div className='business'>
+                <h2 className = 'avgScreen' title = 'Visit Website'>
+                  <a href   = {obj[i].url}
+                     target = '_blank'
+                     rel    = 'external'
+                     dangerouslySetInnerHTML = {{__html: obj[i].name}} />
+                </h2>
+                <p className = 'address'>
+                  <a href   = {'https://www.yelp.com/map/' + obj[i].alias}
+                     target = '_blank'
+                     title  = 'Get Directions'
+                     rel    = 'external'
+                     dangerouslySetInnerHTML = {{__html:  
+                         obj[i].location.address1 + `.<br>` 
+                         + obj[i].location.city + `, ` 
+                         + obj[i].location.state + `. ` 
+                         + obj[i].location.zip_code }} />
+                  <br />
+                  <span className = 'phone'>Telephone:
+                    <a href   = {obj[i].phone}
+                       target = '_blank'
+                       title  = 'Call Number'
+                       dangerouslySetInnerHTML={
                              {__html : ` ` + obj[i].display_phone}
                            } />
-                      </span>
-                      <br />
-                      <span className = 'rate'
-                            dangerouslySetInnerHTML = {
-                        {__html : `Price: ` + price + ` `  + costDescription[price.length]}
-                      } />
-                      <br />
-                      <span dangerouslySetInnerHTML = {
-                        {__html : `Rating: `+ obj[i].rating}
-                      } />
-                    </p>
-                  </div>
-                </div>
-            )
-        })
+                  </span>
+                  <br />
+                  <span className = 'rate'
+                        dangerouslySetInnerHTML = {
+                    {__html : `Price: ` + price + ` `  + costDescription[price.length]}
+                  } />
+                  <br />
+                  <span dangerouslySetInnerHTML = {
+                    {__html : `Rating: `+ obj[i].rating}
+                  } />
+                </p>
+              </div>
+            </div>
+          )
+        });
         
         return (
             <div>{results}</div>
