@@ -44,21 +44,24 @@ class App extends Component {
              
              let user        = req.twitter,
                  location    = user.previousSession || sessionStorage.getItem('current');     
-                 //this.setState({userId : user.id});
+                 this.setState({userId : user.id});
              this.userId = user.id; 
             
           
              return this.yelpHandler(location || user.location);
           }));
         } else {
-          //this.setState({userId : ''});
+          this.setState({userId : ''});
           this.userId = "";
         }  
 
     }
   
     componentDidUpdate(prevProps, prevState) {
-      console.log(prevState)
+      console.log(prevState, this.state)
+      if(prevState.userId !== this.state.userId) {
+        this.userId = this.state.userId;
+      }
     }
 
     componentWillUnmount(a, b) {
@@ -124,7 +127,7 @@ class App extends Component {
         for(let i = 0; i < bttnLength; i++) {                  
             twitterBttn[i].addEventListener('click', function(event) {
                 //event.preventDefault();
-                console.log('twitterbttn', this.userId)
+                console.log('twitterbttn', this.userId, this.state.userId)
                 if(!this.userId) return alert('You have to be logged in to perform this action!');
                 
                 //let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
