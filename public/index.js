@@ -99,11 +99,11 @@ class App extends Component {
         let twitterBttn = document.getElementsByClassName('bttn'),
             bttnLength  = twitterBttn.length,
             state       = this.state.userId,
-            path        = '/rsvp/clicks';
+            path        = '/rsvp/clicks/false';
       
-        // if(this.input.placeholder === '33467') {
-        //   path = '/rsvp/clicks/33467'
-        // }
+        if(window.location.pathname === '/nightlife/demo') {
+          path = '/rsvp/clicks/true'
+        }
 
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
            

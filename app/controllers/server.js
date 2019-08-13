@@ -5,10 +5,11 @@ var yelp = require('yelp-fusion');
 
 
 let randomness = []
-function randomRsvps() {
+function randomRsvps(next) {
     for(let i = 0; i < 20; i++) {
     randomness.push( Math.floor(Math.random() * Math.floor(201)) );
   }
+  next(randomness);
 }
 
 function ClickHandler () {
@@ -979,11 +980,7 @@ function ClickHandler () {
 	this.getClicks = (req, res) => {
     let nightlife = [];
     randomness = [];
-    // if(req.params.demo) {
-    //   randomRsvps();
-    // }
-      
-        
+            
     // check if id exists in nightlife array
     function findId(id) {
       for(let i = 0; i < nightlife.length; i++) {
@@ -1093,9 +1090,17 @@ function ClickHandler () {
           if(arr.length) {
             for(let i = 0; i < arr.length; i++) {
               let item = arr[i];
+              if(req.params.demo) {
+                randomRsvps((demo) => {
+                  nightlife.push({
+                    'id' : item.id,
+                    'count' : demo[i]
+                  });
+                });
+              }
               if(item.count) {
                 let index = findId(item.id);
-                if(index !== false) {
+                if(!index) {
                    nightlife[index].count += item.count;
                 } else {
                    nightlife.push({
