@@ -1094,11 +1094,12 @@ function ClickHandler () {
             }
           }
         });
-    console.log(nightlife)
+
 		res.json(nightlife);
 		}); 
   }; // getClicks
 
+  // for authenticated users to add or remove rsvp  
 	this.addClick = (req, res) => {
   
 		Users
@@ -1174,7 +1175,7 @@ function ClickHandler () {
      Client.search(request).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
-          console.log(json)
+
            return res.json(json);
      }).catch(error => {
        	return res.json(error);
