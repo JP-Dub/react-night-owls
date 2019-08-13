@@ -249,6 +249,7 @@ class Main extends Component {
       return (
         <BrowserRouter>
           <Route exact path='/' strict component={App} />
+          <Route exact path='/nightlife/demo' component={App} />
           <Route exact path='/login/:user' component={App} />
         </BrowserRouter>
         );
