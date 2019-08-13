@@ -18,7 +18,7 @@ function ClickHandler () {
   };
   
   this.demo = (req, res) => {
-  [
+  let something = [
     {
         "id": "w_TILSpebOiv2Ma46oLX_w",
         "alias": "copperpoint-brewing-co-boynton-beach",
