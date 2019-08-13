@@ -99,11 +99,22 @@ class App extends Component {
         let twitterBttn = document.getElementsByClassName('bttn'),
             bttnLength  = twitterBttn.length,
             state       = this.state.userId,
+            demo        = window.location.pathname === '/rsvp/demo' ? true : false,
             path        = '/rsvp/clicks/false';
       
-        if(window.location.pathname === '/rsvp/demo') {
-          path = '/rsvp/clicks/true'
-        }
+        if(demo) {
+          let badge = document.getElementsByClassName('badge');
+          console.log(badge)
+          let randomness = []
+          const randomRsvps = () => {
+            for(let i = 0; i < 20; i++) {
+              badge[i].innerHTML = i
+              randomness.push( Math.floor(Math.random() * Math.floor(201)) );
+            }
+          }
+          
+          
+        } else {
 
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
            
@@ -114,12 +125,14 @@ class App extends Component {
                   bttnId.innerHTML = item.count;
                 };    
             });        
-        }));          
+        })); 
+          
+        }
         
         for(let i = 0; i < bttnLength; i++) {                  
             twitterBttn[i].addEventListener('click', function(event) {
                 //event.preventDefault();
-              
+                if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!state) return alert('You have to be logged in to perform this action!');
               
                 //let barId = this.firstElementChild.getAttribute('id'),
