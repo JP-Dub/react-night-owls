@@ -6,9 +6,10 @@ var yelp = require('yelp-fusion');
 
 let randomness = []
 function randomRsvps(next) {
-   for(let i = 0; i < 20; i++) {
-    randomness.push( Math.floor(Math.random() * Math.floor(201)) );
-  }
+   //for(let i = 0; i < 20; i++) {
+    //randomness.push( 
+      return next(Math.floor(Math.random() * Math.floor(201)) );
+  //}
  //next(randomness);
 }
 
@@ -980,7 +981,7 @@ function ClickHandler () {
 	this.getClicks = (req, res) => {
     let nightlife = [];
     randomness = [];
-    if(req.params.demo) randomRsvps();            
+    //if(req.params.demo) randomRsvps();            
     // check if id exists in nightlife array
     function findId(id) {
       for(let i = 0; i < nightlife.length; i++) {
@@ -1083,6 +1084,9 @@ function ClickHandler () {
         //   };
         //   results.push(demoObj);
         // }
+        if(req.params.demo) {
+          
+        }
         
         // return restaurant id and total 'going' count for all users
         results.forEach((array, idx) => {
@@ -1090,14 +1094,6 @@ function ClickHandler () {
           if(arr.length) {
             for(let i = 0; i < arr.length; i++) {
               let item = arr[i];
-              if(req.params.demo) {
-                  console.log(randomness[i])
-                  nightlife.push({
-                    'id' : item.id,
-                    'count' : randomness[i]
-                  });
-              
-              } else
               if(item.count) {
                 let index = findId(item.id);
                 if(!index) {
@@ -1193,7 +1189,7 @@ function ClickHandler () {
      Client.search(request).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
-
+          
            return res.json(json);
      }).catch(error => {
        	return res.json(error);

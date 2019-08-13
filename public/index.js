@@ -100,7 +100,7 @@ class App extends Component {
             bttnLength  = twitterBttn.length,
             state       = this.state.userId,
             path        = '/rsvp/clicks/false';
-        console.log(window.location.pathname)
+      
         if(window.location.pathname === '/rsvp/demo') {
           path = '/rsvp/clicks/true'
         }
