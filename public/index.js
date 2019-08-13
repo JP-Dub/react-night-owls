@@ -26,10 +26,8 @@ class App extends Component {
 
         this.searchInput.addEventListener('click', (evt)  => {
             evt.preventDefault();
-
-            //let location = document.getElementById("location").elements[1].value;
-            let location = this.state.value;
-            // if(this.bars.length) this.bars = [];     
+  
+            let location = this.state.value;    
             !location ? this.getLocation( geoLocation => this.yelpHandler(geoLocation)) 
                       : this.yelpHandler(location);            
         });
@@ -50,8 +48,7 @@ class App extends Component {
         } else {
           this.setState(() => {
             return {userId : ''}
-          });
-          
+          });        
         }  
 
     }
@@ -93,7 +90,7 @@ class App extends Component {
                     searchLocation={locale} />,
                     document.getElementById('main')
             );
-            //let zip = typeof locale === 'string'? locale : '';   
+           
             this.loadBttnEvents();                
         }));
     }
@@ -105,7 +102,7 @@ class App extends Component {
             path        = '/rsvp/clicks';
 
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
-         
+            console.log('clicks', clicks)
             clicks.forEach( item => {
                 let bttnId = document.getElementById(item.id);
               
@@ -121,9 +118,9 @@ class App extends Component {
               
                 if(!state) return alert('You have to be logged in to perform this action!');
               
-                let barId = this.firstElementChild.getAttribute('id'),
-                    obj   = {
-                      id     : barId,
+                //let barId = this.firstElementChild.getAttribute('id'),
+                let obj   = {
+                      id     : this.firstElementChild.getAttribute('id'),
                       name   : this.getAttribute('data-name'),
                       userId : state
                     };
@@ -260,7 +257,7 @@ const SearchResults = (props) => {
     let obj    = props.data,
         locale = props.searchLocation,
         dist   = obj[obj.length-1].distance,
-        input   = props.input,
+        input  = props.input,
         load   = props.load,
         city;
 
@@ -389,7 +386,6 @@ const ajax = {
         params  = typeof data === 'string' ? data 
                   : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
 
-    console.log('url path', url)
     xmlhttp.open(method, url, true);
 
     xmlhttp.onreadystatechange = function () {
@@ -409,7 +405,6 @@ const ajax = {
     return xmlhttp;
   }
 };
-
 
 ReactDOM.render(
     <Main />, 
