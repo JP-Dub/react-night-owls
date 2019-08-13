@@ -100,9 +100,11 @@ class App extends Component {
             bttnLength  = twitterBttn.length,
             state       = this.state.userId,
             path        = '/rsvp/clicks';
+        
+        if(this.input.placeholder === '33467')
 
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
-            console.log('clicks', clicks)
+           
             clicks.forEach( item => {
                 let bttnId = document.getElementById(item.id);
               
