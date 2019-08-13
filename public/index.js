@@ -100,20 +100,13 @@ class App extends Component {
             bttnLength  = twitterBttn.length,
             state       = this.state.userId,
             demo        = window.location.pathname === '/rsvp/demo' ? true : false,
-            path        = '/rsvp/clicks/false';
+            path        = '/rsvp/clicks';
       
         if(demo) {
           let badge = document.getElementsByClassName('badge');
-          console.log(badge)
-          let randomness = []
-          const randomRsvps = () => {
-            for(let i = 0; i < 20; i++) {
-              badge[i].innerHTML = i
-              randomness.push( Math.floor(Math.random() * Math.floor(201)) );
-            }
+          for(let i = 0; i < 20; i++) {    
+            badge[i].innerHTML = Math.floor(Math.random() * Math.floor(201))   
           }
-          
-          
         } else {
 
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
