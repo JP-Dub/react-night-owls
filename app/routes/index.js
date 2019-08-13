@@ -14,6 +14,9 @@ module.exports = (app, passport, cors) => {
 	}
 	
 	let handleServer = new Server();
+  
+  app.route('/nightlife/demo')
+     .get( handleServer.demo);
  
 	app.route( '/user/:location' )	
 		.get( handleServer.userLocation );
