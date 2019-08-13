@@ -70,8 +70,6 @@ class App extends Component {
     }
 
     componentWillUnmount(a, b) {
-      //console.log('cWU', a, b)
-      console.log('cWU', this.bars)
       this.searchInput.removeEventListener('click');
     }
     
@@ -133,7 +131,7 @@ class App extends Component {
         for(let i = 0; i < bttnLength; i++) {                  
             twitterBttn[i].addEventListener('click', function(event) {
                 //event.preventDefault();
-                console.log('twitterbttn', state)
+              
                 if(!state) return alert('You have to be logged in to perform this action!');
                 
                 //let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard

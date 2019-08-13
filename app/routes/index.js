@@ -7,8 +7,10 @@ module.exports = (app, passport, cors) => {
 	
 	function isLoggedIn (req, res, next) {
 		if (req.isAuthenticated()) {
+      console.log('we`s logged in yo')
 			return next()
 		} else {
+      console.log('naw, something wrong')
 			res.redirect('/api/auth/twitter')
 		}
 	}

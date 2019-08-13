@@ -152,7 +152,7 @@ function ClickHandler () {
       .select({'twitter.nightlife': 1})
 			.exec((err, result) => {
 					if (err) throw err;      
-          
+          console.log('result', result)
           if(result) {
             let nightlife = result.twitter.nightlife,
                 barCount = {},
