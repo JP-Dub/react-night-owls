@@ -40,17 +40,20 @@ class App extends Component {
       
         // checks if user is logged in /  returns previous session
         if( loggedIn ) {     
+          console.log('logged in')
           ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
              
              let user        = req.twitter,
-                 location    = user.previousSession || sessionStorage.getItem('current');     
-                 this.setState({userId : user.id});
+                 location    = user.previousSession || sessionStorage.getItem('current');  
+            
+             this.setState({userId : user.id});
              this.userId = user.id; 
             
           
              return this.yelpHandler(location || user.location);
           }));
         } else {
+          console.log('logged out')
           this.setState({userId : ''});
           this.userId = "";
         }  
@@ -58,7 +61,7 @@ class App extends Component {
     }
   
     componentDidUpdate(prevProps, prevState) {
-      console.log(prevState, this.state)
+      console.log(prevState.userId, this.state.userId)
       if(prevState.userId !== this.state.userId) {
         this.userId = this.state.userId;
       }
@@ -128,7 +131,7 @@ class App extends Component {
             twitterBttn[i].addEventListener('click', function(event) {
                 //event.preventDefault();
                 console.log('twitterbttn', this.userId, this.state.userId)
-                if(!this.userId) return alert('You have to be logged in to perform this action!');
+                if(!this.state.userId) return alert('You have to be logged in to perform this action!');
                 
                 //let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
                 // let index = this.getAttribute('data-id');
