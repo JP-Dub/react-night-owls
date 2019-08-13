@@ -129,8 +129,7 @@ class App extends Component {
                     };
                                                     //this.bars[index]
                 ajax.ready(ajax.request("POST", path, obj, (bar) => {
-                let going = document.getElementById(bar.id),            
-                    sum   = bar.count === 0 ?  -1 :  1;
+                let going = document.getElementById(bar.id);
 
                 going.innerHTML = (parseInt(going.innerHTML, 10) + bar.count);            
                 }))
