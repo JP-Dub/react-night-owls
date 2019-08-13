@@ -81,7 +81,7 @@ class App extends Component {
         ajax.ready(ajax.request("POST", path, data, (res) => {
             let obj = JSON.parse(res);
             if(obj.error) return alert(res);
-            console.log(obj)
+    
             ReactDOM.render(
                 <SearchResults 
                     data={obj}

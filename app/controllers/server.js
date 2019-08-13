@@ -264,1305 +264,617 @@ function ClickHandler () {
         "phone": "+15616297657",
         "display_phone": "(561) 629-7657",
         "distance": 2967.890082356587
-    },
-    {
-
+    },{
         "id": "8LRYOrf-ZRQJjmh929VzIg",
-
         "alias": "the-venu-restaurant-and-bar-boynton-beach",
-
         "name": "The Venu Restaurant and Bar",
-
         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/ThJq9YzzTvUvxHYyvuQZuA/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/the-venu-restaurant-and-bar-boynton-beach?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 120,
-
         "categories": [
-
             {
-
                 "alias": "musicvenues",
-
                 "title": "Music Venues"
-
-            },
-
-            {
-
+            },{
                 "alias": "bars",
-
                 "title": "Bars"
-
-            },
-
-            {
-
+            },{
                 "alias": "italian",
-
                 "title": "Italian"
-
             }
-
         ],
-
         "rating": 4,
-
         "coordinates": {
-
             "latitude": 26.5266545643926,
-
             "longitude": -80.1866833493114
-
         },
-
         "transactions": [],
-
         "location": {
-
             "address1": "8794 W Boynton Beach Blvd",
-
             "address2": "Ste 101",
-
             "address3": null,
-
             "city": "Boynton Beach",
-
             "zip_code": "33472",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "8794 W Boynton Beach Blvd",
-
                 "Ste 101",
-
                 "Boynton Beach, FL 33472"
-
             ]
-
         },
-
         "phone": "+15612000222",
-
         "display_phone": "(561) 200-0222",
-
         "distance": 7653.60272462875
-
-    },
-
-    {
-
+    },{
         "id": "HK_VnPpIzEFZ0iT1xVbx-A",
-
         "alias": "iberia-bar-and-grill-greenacres-2",
-
         "name": "Iberia Bar & Grill",
-
         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/dnj2HSeALxgRjShmOxra8A/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/iberia-bar-and-grill-greenacres-2?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 50,
-
         "categories": [
-
             {
-
                 "alias": "portuguese",
-
                 "title": "Portuguese"
-
-            },
-
-            {
-
+            },{
                 "alias": "bbq",
-
                 "title": "Barbeque"
-
-            },
-
-            {
-
+            },{
                 "alias": "bars",
-
                 "title": "Bars"
-
             }
-
         ],
-
         "rating": 4,
-
         "coordinates": {
-
             "latitude": 26.62316,
-
             "longitude": -80.11382
-
         },
-
         "transactions": [],
-
         "price": "$$",
-
         "location": {
-
             "address1": "3745 S Military Trl",
-
             "address2": "",
-
             "address3": "",
-
             "city": "Greenacres",
-
             "zip_code": "33463",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "3745 S Military Trl",
-
                 "Greenacres, FL 33463"
-
             ]
-
         },
-
         "phone": "+15618292125",
-
         "display_phone": "(561) 829-2125",
-
         "distance": 6840.067584095725
-
-    },
-
-    {
-
+    },{
         "id": "QOO0LIBqftW8AYQsbF9Q3g",
-
         "alias": "mckennas-place-palm-springs",
-
         "name": "McKenna's Place",
-
         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/OE_pC8MFXSnOzzwcUIEHhQ/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/mckennas-place-palm-springs?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 49,
-
         "categories": [
-
             {
-
                 "alias": "tradamerican",
-
                 "title": "American (Traditional)"
-
-            },
-
-            {
-
+            },{
                 "alias": "seafood",
-
                 "title": "Seafood"
-
-            },
-
-            {
-
+            },{
                 "alias": "sportsbars",
-
                 "title": "Sports Bars"
-
             }
-
         ],
-
         "rating": 4,
-
         "coordinates": {
-
             "latitude": 26.651233,
-
             "longitude": -80.1051412
-
         },
-
         "transactions": [],
-
         "price": "$$",
-
         "location": {
-
             "address1": "4068 Forest Hill Blvd",
-
             "address2": "",
-
             "address3": null,
-
             "city": "Palm Springs",
-
             "zip_code": "33406",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "4068 Forest Hill Blvd",
-
                 "Palm Springs, FL 33406"
-
             ]
-
         },
-
         "phone": "+15619680032",
-
         "display_phone": "(561) 968-0032",
-
         "distance": 9307.515022942798
-
-    },
-
-    {
-
+    },{
         "id": "vt-PoDTSRjUENvUGArxKsw",
-
         "alias": "fords-garage-wellington-wellington-2",
-
         "name": "Ford's Garage Wellington",
-
         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/tw6lA63E1QIESrhJii6qHw/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/fords-garage-wellington-wellington-2?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 92,
-
         "categories": [
-
             {
-
                 "alias": "burgers",
-
                 "title": "Burgers"
-
-            },
-
-            {
-
+            },{
                 "alias": "tradamerican",
-
                 "title": "American (Traditional)"
-
-            },
-
-            {
-
+            },{
                 "alias": "cocktailbars",
-
                 "title": "Cocktail Bars"
-
             }
-
         ],
-
         "rating": 3.5,
-
         "coordinates": {
-
             "latitude": 26.65049,
-
             "longitude": -80.20912
-
         },
-
         "transactions": [],
-
         "price": "$$",
-
         "location": {
-
             "address1": "10300 Forest Hills Blvd",
-
             "address2": "Ste 122",
-
             "address3": null,
-
             "city": "Wellington",
-
             "zip_code": "33414",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "10300 Forest Hills Blvd",
-
                 "Ste 122",
-
                 "Wellington, FL 33414"
-
             ]
-
         },
-
         "phone": "+15618053673",
-
         "display_phone": "(561) 805-3673",
-
         "distance": 6555.378528515231
-
-    },
-
-    {
-
+    },{
         "id": "bWhgHY7At3T5obS3pORYHw",
-
         "alias": "jojos-raw-bar-and-grill-wellington",
-
         "name": "JoJo's Raw Bar & Grill",
-
         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/qTPCYQ_umNEjqiwrkiOxlA/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/jojos-raw-bar-and-grill-wellington?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 114,
-
         "categories": [
-
             {
-
                 "alias": "tradamerican",
-
                 "title": "American (Traditional)"
-
-            },
-
-            {
-
+            },{
                 "alias": "sportsbars",
-
                 "title": "Sports Bars"
-
             }
-
         ],
-
         "rating": 3.5,
-
         "coordinates": {
-
             "latitude": 26.6624553,
-
             "longitude": -80.2670101
-
         },
-
         "transactions": [],
-
         "price": "$$",
-
         "location": {
-
             "address1": "13889 Wellington Trace",
-
             "address2": "Ste A20",
-
             "address3": null,
-
             "city": "Wellington",
-
             "zip_code": "33414",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "13889 Wellington Trace",
-
                 "Ste A20",
-
                 "Wellington, FL 33414"
-
             ]
-
         },
-
         "phone": "+15614271997",
-
         "display_phone": "(561) 427-1997",
-
         "distance": 12127.689167945324
-
-    },
-
-    {
-
+    },{
         "id": "0rzaXNCJ_cT9oz6NQjC4rQ",
-
         "alias": "ali-baba-cafe-and-hookah-lounge-boynton-beach-7",
-
         "name": "Ali Baba Cafe & Hookah Lounge",
-
         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/XmfsJbQFIr7YQRywIgYEmQ/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/ali-baba-cafe-and-hookah-lounge-boynton-beach-7?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 32,
-
         "categories": [
-
             {
-
                 "alias": "hookah_bars",
-
                 "title": "Hookah Bars"
-
-            },
-
-            {
-
+            },{
                 "alias": "lounges",
-
                 "title": "Lounges"
-
-            },
-
-            {
-
+            },{
                 "alias": "venues",
-
                 "title": "Venues & Event Spaces"
-
             }
-
         ],
-
         "rating": 4,
-
         "coordinates": {
-
             "latitude": 26.536572,
-
             "longitude": -80.091687
-
         },
-
         "transactions": [
-
             "delivery",
-
             "pickup"
-
         ],
-
         "price": "$$",
-
         "location": {
-
             "address1": "901 N Congress Ave",
-
             "address2": "Ste D107",
-
             "address3": "",
-
             "city": "Boynton Beach",
-
             "zip_code": "33426",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "901 N Congress Ave",
-
                 "Ste D107",
-
                 "Boynton Beach, FL 33426"
-
             ]
-
         },
-
         "phone": "+15618066296",
-
         "display_phone": "(561) 806-6296",
-
         "distance": 10445.147384577764
-
-    },
-
-    {
-
+    },{
         "id": "ODEyQsSNl26ud1icQy-akQ",
-
         "alias": "eagle-grill-greenacres-2",
-
         "name": "Eagle Grill",
-
         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/vHDLdeGov8dw7x44el95iA/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/eagle-grill-greenacres-2?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 175,
-
         "categories": [
-
             {
-
                 "alias": "seafood",
-
                 "title": "Seafood"
-
-            },
-
-            {
-
+            },{
                 "alias": "cajun",
-
                 "title": "Cajun/Creole"
-
-            },
-
-            {
-
+            },{
                 "alias": "bars",
-
                 "title": "Bars"
-
             }
-
         ],
-
         "rating": 3.5,
-
         "coordinates": {
-
             "latitude": 26.609197,
-
             "longitude": -80.146079
-
         },
-
         "transactions": [
-
             "delivery",
-
             "pickup"
-
         ],
-
         "price": "$$",
-
         "location": {
-
             "address1": "4636 S Jog Rd",
-
             "address2": "",
-
             "address3": "",
-
             "city": "Greenacres",
-
             "zip_code": "33467",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "4636 S Jog Rd",
-
                 "Greenacres, FL 33467"
-
             ]
-
         },
-
         "phone": "+15619640900",
-
         "display_phone": "(561) 964-0900",
-
         "distance": 3280.508212230941
-
-    },
-
-    {
-
+    },{
         "id": "MiQsq0JlWuaHIML-ny7kHg",
-
         "alias": "bonefish-grill-lake-worth",
-
         "name": "Bonefish Grill",
-
         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/96tGTtsMPJYl5TnDm8BH6w/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/bonefish-grill-lake-worth?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 134,
-
         "categories": [
-
             {
-
                 "alias": "seafood",
-
                 "title": "Seafood"
-
-            },
-
-            {
-
+            },{
                 "alias": "newamerican",
-
                 "title": "American (New)"
-
-            },
-
-            {
-
+            },{
                 "alias": "cocktailbars",
-
                 "title": "Cocktail Bars"
-
             }
-
         ],
-
         "rating": 3.5,
-
         "coordinates": {
-
             "latitude": 26.619348,
-
             "longitude": -80.203056
-
         },
-
         "transactions": [],
-
         "price": "$$",
-
         "location": {
-
             "address1": "9897 Lake Worth Rd",
-
             "address2": "",
-
             "address3": "",
-
             "city": "Lake Worth",
-
             "zip_code": "33467",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "9897 Lake Worth Rd",
-
                 "Lake Worth, FL 33467"
-
             ]
-
         },
-
         "phone": "+15619652663",
-
         "display_phone": "(561) 965-2663",
-
         "distance": 3928.347758386702
-
-    },
-
-    {
-
+    },{
         "id": "cLQwj3WilmobrjH9wLvQOw",
-
         "alias": "the-beauty-and-the-beeeef-wellington",
-
         "name": "The Beauty and The Beeeef",
-
         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/AClxVqveRr5yw2cwszrPfA/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/the-beauty-and-the-beeeef-wellington?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 212,
-
         "categories": [
-
             {
-
                 "alias": "burgers",
-
                 "title": "Burgers"
-
-            },
-
-            {
-
+            },{
                 "alias": "newamerican",
-
                 "title": "American (New)"
-
-            },
-
-            {
-
+            },{
                 "alias": "cocktailbars",
-
                 "title": "Cocktail Bars"
-
             }
-
         ],
-
         "rating": 3.5,
-
         "coordinates": {
-
             "latitude": 26.645403,
-
             "longitude": -80.20786
-
         },
-
         "transactions": [
-
             "delivery",
-
             "pickup"
-
         ],
-
         "price": "$$",
-
         "location": {
-
             "address1": "10300 Forest Hill Blvd",
-
             "address2": "Ste 239",
-
             "address3": "",
-
             "city": "Wellington",
-
             "zip_code": "33414",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "10300 Forest Hill Blvd",
-
                 "Ste 239",
-
                 "Wellington, FL 33414"
-
             ]
-
         },
-
         "phone": "+15616124511",
-
         "display_phone": "(561) 612-4511",
-
         "distance": 6530.406112206478
-
-    },
-
-    {
-
+    },{
         "id": "we-nPde5Mws1-pp8YbV2Hw",
-
         "alias": "asador-patagonia-royal-palm-beach",
-
         "name": "Asador Patagonia",
-
         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/W_FhmhcTAprldjL4--VhUQ/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/asador-patagonia-royal-palm-beach?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 45,
-
         "categories": [
-
             {
-
                 "alias": "argentine",
-
                 "title": "Argentine"
-
-            },
-
-            {
-
+            },{
                 "alias": "tikibars",
-
                 "title": "Tiki Bars"
-
-            },
-
-            {
-
+            },{
                 "alias": "steak",
-
                 "title": "Steakhouses"
-
             }
-
         ],
-
         "rating": 4,
-
         "coordinates": {
-
             "latitude": 26.68336,
-
             "longitude": -80.231832
-
         },
-
         "transactions": [],
-
         "price": "$$",
-
         "location": {
-
             "address1": "675 Royal Palm Beach Blvd",
-
             "address2": "",
-
             "address3": "",
-
             "city": "Royal Palm Beach",
-
             "zip_code": "33411",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "675 Royal Palm Beach Blvd",
-
                 "Royal Palm Beach, FL 33411"
-
             ]
-
         },
-
         "phone": "+15616519477",
-
         "display_phone": "(561) 651-9477",
-
         "distance": 11376.572789451124
-
-    },
-
-    {
-
+    },{
         "id": "RGs0qo2CPGh15-CZ6HC9BA",
-
         "alias": "bonefish-macs-sports-grille-wellington",
-
         "name": "Bonefish Mac's Sports Grille",
-
         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/3WB7gUMv_zhY65zwKoHnmQ/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/bonefish-macs-sports-grille-wellington?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 179,
-
         "categories": [
-
             {
-
                 "alias": "seafood",
-
                 "title": "Seafood"
-
-            },
-
-            {
-
+            },{
                 "alias": "tradamerican",
-
                 "title": "American (Traditional)"
-
-            },
-
-            {
-
+            },{
                 "alias": "sportsbars",
-
                 "title": "Sports Bars"
-
             }
-
         ],
-
         "rating": 3.5,
-
         "coordinates": {
-
             "latitude": 26.65091,
-
             "longitude": -80.21899
-
         },
-
         "transactions": [],
-
         "price": "$$",
-
         "location": {
-
             "address1": "10880 Forest Hill Blvd",
-
             "address2": "",
-
             "address3": "",
-
             "city": "Wellington",
-
             "zip_code": "33414",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "10880 Forest Hill Blvd",
-
                 "Wellington, FL 33414"
-
             ]
-
         },
-
         "phone": "+15617986227",
-
         "display_phone": "(561) 798-6227",
-
         "distance": 7638.361119830116
-
-    },
-
-    {
-
+    },{
         "id": "uDLElE2G5YpQzEGzkJ9tpg",
-
         "alias": "bar-louie-boynton-beach-3",
-
         "name": "Bar Louie",
-
         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/4tyNwBSyzE67dAKS93eTSg/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/bar-louie-boynton-beach-3?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 315,
-
         "categories": [
-
             {
-
                 "alias": "newamerican",
-
                 "title": "American (New)"
-
-            },
-
-            {
-
+            },{
                 "alias": "bars",
-
                 "title": "Bars"
-
-            },
-
-            {
-
+            },{
                 "alias": "gastropubs",
-
                 "title": "Gastropubs"
-
             }
-
         ],
-
         "rating": 3.5,
-
         "coordinates": {
-
             "latitude": 26.5455175253638,
-
             "longitude": -80.0882732980781
-
         },
-
         "transactions": [],
-
         "price": "$$",
-
         "location": {
-
             "address1": "1500 Gateway Blvd",
-
             "address2": "Ste 100",
-
             "address3": "",
-
             "city": "Boynton Beach",
-
             "zip_code": "33426",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "1500 Gateway Blvd",
-
                 "Ste 100",
-
                 "Boynton Beach, FL 33426"
-
             ]
-
         },
-
         "phone": "+15618530090",
-
         "display_phone": "(561) 853-0090",
-
         "distance": 10192.562322068801
-
-    },
-
-    {
-
+    },{
         "id": "WCaWUMhiKqsc4qtBSThEUw",
-
         "alias": "brass-monkey-tavern-lake-worth",
-
         "name": "Brass Monkey Tavern",
-
         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/kBN4H7H2DPYwU8VLpSiOpA/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/brass-monkey-tavern-lake-worth?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 77,
-
         "categories": [
-
             {
-
                 "alias": "sportsbars",
-
                 "title": "Sports Bars"
-
-            },
-
-            {
-
+            },{
                 "alias": "tradamerican",
-
                 "title": "American (Traditional)"
-
             }
-
         ],
-
         "rating": 3.5,
-
         "coordinates": {
-
             "latitude": 26.61862,
-
             "longitude": -80.16974
-
         },
-
         "transactions": [
-
             "delivery",
-
             "pickup"
-
         ],
-
         "price": "$$",
-
         "location": {
-
             "address1": "7781 Lake Worth Rd",
-
             "address2": null,
-
             "address3": null,
-
             "city": "Lake Worth",
-
             "zip_code": "33467",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "7781 Lake Worth Rd",
-
                 "Lake Worth, FL 33467"
-
             ]
-
         },
-
         "phone": "+15619689559",
-
         "display_phone": "(561) 968-9559",
-
         "distance": 2717.03299274531
-
-    },
-
-    {
-
+    },{
         "id": "52QujdUomOzpW9zgK14gkQ",
-
         "alias": "elmos-rock-bar-and-grill-boynton-beach",
-
         "name": "Elmo's Rock Bar & Grill",
-
         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/DqljEDAaPJeGqX9FV_lerw/o.jpg",
-
         "is_closed": false,
-
         "url": "https://www.yelp.com/biz/elmos-rock-bar-and-grill-boynton-beach?adjust_creative=RdWj-yTflu7GcvUrdnUfWQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=RdWj-yTflu7GcvUrdnUfWQ",
-
         "review_count": 39,
-
         "categories": [
-
             {
-
                 "alias": "bars",
-
                 "title": "Bars"
-
-            },
-
-            {
-
+            },{
                 "alias": "musicvenues",
-
                 "title": "Music Venues"
-
             }
-
         ],
-
         "rating": 3.5,
-
         "coordinates": {
-
             "latitude": 26.53104,
-
             "longitude": -80.12092
-
         },
-
         "transactions": [],
-
         "price": "$",
-
         "location": {
-
             "address1": "9770 S Military Trl",
-
             "address2": "Ste B2",
-
             "address3": "",
-
             "city": "Boynton Beach",
-
             "zip_code": "33436",
-
             "country": "US",
-
             "state": "FL",
-
             "display_address": [
-
                 "9770 S Military Trl",
-
                 "Ste B2",
-
                 "Boynton Beach, FL 33436"
-
             ]
-
         },
-
         "phone": "+15612923359",
-
         "display_phone": "(561) 292-3359",
-
         "distance": 8886.289109296291
-
     }
 
 ]
