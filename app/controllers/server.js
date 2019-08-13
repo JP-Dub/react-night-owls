@@ -6,10 +6,10 @@ var yelp = require('yelp-fusion');
 
 let randomness = []
 function randomRsvps(next) {
-    for(let i = 0; i < 20; i++) {
+   for(let i = 0; i < 20; i++) {
     randomness.push( Math.floor(Math.random() * Math.floor(201)) );
   }
-  next(randomness);
+ //next(randomness);
 }
 
 function ClickHandler () {
@@ -980,7 +980,7 @@ function ClickHandler () {
 	this.getClicks = (req, res) => {
     let nightlife = [];
     randomness = [];
-            
+    if(req.params.demo) randomRsvps();            
     // check if id exists in nightlife array
     function findId(id) {
       for(let i = 0; i < nightlife.length; i++) {
@@ -993,7 +993,7 @@ function ClickHandler () {
 			.find({}).select({ 'twitter.nightlife': 1, _id: false})
 			.exec((err, results) => {
 				if (err) throw err;
-        console.log(results)
+        console.log(req.params.demo)
         //if(req.params.demo === '33467') {
            // demo obj to populate 'going' data for zip code 33467     
         //   let demoObj = { twitter: {
@@ -1091,13 +1091,13 @@ function ClickHandler () {
             for(let i = 0; i < arr.length; i++) {
               let item = arr[i];
               if(req.params.demo) {
-                randomRsvps((demo) => {
+                  console.log(randomness[i])
                   nightlife.push({
                     'id' : item.id,
-                    'count' : demo[i]
+                    'count' : randomness[i]
                   });
-                });
-              }
+              
+              } else
               if(item.count) {
                 let index = findId(item.id);
                 if(!index) {
