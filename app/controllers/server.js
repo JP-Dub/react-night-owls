@@ -163,7 +163,7 @@ function ClickHandler () {
                if(nightlife[i].id === req.body.id ) {
                  nightlife[i].count = nightlife[i].count === 1 ? 0 : 1;
                  barCount.id        = nightlife[i].id;                
-                 barCount.count     = nightlife[i].count;
+                 barCount.count     = nightlife[i].count === 0 ? -1 : 1;
                  barExists          = true;
                }
             };                      

@@ -20,10 +20,6 @@ class App extends Component {
         const regex    = RegExp('^/login/.*'),
               loggedIn = regex.test(window.location.pathname);
        
-        // this.setState({
-        //   load : document.getElementById('load'),
-        //   input: document.getElementById('location-input')
-        // })
         this.load  = document.getElementById('load');
         this.input = document.getElementById('location-input');
         this.searchInput = document.getElementById('search'),
@@ -58,13 +54,6 @@ class App extends Component {
           
         }  
 
-    }
-  
-    componentDidUpdate(prevProps, prevState) {
-      console.log(prevState.userId, this.state.userId)
-      if(prevState.userId !== this.state.userId) {
-        this.userId = this.state.userId;
-      }
     }
 
     componentWillUnmount(a, b) {
@@ -143,7 +132,7 @@ class App extends Component {
                 let going = document.getElementById(bar.id),            
                     sum   = bar.count === 0 ?  -1 :  1;
 
-                going.innerHTML = (parseInt(going.innerHTML, 10) + sum);            
+                going.innerHTML = (parseInt(going.innerHTML, 10) + bar.count);            
                 }))
 
             }); 
