@@ -46,16 +46,18 @@ class App extends Component {
              let user        = req.twitter,
                  location    = user.previousSession || sessionStorage.getItem('current');  
             
-             this.setState({userId : user.id});
-             this.userId = user.id; 
+             this.setState( () => {
+               return {userId : user.id}
+             });
             
-          
              return this.yelpHandler(location || user.location);
           }));
         } else {
           console.log('logged out')
-          this.setState({userId : ''});
-          this.userId = "";
+          this.setState(() => {
+            return {userId : ''}
+          });
+          
         }  
 
     }
@@ -114,6 +116,7 @@ class App extends Component {
     loadBttnEvents() {
         let twitterBttn = document.getElementsByClassName('bttn'),
             bttnLength  = twitterBttn.length,
+            state       = this.state.userId,
             path        = '/rsvp/clicks';
 
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
@@ -130,8 +133,8 @@ class App extends Component {
         for(let i = 0; i < bttnLength; i++) {                  
             twitterBttn[i].addEventListener('click', function(event) {
                 //event.preventDefault();
-                console.log('twitterbttn', this.userId, this.state.userId)
-                if(!this.state.userId) return alert('You have to be logged in to perform this action!');
+                console.log('twitterbttn', state)
+                if(!state) return alert('You have to be logged in to perform this action!');
                 
                 //let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
                 // let index = this.getAttribute('data-id');
