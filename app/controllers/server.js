@@ -147,12 +147,13 @@ function ClickHandler () {
   }; // getClicks
 
 	this.addClick = (req, res) => {
+  
 		Users
 			.findOne({'twitter.id': req.body.userId})
       .select({'twitter.nightlife': 1})
 			.exec((err, result) => {
 					if (err) throw err;      
-          console.log('result', result)
+          
           if(result) {
             let nightlife = result.twitter.nightlife,
                 barCount = {},

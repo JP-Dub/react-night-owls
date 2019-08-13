@@ -7,24 +7,14 @@ module.exports = (app, passport, cors) => {
 	
 	function isLoggedIn (req, res, next) {
 		if (req.isAuthenticated()) {
-      console.log('we`s logged in yo')
 			return next()
 		} else {
-      console.log('naw, something wrong')
-			res.redirect('/api/auth/twitter')
+			res.redirect('/');
 		}
 	}
 	
 	let handleServer = new Server();
  
-  
-	// app.route( '/login/:user' ) 
-	// 	.get(isLoggedIn, (req, res) => {
-	//    console.log(req.user.twitter)
-	// 	 res.sendFile( process.cwd() + './public/index.html' );
-	//    //res.sendFile(path.join(__dirname, 'dist', './public/index.html'))
-	// 	});
-		
 	app.route( '/user/:location' )	
 		.get( handleServer.userLocation );
 			
@@ -40,8 +30,7 @@ module.exports = (app, passport, cors) => {
 	app.route('/auth/twitter/callback' )
 		.get( passport.authenticate( 'twitter', {failureRedirect: '/'} ), 
         (req, res) => {
-
-    	  res.redirect('/login/' + req.user.twitter['username']);
+    	    res.redirect('/login/' + req.user.twitter['username']);
 		});	
 		
 

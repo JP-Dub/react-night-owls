@@ -40,7 +40,6 @@ class App extends Component {
       
         // checks if user is logged in /  returns previous session
         if( loggedIn ) {     
-          console.log('logged in')
           ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
              
              let user        = req.twitter,
@@ -53,7 +52,6 @@ class App extends Component {
              return this.yelpHandler(location || user.location);
           }));
         } else {
-          console.log('logged out')
           this.setState(() => {
             return {userId : ''}
           });
@@ -133,16 +131,12 @@ class App extends Component {
                 //event.preventDefault();
               
                 if(!state) return alert('You have to be logged in to perform this action!');
-                
-                //let index = (this.parentNode.parentNode.id).slice(13);// id (number) of businesscard
-                // let index = this.getAttribute('data-id');
-                // this.bars[index].userId = this.userId;
               
                 let barId = this.firstElementChild.getAttribute('id'),
                     obj   = {
                       id     : barId,
                       name   : this.getAttribute('data-name'),
-                      userId : this.userId
+                      userId : state
                     };
                                                     //this.bars[index]
                 ajax.ready(ajax.request("POST", path, obj, (bar) => {
@@ -407,6 +401,7 @@ const ajax = {
         params  = typeof data === 'string' ? data 
                   : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
 
+    console.log('url path', url)
     xmlhttp.open(method, url, true);
 
     xmlhttp.onreadystatechange = function () {
