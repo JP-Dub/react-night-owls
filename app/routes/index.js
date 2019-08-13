@@ -25,7 +25,7 @@ module.exports = (app, passport, cors) => {
 	app.route( '/businesses/:search' )
 		.post( handleServer.getNightlife );
 	
-	app.route( '/rsvp/clicks/:demo' )
+	app.route( '/rsvp/clicks' )
 		.get(  handleServer.getClicks )
 		.post( isLoggedIn, handleServer.addClick );		
 		
