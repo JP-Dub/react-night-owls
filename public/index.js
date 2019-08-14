@@ -29,7 +29,8 @@ class App extends Component {
             evt.preventDefault();
   
             let location = this.state.value;
-            if(location.match(/demo/i)) window.location.href = '/api/demo';
+            if(location.match(/demo/i)) return window.location.href = '/api/demo';
+            
             !location ? this.getLocation( geoLocation => this.yelpHandler(geoLocation)) 
                       : this.yelpHandler(location);            
         });
@@ -57,6 +58,9 @@ class App extends Component {
 
     componentWillUnmount(a, b) {
       this.searchInput.removeEventListener('click');
+      for(let i = 0; i < this.twitterBttn.length; i++) {
+        this.twitterBttn[i].removeEventListener('click');
+      }
     }
     
     changeHandler(evt) {
@@ -98,15 +102,15 @@ class App extends Component {
     }
 
     loadBttnEvents() {
-        let twitterBttn = document.getElementsByClassName('bttn'),
-            badge       = document.getElementsByClassName('badge'),
-            bttnLength  = twitterBttn.length,
+        this.twitterBttn = document.getElementsByClassName('bttn');
+        let badge       = document.getElementsByClassName('badge'),
+            bttnLength  = this.twitterBttn.length,
             state       = this.state.userId,
             demo        = window.location.pathname === '/rsvp/demo' ? true : false,
             path        = '/rsvp/clicks';
         
         for(let i = 0; i < bttnLength; i++) {                  
-            twitterBttn[i].addEventListener('click', function(event) {
+            this.twitterBttn[i].addEventListener('click', function(event) {
                 event.preventDefault();
                 console.log('twitterbttn clicked!', i)
                 if(demo) return alert('This is the demo version. Please return to the home page.')
@@ -123,7 +127,7 @@ class App extends Component {
                 ajax.ready(ajax.request("POST", path, obj, (bar) => {
                   console.log(bar)
                   let current = document.getElementById(bar.id).innerHTML;
-                  current = parseInt(current, 10) + bar.count;            
+                  return current = parseInt(current, 10) + bar.count;            
                 }))
             }); 
         }; // for(loop)  
