@@ -110,7 +110,7 @@ class App extends Component {
         } else {
         
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
-         console.log(clicks)
+         console.log(badge, clicks)
           for(let i = 0; i < 20; i++) {
              let count = 0;
              for(let j = 0; j < clicks.length; j++) {
