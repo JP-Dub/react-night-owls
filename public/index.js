@@ -20,7 +20,7 @@ class App extends Component {
     componentDidMount() {
         let path = window.location.pathname,
             // loggedIn = RegExp('^/login/.*').test(path),
-            // demo     = RegExp('^/rsvp/.*').test(path),
+           / demo     = RegExp('^/rsvp/.*').test(path),
             local    = sessionStorage.getItem('current');
       
         this.loggedIn = RegExp('^/login/.*').test(path);
@@ -28,7 +28,7 @@ class App extends Component {
         this.load  = document.getElementById('load');
         this.input = document.getElementById('location-input');
         this.searchInput = document.getElementById('search');
-
+        console.log(this.state.demo, 'compDidMount')
         this.searchInput.addEventListener('click', (evt)  => {
             evt.preventDefault();
   
@@ -113,13 +113,12 @@ class App extends Component {
         let badge       = document.getElementsByClassName('badge'),
             bttnLength  = this.twitterBttn.length,
             state       = this.state.userId,
-            demo        = window.location.pathname === '/rsvp/demo' ? true : false,
+            demo        = this.demo,
             path        = '/rsvp/clicks';
         
         for(let i = 0; i < bttnLength; i++) {                  
             this.twitterBttn[i].addEventListener('click', function(event) {
                 event.preventDefault();
-              
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!state) return alert('You have to be logged in to perform this action!');
               
