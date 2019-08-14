@@ -15,17 +15,19 @@ class App extends Component {
           userId : "",
           demo   : "",
           login  : "",
-          title  : this.demo ? 'Night Owls Demo' : 'Night Owls'
+          title  : ""
         }
     }
 //window.location.pathname === '/rsvp/demo' ? 'Night Owls Demo' : 'Night Owls'
     componentDidMount() {
         let path  = window.location.pathname,
             local = sessionStorage.getItem('current');
+        
         this.setState( () => {
           return {
-            demo : RegExp('^/login/.*').test(path),
-            login: RegExp('^/login/.*').test(path)
+            demo : RegExp('^/rsvp/.*').test(path),
+            login: RegExp('^/login/.*').test(path),
+            title: RegExp('^/rsvp/.*').test(path) ? 'Night Owls Demo' : 'Night Owls'
           }
         })
       
@@ -121,7 +123,7 @@ class App extends Component {
             state       = this.state.userId,
             demo        = this.state.demo,
             path        = '/rsvp/clicks';
-        
+     
         for(let i = 0; i < bttnLength; i++) {                  
             this.twitterBttn[i].addEventListener('click', function(event) {
                 event.preventDefault();
