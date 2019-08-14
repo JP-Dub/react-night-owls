@@ -21,7 +21,8 @@
     "Babel"
   ],
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "webpack"
   },
   "author": "Joel Piazza",
   "license": "MIT",
