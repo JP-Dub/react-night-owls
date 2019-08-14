@@ -19,7 +19,16 @@ function ClickHandler () {
   
   // return all rsvps for users
 	this.getClicks = (req, res) => {
-   
+     let nightlife = [];
+     function findId(id) {
+        if(nightlife.length) {
+          for(let i = 0; i < nightlife.length; i++) {
+            if(nightlife[i].id === id) return i;
+          }   
+          return false;
+        }
+        return false;
+    };  
 	
     Users
 			.find({}).select({ 'twitter.nightlife': 1})
@@ -34,10 +43,15 @@ function ClickHandler () {
             for(let i = 0; i < arr.length; i++) {           
               let item = arr[i];
               if(item.count) {
-                nightlife.push({
-                  'id'    : item.id,
-                  'count' : item.count
-                }); 
+                let index = findId(item.id);
+                if(index !== false) {
+                   nightlife[index].count += item.count;
+                } else {
+                   nightlife.push({
+                     'id'    : item.id,
+                     'count' : item.count
+                   }); 
+                }
               }
             }
           }

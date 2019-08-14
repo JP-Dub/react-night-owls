@@ -110,19 +110,15 @@ class App extends Component {
         } else {
         
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
-         
+         console.log(clicks)
           for(let i = 0; i < 20; i++) {
-             let found = false;
+             let count = 0;
              for(let j = 0; j < clicks.length; j++) {
-               console.log(badge[i].id, clicks[j].id)
                if(badge[i].id === clicks[j].id) {
-                 console.log(true)
-                 badge[i].innerHTML = clicks[j].count;
-                 found = false;
+                 count = clicks[j].count;
                } 
              }
-             
-
+             badge[i].innerHTML = count;
           }    
 //              clicks.forEach( item => {
 //                  let bttnId = document.getElementById(item.id);
