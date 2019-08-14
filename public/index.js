@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import '../public/css/style.css';
 import noImage from '../public/img/NoProductImage_300.jpg';
 
@@ -19,10 +19,12 @@ class App extends Component {
 
     componentDidMount() {
         let path = window.location.pathname,
-            loggedIn = RegExp('^/login/.*').test(path),
-            demo     = RegExp('^/rsvp/.*').test(path),
+            // loggedIn = RegExp('^/login/.*').test(path),
+            // demo     = RegExp('^/rsvp/.*').test(path),
             local    = sessionStorage.getItem('current');
-              
+      
+        this.loggedIn = RegExp('^/login/.*').test(path);
+        this.demo     = RegExp('^/rsvp/.*').test(path);              
         this.load  = document.getElementById('load');
         this.input = document.getElementById('location-input');
         this.searchInput = document.getElementById('search');
@@ -38,7 +40,7 @@ class App extends Component {
         });
       
         // checks window path /  returns previous session
-        if( loggedIn ) {     
+        if( this.loggedIn ) {     
           ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
              
              let user        = req.twitter,
@@ -50,7 +52,7 @@ class App extends Component {
             
              return this.yelpHandler(location || user.location);
           }));
-        } else if( demo ) { 
+        } else if( this.demo ) { 
           if(local) return this.yelpHandler(local);    
           return
         } else {
@@ -117,6 +119,7 @@ class App extends Component {
         for(let i = 0; i < bttnLength; i++) {                  
             this.twitterBttn[i].addEventListener('click', function(event) {
                 event.preventDefault();
+              
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!state) return alert('You have to be logged in to perform this action!');
               

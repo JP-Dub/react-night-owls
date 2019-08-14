@@ -15,7 +15,6 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig);	
      
-//app.options('/api', cors());  
 let options = ({
 	origin : 'https://night-owls.glitch.me',
 	preflightContinue: true,
@@ -78,17 +77,3 @@ app.listen(client,  function () {
 wpServer.listen(server, '127.0.0.1', () => {
 	console.log('Webpack Dev Server listening on ' +  server + '...')
 });
-
-// app.use(
-// 	require("webpack-dev-middleware")(
-//     compiler, {
-//       noInfo    : true,
-//       publicPath: webpackConfig.output.publicPath	
-//     }
-// 	)
-// );
-
-//app.use(require("webpack-hot-middleware")(compiler));
-
-//app.use('/', express.static(process.cwd() + '/app/dist'));
-//app.use(express.static(path.join(__dirname, 'api') ));

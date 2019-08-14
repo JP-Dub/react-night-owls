@@ -1,9 +1,8 @@
 'use strict';
 
-//var GitHubStrategy = require('passport-github').Strategy;
-var TwitterStrategy = require('passport-twitter').Strategy;
-var User = require('../models/users');
-var configAuth = require('./auth');
+const TwitterStrategy = require('passport-twitter').Strategy,
+      User            = require('../models/users'),
+      configAuth      = require('./auth');
 
 module.exports = function (passport) {
 	passport.serializeUser(function (user, done) {
@@ -36,10 +35,10 @@ module.exports = function (passport) {
 					
 					var newUser = new User();
 					
-					newUser.twitter.id = profile.id;
-					newUser.twitter.username = profile.username;
+					newUser.twitter.id          = profile.id;
+					newUser.twitter.username    = profile.username;
 					newUser.twitter.displayName = profile.displayName;
-					newUser.twitter.location = profile._json.location;
+					newUser.twitter.location    = profile._json.location;
 
 					newUser.save(function (err) {
 						if (err) return console.error(err);
