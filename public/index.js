@@ -18,11 +18,14 @@ class App extends Component {
     }
 
     componentDidMount() {
-        const loggedIn = RegExp('^/login/.*').test(window.location.pathname);
-       
+        let path = window.location.pathname,
+            loggedIn = RegExp('^/login/.*').test(path),
+            demo     = RegExp('^/rsvp/.*').test(path),
+            local    = sessionStorage.getItem('current');
+              
         this.load  = document.getElementById('load');
         this.input = document.getElementById('location-input');
-        this.searchInput = document.getElementById('search'),
+        this.searchInput = document.getElementById('search');
 
         this.searchInput.addEventListener('click', (evt)  => {
             evt.preventDefault();
@@ -34,12 +37,12 @@ class App extends Component {
                       : this.yelpHandler(location);            
         });
       
-        // checks if user is logged in /  returns previous session
+        // checks window path /  returns previous session
         if( loggedIn ) {     
           ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
              
              let user        = req.twitter,
-                 location    = user.previousSession || sessionStorage.getItem('current');  
+                 location    = user.previousSession || local;  
             
              this.setState( () => {
                return {userId : user.id}
@@ -47,10 +50,9 @@ class App extends Component {
             
              return this.yelpHandler(location || user.location);
           }));
-        } else if(window.location.pathname === '/rsvp/demo') {
-          let local = sessionStorage.getItem('current');     
+        } else if( demo ) { 
           if(local) return this.yelpHandler(local);    
-          //return
+          return
         } else {
           this.setState(() => {
             return {userId : ''}
@@ -128,7 +130,7 @@ class App extends Component {
                     };           
                                                 
                 ajax.ready(ajax.request("POST", path, obj, (bar) => {
-                  console.log(bar)
+                  console.log(typeof bar.count)
                   let current = document.getElementById(bar.id).innerHTML;
                   return current = parseInt(current, 10) + bar.count;            
                 }))
