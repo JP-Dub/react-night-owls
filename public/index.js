@@ -108,19 +108,19 @@ class App extends Component {
         for(let i = 0; i < bttnLength; i++) {                  
             twitterBttn[i].addEventListener('click', function(event) {
                 event.preventDefault();
-                console.log('twitterbttn clicked!')
+                console.log('twitterbttn clicked!', i)
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!state) return alert('You have to be logged in to perform this action!');
               
-                let id   = this.firstElementChild.getAttribute('id'),
-                    name = this.getAttribute('data-name');
+                // let id   = this.firstElementChild.getAttribute('id'),
+                //     name = this.getAttribute('data-name');
                 let obj   = {
-                      id     : id,
-                      name   : name,
+                      id     : this.firstElementChild.getAttribute('id'),
+                      name   : this.getAttribute('data-name'),
                       userId : state
                     };           
-                  console.log(obj)                                  //this.bars[index]
-                return ajax.ready(ajax.request("POST", path, obj, (bar) => {
+                                                
+                ajax.ready(ajax.request("POST", path, obj, (bar) => {
                   console.log(bar)
                   let current = document.getElementById(bar.id).innerHTML;
                   current = parseInt(current, 10) + bar.count;            
