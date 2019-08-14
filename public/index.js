@@ -117,12 +117,9 @@ class App extends Component {
         for(let i = 0; i < bttnLength; i++) {                  
             this.twitterBttn[i].addEventListener('click', function(event) {
                 event.preventDefault();
-                console.log('twitterbttn clicked!', i)
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!state) return alert('You have to be logged in to perform this action!');
               
-                // let id   = this.firstElementChild.getAttribute('id'),
-                //     name = this.getAttribute('data-name');
                 let obj   = {
                       id     : this.firstElementChild.getAttribute('id'),
                       name   : this.getAttribute('data-name'),
@@ -130,9 +127,8 @@ class App extends Component {
                     };           
                                                 
                 ajax.ready(ajax.request("POST", path, obj, (bar) => {
-                  console.log(typeof bar.count)
-                  let current = document.getElementById(bar.id).innerHTML;
-                  return current = parseInt(current, 10) + bar.count;            
+                  let current = document.getElementById(bar.id)
+                  current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;            
                 }))
             }); 
         }; // for(loop)  
