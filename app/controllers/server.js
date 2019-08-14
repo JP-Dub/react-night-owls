@@ -878,9 +878,7 @@ function ClickHandler () {
     }
 
 ]
-
-
-    
+  
           let demoObj = { twitter: {
               nightlife: [
               {
