@@ -16,7 +16,13 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
 	    compiler      = webpack(webpackConfig);	
      
 //app.options('/api', cors());  
-app.use(cors());
+let options = ({
+	origin : 'https://night-owls.glitch.me',
+	preflightContinue: true,
+  optionsSuccessStatus: 200
+});
+
+app.use(cors(options));
 
 require('dotenv').config();
 require('./app/config/passport')(passport);
