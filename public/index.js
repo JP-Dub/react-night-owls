@@ -13,22 +13,28 @@ class App extends Component {
         this.state = {
           value  : "",
           userId : "",
-          title  : window.location.pathname === '/rsvp/demo' ? 'Night Owls Demo' : 'Night Owls'
+          demo   : "",
+          login  : "",
+          title  : this.demo ? 'Night Owls Demo' : 'Night Owls'
         }
     }
-
+//window.location.pathname === '/rsvp/demo' ? 'Night Owls Demo' : 'Night Owls'
     componentDidMount() {
-        let path = window.location.pathname,
-            // loggedIn = RegExp('^/login/.*').test(path),
-           / demo     = RegExp('^/rsvp/.*').test(path),
-            local    = sessionStorage.getItem('current');
+        let path  = window.location.pathname,
+            local = sessionStorage.getItem('current');
+        this.setState( () => {
+          return {
+            demo : RegExp('^/login/.*').test(path),
+            login: RegExp('^/login/.*').test(path)
+          }
+        })
       
-        this.loggedIn = RegExp('^/login/.*').test(path);
-        this.demo     = RegExp('^/rsvp/.*').test(path);              
-        this.load  = document.getElementById('load');
-        this.input = document.getElementById('location-input');
+        // this.loggedIn = RegExp('^/login/.*').test(path);
+        // this.demo     = RegExp('^/rsvp/.*').test(path);              
+        this.load     = document.getElementById('load');
+        this.input    = document.getElementById('location-input');
         this.searchInput = document.getElementById('search');
-        console.log(this.state.demo, 'compDidMount')
+      
         this.searchInput.addEventListener('click', (evt)  => {
             evt.preventDefault();
   
@@ -40,7 +46,7 @@ class App extends Component {
         });
       
         // checks window path /  returns previous session
-        if( this.loggedIn ) {     
+        if( this.state.login ) {     
           ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
              
              let user        = req.twitter,
@@ -52,7 +58,7 @@ class App extends Component {
             
              return this.yelpHandler(location || user.location);
           }));
-        } else if( this.demo ) { 
+        } else if( this.state.demo ) { 
           if(local) return this.yelpHandler(local);    
           return
         } else {
@@ -113,7 +119,7 @@ class App extends Component {
         let badge       = document.getElementsByClassName('badge'),
             bttnLength  = this.twitterBttn.length,
             state       = this.state.userId,
-            demo        = this.demo,
+            demo        = this.state.demo,
             path        = '/rsvp/clicks';
         
         for(let i = 0; i < bttnLength; i++) {                  
