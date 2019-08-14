@@ -12,7 +12,8 @@ class App extends Component {
         this.twitterHandler = this.twitterHandler.bind(this);
         this.state = {
           value  : "",
-          userId : ""
+          userId : "",
+          title  : window.location.pathname === '/rsvp/demo' ? 'Night Owls Demo' : 'Night Owls'
         }
     }
 
@@ -104,14 +105,14 @@ class App extends Component {
             path        = '/rsvp/clicks';
       
         if(demo) {       
-          for(let i = 0; i < 20; i++) {    
+          for(let i = 0; i < badge.length; i++) {    
             badge[i].innerHTML = Math.floor(Math.random() * Math.floor(201))   
           }
         } else {
         
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
-         console.log(badge, clicks)
-          for(let i = 0; i < 20; i++) {
+        
+          for(let i = 0; i < badge.length; i++) {
              let count = 0;
              for(let j = 0; j < clicks.length; j++) {
                if(badge[i].id === clicks[j].id) {
@@ -190,7 +191,7 @@ class App extends Component {
         return (
             <ErrorBoundary>
                 <div id ="heading" className="container">
-                    <h1>Night Owls</h1>
+                    <h1>{this.state.title}</h1>
                     <p>The only app that lets you know where the party's at!</p>
                     <form id="location">
                         <div className="input-group">
