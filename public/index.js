@@ -18,8 +18,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        const regex    = RegExp('^/login/.*'),
-              loggedIn = regex.test(window.location.pathname);
+        const loggedIn = RegExp('^/login/.*').test(window.location.pathname);
        
         this.load  = document.getElementById('load');
         this.input = document.getElementById('location-input');
@@ -48,6 +47,10 @@ class App extends Component {
             
              return this.yelpHandler(location || user.location);
           }));
+        } else if(window.location.pathname === '/rsvp/demo') {
+          let local = sessionStorage.getItem('current');     
+          if(local) return this.yelpHandler(local);    
+          //return
         } else {
           this.setState(() => {
             return {userId : ''}
