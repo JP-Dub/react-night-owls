@@ -110,20 +110,27 @@ class App extends Component {
         } else {
         
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
+         
           for(let i = 0; i < 20; i++) {
-            if(badge[i].id === clicks[i].id) {
-              badge[i].innerHTML = clicks[i].count
-            } else {
-              badge[i].innerHTML = 0;
-            }
+             let found = false;
+             for(let j = 0; j < clicks.length; j++) {
+               console.log(badge[i].id, clicks[j].id)
+               if(badge[i].id === clicks[j].id) {
+                 console.log(true)
+                 badge[i].innerHTML = clicks[j].count;
+                 found = false;
+               } 
+             }
+             
+
           }    
-//             clicks.forEach( item => {
-//                 let bttnId = document.getElementById(item.id);
+//              clicks.forEach( item => {
+//                  let bttnId = document.getElementById(item.id);
               
-//                 if(bttnId) {
-//                   bttnId.innerHTML = item.count;
-//                 }  
-//             });        
+//                  if(bttnId) {
+//                    bttnId.innerHTML = item.count;
+//                  }  
+//              });        
         })); 
           
         }
