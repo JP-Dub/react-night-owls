@@ -136,6 +136,7 @@ class App extends Component {
         for(let i = 0; i < bttnLength; i++) {                  
             twitterBttn[i].addEventListener('click', function(event) {
                 //event.preventDefault();
+              console.log('clicked!')
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!state) return alert('You have to be logged in to perform this action!');
               
@@ -145,11 +146,12 @@ class App extends Component {
                       name   : this.getAttribute('data-name'),
                       userId : state
                     };
+              console.log(obj)
                                                     //this.bars[index]
                 ajax.ready(ajax.request("POST", path, obj, (bar) => {
-                let going = document.getElementById(bar.id);
+                  let going = document.getElementById(bar.id);
 
-                going.innerHTML = (parseInt(going.innerHTML, 10) + bar.count);            
+                  going.innerHTML = (parseInt(going.innerHTML, 10) + bar.count);            
                 }))
 
             }); 
