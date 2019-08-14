@@ -112,18 +112,18 @@ class App extends Component {
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!state) return alert('You have to be logged in to perform this action!');
               
-                //let barId = this.firstElementChild.getAttribute('id'),
+                let id   = this.firstElementChild.getAttribute('id'),
+                    name = this.getAttribute('data-name');
                 let obj   = {
-                      id     : this.firstElementChild.getAttribute('id'),
-                      name   : this.getAttribute('data-name'),
+                      id     : id,
+                      name   : name,
                       userId : state
                     };           
-                                                    //this.bars[index]
-                ajax.ready(ajax.request("POST", path, obj, (bar) => {
+                  console.log(obj)                                  //this.bars[index]
+                return ajax.ready(ajax.request("POST", path, obj, (bar) => {
                   console.log(bar)
-                  let going = document.getElementById(bar.id);
-
-                  going.innerHTML = (parseInt(going.innerHTML, 10) + bar.count);            
+                  let current = document.getElementById(bar.id).innerHTML;
+                  current = parseInt(current, 10) + bar.count;            
                 }))
             }); 
         }; // for(loop)  
