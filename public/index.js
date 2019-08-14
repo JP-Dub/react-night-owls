@@ -97,27 +97,33 @@ class App extends Component {
 
     loadBttnEvents() {
         let twitterBttn = document.getElementsByClassName('bttn'),
+            badge       = document.getElementsByClassName('badge'),
             bttnLength  = twitterBttn.length,
             state       = this.state.userId,
             demo        = window.location.pathname === '/rsvp/demo' ? true : false,
             path        = '/rsvp/clicks';
       
-        if(demo) {
-          let badge = document.getElementsByClassName('badge');
+        if(demo) {       
           for(let i = 0; i < 20; i++) {    
             badge[i].innerHTML = Math.floor(Math.random() * Math.floor(201))   
           }
         } else {
-
+        
         ajax.ready(ajax.request("GET", path, {}, (clicks) => {
-           
-            clicks.forEach( item => {
-                let bttnId = document.getElementById(item.id);
+          for(let i = 0; i < 20; i++) {
+            if(badge[i].id === clicks[i].id) {
+              badge[i].innerHTML = clicks[i].count
+            } else {
+              badge[i].innerHTML = 0;
+            }
+          }    
+//             clicks.forEach( item => {
+//                 let bttnId = document.getElementById(item.id);
               
-                if(bttnId) {
-                  bttnId.innerHTML = item.count;
-                };    
-            });        
+//                 if(bttnId) {
+//                   bttnId.innerHTML = item.count;
+//                 }  
+//             });        
         })); 
           
         }
