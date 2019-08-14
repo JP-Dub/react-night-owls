@@ -63,7 +63,7 @@ function ClickHandler () {
 
   // for authenticated users to add or remove rsvp  
 	this.addClick = (req, res) => {
-    
+    console.log('addClick')
 		Users
 			.findOne({'twitter.id': req.body.userId})
       .select({'twitter.nightlife': 1})
@@ -100,8 +100,10 @@ function ClickHandler () {
             
             result.save( err => {
               if(err) throw err;
+               console.log(barCount)
+              res.json(barCount);
             });            
-            console.log(barCount)
+           
          
          };
 
