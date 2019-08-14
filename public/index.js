@@ -28,7 +28,8 @@ class App extends Component {
         this.searchInput.addEventListener('click', (evt)  => {
             evt.preventDefault();
   
-            let location = this.state.value;    
+            let location = this.state.value;
+            if(location.match(/demo/i)) window.location.href = '/api/demo';
             !location ? this.getLocation( geoLocation => this.yelpHandler(geoLocation)) 
                       : this.yelpHandler(location);            
         });
@@ -313,7 +314,6 @@ const SearchResults = (props) => {
             input.placeholder = !input.value ? city : locale, input.value = '';   
           }  
 
-
           // no image will revert to 'no image available' icon
           if(!obj[i].image_url) obj[i].image_url = noImage;         
             
@@ -403,9 +403,9 @@ const ajax = {
   },
   request: function ajaxRequest(method, path, data, callback) {
     let xmlhttp = new XMLHttpRequest(),
-        url     = '../api' + path,        
-        params  = typeof data === 'string' ? data 
-                  : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
+        url     = '../api' + path;        
+        // params  = typeof data === 'string' ? data 
+        //           : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
 
     xmlhttp.open(method, url, true);
 
@@ -422,7 +422,7 @@ const ajax = {
     xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    xmlhttp.send(params);
+    xmlhttp.send(data);
     return xmlhttp;
   }
 };
