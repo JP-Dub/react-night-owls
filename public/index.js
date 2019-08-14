@@ -109,34 +109,25 @@ class App extends Component {
           for(let i = 0; i < badge.length; i++) {    
             badge[i].innerHTML = Math.floor(Math.random() * Math.floor(201))   
           }
-        } else {
-        
-        ajax.ready(ajax.request("GET", path, {}, (clicks) => {
-        
-          for(let i = 0; i < badge.length; i++) {
-             let count = 0;
-             for(let j = 0; j < clicks.length; j++) {
-               if(badge[i].id === clicks[j].id) {
-                 count = clicks[j].count;
-               } 
-             }
-             badge[i].innerHTML = count;
-          }    
-//              clicks.forEach( item => {
-//                  let bttnId = document.getElementById(item.id);
-              
-//                  if(bttnId) {
-//                    bttnId.innerHTML = item.count;
-//                  }  
-//              });        
-        })); 
-          
+        } else {       
+          ajax.ready(ajax.request("GET", path, {}, (clicks) => {
+
+            for(let i = 0; i < badge.length; i++) {
+              let count = 0;
+              for(let j = 0; j < clicks.length; j++) {
+                if(badge[i].id === clicks[j].id) {
+                  count = clicks[j].count;
+                } 
+              }
+              badge[i].innerHTML = count;
+            }        
+          }));           
         }
         
         for(let i = 0; i < bttnLength; i++) {                  
             twitterBttn[i].addEventListener('click', function(event) {
-                //event.preventDefault();
-              console.log('clicked!')
+                event.preventDefault();
+  
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!state) return alert('You have to be logged in to perform this action!');
               
@@ -146,9 +137,10 @@ class App extends Component {
                       name   : this.getAttribute('data-name'),
                       userId : state
                     };
-              console.log(obj)
+             
                                                     //this.bars[index]
                 ajax.ready(ajax.request("POST", path, obj, (bar) => {
+                  console.log(bar)
                   let going = document.getElementById(bar.id);
 
                   going.innerHTML = (parseInt(going.innerHTML, 10) + bar.count);            

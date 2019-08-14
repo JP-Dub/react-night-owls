@@ -14,12 +14,12 @@ dependencies:
   html-webpack-plugin: 3.2.0
   http-proxy-middleware: 0.19.1
   math.js: 1.1.43
-  mongoose: 5.6.8
+  mongoose: 5.6.9
   passport: 0.4.0
   passport-twitter: 1.0.4
-  react: 16.8.6
-  react-dom: 16.8.6
-  react-hot-loader: 4.12.10
+  react: 16.9.0
+  react-dom: 16.9.0
+  react-hot-loader: 4.12.11
   react-router-dom: 5.0.1
   style-loader: 1.0.0
   webpack: 4.35.2
@@ -2791,7 +2791,7 @@ packages:
       integrity: sha1-0nRXAQJabHdabFRXk+1QL8DGSaE=
   /hoist-non-react-statics/3.3.0:
     dependencies:
-      react-is: 16.8.6
+      react-is: 16.9.0
     dev: false
     resolution:
       integrity: sha512-0XsbTXxgiaCDYDIWFcwkmerZPSwywfUqYmwT4jzewKTQSWoE6FCMoUVOeBJWK3E/CrWbxRG3m5GzY4lnIwGRBA==
@@ -3715,7 +3715,7 @@ packages:
       mongoose: '*'
     resolution:
       integrity: sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
-  /mongoose/5.6.8:
+  /mongoose/5.6.9:
     dependencies:
       async: 2.6.2
       bson: 1.1.1
@@ -3734,7 +3734,7 @@ packages:
     engines:
       node: '>=4.0.0'
     resolution:
-      integrity: sha512-BhgGU/KvnVX8WbamcWgtG/45rp+xZnaF9MhNbzESIIYxK7g5QurXYcaGGCm/JFiIdIxkVUgBycWG7UzRUEzvDg==
+      integrity: sha512-NRW5UJSmwyJxK+MRHmq+dQKgZqMZCpW1aPkpBZESqrrgF2J15Flo/4K3RYkSSQY7oKhfbgqZTPo+J1snJ3hJ3w==
   /move-concurrently/1.0.1:
     dependencies:
       aproba: 1.2.0
@@ -4526,18 +4526,18 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-4Oz8DUIwdvoa5qMJelxipzi/iJIi40O5cGV1wNYp5hvZP8ZN0T+jiNkL0QepXs+EsQ9XJ8ipEDoiH70ySUJP3Q==
-  /react-dom/16.8.6:
+  /react-dom/16.9.0:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       prop-types: 15.7.2
-      scheduler: 0.13.6
+      scheduler: 0.15.0
     dev: false
     peerDependencies:
       react: ^16.0.0
     resolution:
-      integrity: sha512-1nL7PIq9LTL3fthPqwkvr2zY7phIPjYrT0jp4HjyEQrEROnw4dG41VVwi/wfoCneoleqrNX7iAD+pXebJZwrwA==
-  /react-hot-loader/4.12.10:
+      integrity: sha512-YFT2rxO9hM70ewk9jq0y6sQk8cL02xm4+IzYBz75CQGlClQQ1Bxq0nhHF6OtSbit+AIahujJgb/CPRibFkMNJQ==
+  /react-hot-loader/4.12.11:
     dependencies:
       fast-levenshtein: 2.0.6
       global: 4.4.0
@@ -4554,11 +4554,15 @@ packages:
       react: ^15.0.0 || ^16.0.0
       react-dom: ^15.0.0 || ^16.0.0
     resolution:
-      integrity: sha512-dX+ZUigxQijWLsKPnxc0khuCt2sYiZ1W59LgSBMOLeGSG3+HkknrTlnJu6BCNdhYxbEQkGvBsr7zXlNWYUIhAQ==
+      integrity: sha512-ySsg1hPwr/5dkZCJVp1nZRbwbpbEQ+3e2+bn/D681Wvr9+o+5bLKkTGq0TXskj8HgCS3ScysXddOng9Cg+JKzw==
   /react-is/16.8.6:
     dev: false
     resolution:
       integrity: sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
+  /react-is/16.9.0:
+    dev: false
+    resolution:
+      integrity: sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
   /react-lifecycles-compat/3.0.4:
     dev: false
     resolution:
@@ -4594,17 +4598,16 @@ packages:
       react: '>=15'
     resolution:
       integrity: sha512-EM7suCPNKb1NxcTZ2LEOWFtQBQRQXecLxVpdsP4DW4PbbqYWeRiLyV/Tt1SdCrvT2jcyXAXmVTmzvSzrPR63Bg==
-  /react/16.8.6:
+  /react/16.9.0:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       prop-types: 15.7.2
-      scheduler: 0.13.6
     dev: false
     engines:
       node: '>=0.10.0'
     resolution:
-      integrity: sha512-pC0uMkhLaHm11ZSJULfOBqV4tIZkx87ZLvbbQYunNixAAvjnC+snJCg0XQXn9VIsttVsbZP/H/ewzgsd5fxKXw==
+      integrity: sha512-+7LQnFBwkiw+BobzOF6N//BdoNw0ouwmSJTEm9cglOOmsg/TMiFHZLe2sEoN5M7LgJTj9oHH0gxklfnQe66S1w==
   /readable-stream/2.3.6:
     dependencies:
       core-util-is: 1.0.2
@@ -4756,7 +4759,7 @@ packages:
   /require_optional/1.0.1:
     dependencies:
       resolve-from: 2.0.0
-      semver: 5.7.0
+      semver: 5.7.1
     dev: false
     resolution:
       integrity: sha512-qhM/y57enGWHAe3v/NcwML6a3/vfESLe/sGM2dII+gEO0BpKRUkWZow/tyloNqJyN6kXSl3RyyM8Ll5D/sJP8g==
@@ -4866,13 +4869,13 @@ packages:
     optional: true
     resolution:
       integrity: sha512-/MY/PEMbk2SuY5sScONwhUDsV2p77Znkb/q3nSVstq/yQzYJOH/Azh29p9oJLsl3LnQwSvZDKagDGBsBwSooag==
-  /scheduler/0.13.6:
+  /scheduler/0.15.0:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
     dev: false
     resolution:
-      integrity: sha512-IWnObHt413ucAYKsD9J1QShUKkbKLQQHdxRyw73sw4FN26iWr3DY/H34xGPe4nmL1DwXyWmSWmMrA9TfQbE/XQ==
+      integrity: sha512-xAefmSfN6jqAa7Kuq7LIJY0bwAPG3xlCj0HMEBQk1lxYiDKZscY2xJ5U/61ZTrYbmNQbXa+gc7czPkVo11tnCg==
   /schema-utils/1.0.0:
     dependencies:
       ajv: 6.10.0
@@ -4907,6 +4910,11 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-Ya52jSX2u7QKghxeoFGpLwCtGlt7j0oY9DYb5apt9nPlJ42ID+ulTXESnt/qAQcoSERyZ5sl3LDIOw0nAn/5DA==
+  /semver/5.7.1:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
   /semver/6.2.0:
     dev: false
     hasBin: true
@@ -5995,12 +6003,12 @@ specifiers:
   html-webpack-plugin: ^3.2.0
   http-proxy-middleware: ^0.19.1
   math.js: ^1.1.43
-  mongoose: ^5.6.8
+  mongoose: ^5.6.9
   passport: ^0.4.0
   passport-twitter: ^1.0.4
-  react: ^16.8.6
-  react-dom: ^16.8.6
-  react-hot-loader: ^4.12.10
+  react: ^16.9.0
+  react-dom: ^16.9.0
+  react-hot-loader: ^4.12.11
   react-router-dom: ^5.0.0
   style-loader: ^1.0.0
   webpack: ^4.35.0
