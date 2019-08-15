@@ -101,10 +101,7 @@ function ClickHandler () {
               if(err) throw err;
               res.json(barCount);
             });            
-           
-         
          };
-
 			});
 	};
 	
