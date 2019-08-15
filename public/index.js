@@ -71,7 +71,7 @@ class App extends Component {
     componentWillUnmount() {
       this.searchInput.removeEventListener('click');
       for(let i = 0; i < this.rsvpBttn.length; i++) {
-        this.twitterBttn[i].removeEventListener('click');
+        this.rsvpBttn[i].removeEventListener('click');
       }
     }
     
@@ -114,14 +114,14 @@ class App extends Component {
     }
 
     loadBttnEvents() {       
-        let bttnLength  = this.twitterBttn.length,
-            state       = this.state.userId,
-            demo        = this.demo,
-            path        = '/rsvp/clicks';
+        let bttnLength = this.rsvpBttn.length,
+            state      = this.state.userId,
+            demo       = this.demo,
+            path       = '/rsvp/clicks';
      
         for(let i = 0; i < bttnLength; i++) {                  
-            this.twitterBttn[i].addEventListener('click', function(event) {
-                event.preventDefault();
+            this.rsvpBttn[i].addEventListener('click', (evt) => {
+                evt.preventDefault();
 
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!state) return alert('You have to be logged in to perform this action!');
@@ -131,24 +131,26 @@ class App extends Component {
                       name   : this.getAttribute('data-name'),
                       userId : state
                     };           
-                                                
+                
+                // add/remove rsvp for selected bar
                 ajax.ready(ajax.request("POST", path, obj, (bar) => {
                   let current = document.getElementById(bar.id)
-                  current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;            
+                  current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
                 }));
             }); 
-        };   
+        };
         
-        if(demo) {       
+        if(demo) {
+          // demo mode populates rsvp bttn
           for(let i = 0; i < bttnLength; i++) {
-            this.twitterBttn[i].firstElementChild.innerHTML = Math.floor(Math.random() * Math.floor(201));
+            this.rsvpBttn[i].firstElementChild.innerHTML = Math.floor(Math.random() * Math.floor(201));
           }
         } else {       
+          // fetch all user rsvps
           ajax.ready(ajax.request("GET", path, {}, (clicks) => {
-
             for(let i = 0; i < bttnLength; i++) {
               let count = 0,
-                  bttn  = this.twitterBttn[i].firstElementChild;
+                  bttn  = this.rsvpBttn[i].firstElementChild;
               for(let j = 0; j < clicks.length; j++) {
                 if(bttn.id === clicks[j].id) {
                   count = clicks[j].count;
