@@ -27,7 +27,10 @@ module.exports = (app, passport, cors) => {
 	
 	app.route( '/rsvp/clicks' )
 		.get(  handleServer.getClicks )
-		.post( isLoggedIn, handleServer.addClick );		
+		.post( isLoggedIn, handleServer.addClick );	
+  
+  app.route('/resetRSVP')
+    .put( handleServer.resetRSVP );  
 		
 	app.get('/auth/twitter', passport.authenticate( 'twitter' ) );
 

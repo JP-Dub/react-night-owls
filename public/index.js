@@ -442,17 +442,7 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-
-function maintenanceUpdate(obj, event) {
-  obj.addEventListener(event, () => {
-    setTimeout(() =>{
-      confirm("This app is being updated, some of the features not might work correctly.")
-    }, 2000)
-  });
-}
-
-// if(window.addEventListener) {
-//   maintenanceUpdate(window, 'load');
-// } else {
-//   maintenanceUpdate(document, 'DOMContentedLoaded');  
-// }
+// interval checks time once an hour, clears all user RSVP's daily
+setInterval(() => {
+  ajax.ready(ajax.request('PUT', '/resetRSVP', {}));    
+}, 3600000);

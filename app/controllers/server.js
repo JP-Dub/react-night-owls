@@ -20,6 +20,7 @@ function ClickHandler () {
   // return all rsvps for users
 	this.getClicks = (req, res) => {
      let nightlife = [];
+     // check if id exists in nightlife array
      function findId(id) {
         if(nightlife.length) {
           for(let i = 0; i < nightlife.length; i++) {
