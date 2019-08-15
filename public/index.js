@@ -20,7 +20,7 @@ class App extends Component {
     componentDidMount() {
         let path  = window.location.pathname,
             local = sessionStorage.getItem('current');
-        console.log('componentDidMount')
+       
         this.setState((state) => {
           return {  
             title: state.title = RegExp('^/rsvp/.*').test(path) ? 'Night Owls Demo' : 'Night Owls'
@@ -74,34 +74,12 @@ class App extends Component {
       }
     }
   
-//     componentDidUpdate(prevProps, prevState) {
-//       //console.log('componentDidUpdate', prevState)
-//       if(prevState !== this.state) {
-//          let path  = window.location.pathname,
-//             local = sessionStorage.getItem('current');
-//         if( this.state.login ) { 
-//           console.log('user login')
-//           ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
-             
-//              let user        = req.twitter,
-//                  location    = user.previousSession || local;  
-            
-//              this.setState( () => {
-//                return {userId : user.id}
-//              });
-            
-//              return this.yelpHandler(location || user.location);
-//           }));
-//         } else if( this.state.demo ) { 
-//           if(local) return this.yelpHandler(local);    
-//           return
-//         }// } else {
-//         //   this.setState((state) => {
-//         //     return {userId : state.userId = ''}
-//         //   });        
-//         // }  
-//       }
-//     }
+    // componentDidUpdate(prevProps, prevState) {
+    //   console.log('componentDidUpdate', prevState, this.state)
+    //   if(prevState.userId !== this.state.userId) {
+    //     return 
+    //   }
+    // }
     
     changeHandler(evt) {
         evt.preventDefault();
@@ -154,7 +132,7 @@ class App extends Component {
                 event.preventDefault();
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!state) return alert('You have to be logged in to perform this action!');
-              
+                
                 let obj   = {
                       id     : this.firstElementChild.getAttribute('id'),
                       name   : this.getAttribute('data-name'),
@@ -316,11 +294,11 @@ const SearchResults = (props) => {
         city;
 
     const costDescription = {
-          0 : 'Unavailable',
-          1 : 'Inexpensive',
-          2 : 'Moderate',
-          3 : 'Pricey',
-          4 : 'Ultra High End'
+            0 : 'Unavailable',
+            1 : 'Inexpensive',
+            2 : 'Moderate',
+            3 : 'Pricey',
+            4 : 'Ultra High End'
           };
     
     const data = function(arr) {
