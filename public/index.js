@@ -115,7 +115,7 @@ class App extends Component {
 
     loadBttnEvents() {       
         let bttnLength = this.rsvpBttn.length,
-            state      = this.state.userId,
+            userId     = this.state.userId,
             demo       = this.demo,
             path       = '/rsvp/clicks';
      
@@ -124,12 +124,12 @@ class App extends Component {
                 evt.preventDefault();
 
                 if(demo) return alert('This is the demo version. Please return to the home page.')
-                if(!state) return alert('You have to be logged in to perform this action!');
+                if(!userId) return alert('You have to be logged in to perform this action!');
                 
                 let obj = {
                       id     : this.firstElementChild.getAttribute('id'),
                       name   : this.getAttribute('data-name'),
-                      userId : state
+                      userId : userId
                     };           
                 
                 // add/remove rsvp for selected bar
