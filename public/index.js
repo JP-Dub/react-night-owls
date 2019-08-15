@@ -65,7 +65,6 @@ class App extends Component {
             return {userId : state.userId = ''}
           });        
         }  
-
     }
 
     componentWillUnmount() {
