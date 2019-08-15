@@ -22,14 +22,13 @@ class App extends Component {
     componentDidMount() {
         let path  = window.location.pathname,
             local = sessionStorage.getItem('current');
-        
-        this.setState( () => {
-          return {
+        console.log('componentDidMount')
+        this.setState({
             demo : RegExp('^/rsvp/.*').test(path),
             login: RegExp('^/login/.*').test(path),
             title: RegExp('^/rsvp/.*').test(path) ? 'Night Owls Demo' : 'Night Owls'
           }
-        })
+        )
       
         // this.loggedIn = RegExp('^/login/.*').test(path);
         // this.demo     = RegExp('^/rsvp/.*').test(path);              
@@ -46,7 +45,7 @@ class App extends Component {
             !location ? this.getLocation( geoLocation => this.yelpHandler(geoLocation)) 
                       : this.yelpHandler(location);            
         });
-      
+        console.log('this.state', this.state)
         // checks window path /  returns previous session
         if( this.state.login ) {     
           ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
@@ -76,6 +75,13 @@ class App extends Component {
       for(let i = 0; i < this.twitterBttn.length; i++) {
         this.twitterBttn[i].removeEventListener('click');
       }
+    }
+  
+    componentDidUpdate(prevProps, prevState) {
+      console.log('state', prevState)
+      // if(prevState.login === this.state.login) {
+      //  return this.setState({ login :  RegExp('^/login/.*').test(window.location.pathname)})
+      // }
     }
     
     changeHandler(evt) {
