@@ -19,23 +19,20 @@ function ClickHandler () {
   
   // return all rsvps for users
 	this.getClicks = (req, res) => {
-     let nightlife = [];
-     // check if id exists in nightlife array
-     function findId(id) {
-        if(nightlife.length) {
-          for(let i = 0; i < nightlife.length; i++) {
-            if(nightlife[i].id === id) return i;
-          }   
-          return false;
-        }
-        return false;
+    let nightlife = [];
+    // check if id exists in nightlife array
+    function findId(id) {
+      for(let i = 0; i < nightlife.length; i++) {
+        if(nightlife[i].id === id) return i;
+      }   
+      return false;
     };  
 	
     Users
-			.find({}).select({ 'twitter.nightlife': 1})
+		  .find({}).select({ 'twitter.nightlife': 1})
 			.exec((err, results) => {
 				if (err) throw err;
-        let nightlife = [];  
+        
         // return restaurant id and total 'going' count for all users
         results.forEach((array, idx) => {
           let arr = array.twitter.nightlife;
@@ -44,7 +41,7 @@ function ClickHandler () {
             for(let i = 0; i < arr.length; i++) {           
               let item = arr[i];
               if(item.count) {
-                let index = findId(item.id);
+                let index = nightlife.length ? findId(item.id) : false;
                 if(index !== false) {
                    nightlife[index].count += item.count;
                 } else {
