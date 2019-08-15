@@ -67,19 +67,12 @@ class App extends Component {
 
     }
 
-    componentWillUnmount(a, b) {
+    componentWillUnmount() {
       this.searchInput.removeEventListener('click');
       for(let i = 0; i < this.twitterBttn.length; i++) {
         this.twitterBttn[i].removeEventListener('click');
       }
     }
-  
-    // componentDidUpdate(prevProps, prevState) {
-    //   console.log('componentDidUpdate', prevState, this.state)
-    //   if(prevState.userId !== this.state.userId) {
-    //     return 
-    //   }
-    // }
     
     changeHandler(evt) {
         evt.preventDefault();

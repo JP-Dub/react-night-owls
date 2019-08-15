@@ -1,7 +1,7 @@
 'use strict';
 
 const Server = require(process.cwd() + '/app/controllers/server.js'),
-      path = require('path'); //process.cwd();
+      path   = require('path'); //process.cwd();
 
 module.exports = (app, passport, cors) => {
 	
