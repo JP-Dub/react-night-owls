@@ -13,8 +13,6 @@ class App extends Component {
         this.state = {
           value  : "",
           userId : "",
-          demo   : "",
-          login  : "",
           title  : ""
         }
     }
@@ -24,16 +22,13 @@ class App extends Component {
             local = sessionStorage.getItem('current');
         console.log('componentDidMount')
         this.setState((state) => {
-          console.log('current state', state)
           return {  
-            demo : state.demo = RegExp('^/rsvp/.*').test(path),
-            login: state.login = RegExp('^/login/.*').test(path),
             title: state.title = RegExp('^/rsvp/.*').test(path) ? 'Night Owls Demo' : 'Night Owls'
           }
         })
       
-        // this.loggedIn = RegExp('^/login/.*').test(path);
-        // this.demo     = RegExp('^/rsvp/.*').test(path);              
+        this.login    = RegExp('^/login/.*').test(path);
+        this.demo     = RegExp('^/rsvp/.*').test(path);              
         this.load     = document.getElementById('load');
         this.input    = document.getElementById('location-input');
         this.searchInput = document.getElementById('search');
@@ -47,27 +42,26 @@ class App extends Component {
             !location ? this.getLocation( geoLocation => this.yelpHandler(geoLocation)) 
                       : this.yelpHandler(location);            
         });
-        console.log('this.state', this.state)
+       
         // checks window path /  returns previous session
-        if( this.state.login ) { 
-          console.log('user login')
+        if( this.login ) { 
           ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
              
-             let user        = req.twitter,
-                 location    = user.previousSession || local;  
+             let user     = req.twitter,
+                 location = user.previousSession || local;  
             
-             this.setState( () => {
-               return {userId : user.id}
+             this.setState( (state) => {
+               return {userId : state.userId = user.id}
              });
             
              return this.yelpHandler(location || user.location);
           }));
-        } else if( this.state.demo ) { 
+        } else if( this.demo ) { 
           if(local) return this.yelpHandler(local);    
           return
         } else {
-          this.setState(() => {
-            return {userId : ''}
+          this.setState((state) => {
+            return {userId : state.userId = ''}
           });        
         }  
 
@@ -80,12 +74,34 @@ class App extends Component {
       }
     }
   
-    componentDidUpdate(prevProps, prevState) {
-      console.log('componentDidUpdate', prevState)
-      if(prevState.login !== this.state.login) {
-       return this.setState({ login :  RegExp('^/login/.*').test(window.location.pathname)})
-      }
-    }
+//     componentDidUpdate(prevProps, prevState) {
+//       //console.log('componentDidUpdate', prevState)
+//       if(prevState !== this.state) {
+//          let path  = window.location.pathname,
+//             local = sessionStorage.getItem('current');
+//         if( this.state.login ) { 
+//           console.log('user login')
+//           ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
+             
+//              let user        = req.twitter,
+//                  location    = user.previousSession || local;  
+            
+//              this.setState( () => {
+//                return {userId : user.id}
+//              });
+            
+//              return this.yelpHandler(location || user.location);
+//           }));
+//         } else if( this.state.demo ) { 
+//           if(local) return this.yelpHandler(local);    
+//           return
+//         }// } else {
+//         //   this.setState((state) => {
+//         //     return {userId : state.userId = ''}
+//         //   });        
+//         // }  
+//       }
+//     }
     
     changeHandler(evt) {
         evt.preventDefault();
@@ -130,7 +146,7 @@ class App extends Component {
         let badge       = document.getElementsByClassName('badge'),
             bttnLength  = this.twitterBttn.length,
             state       = this.state.userId,
-            demo        = this.state.demo,
+            demo        = this.demo,
             path        = '/rsvp/clicks';
      
         for(let i = 0; i < bttnLength; i++) {                  
@@ -148,9 +164,9 @@ class App extends Component {
                 ajax.ready(ajax.request("POST", path, obj, (bar) => {
                   let current = document.getElementById(bar.id)
                   current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;            
-                }))
+                }));
             }); 
-        }; // for(loop)  
+        };   
       
         if(demo) {       
           for(let i = 0; i < badge.length; i++) {    
