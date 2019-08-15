@@ -300,14 +300,14 @@ const SearchResults = (props) => {
         if(load.classList.value === 'loading') load.classList.remove('loading');
         
         const results = arr.map( (key, i) => {
-          
-          let price = obj[i].price;
+          let yelp  = obj[i],
+              price = yelp.price;
           if(!price) price = "";
 
               // find closest zip code to coordinates
-          if(dist > obj[i].distance) {
-            dist = obj[i].distance;
-            city = obj[i].location.city;       
+          if(dist > yelp.distance) {
+            dist = yelp.distance;
+            city = yelp.location.city;       
           } else {
             city = obj[obj.length-1].location.city;
           }
@@ -319,53 +319,53 @@ const SearchResults = (props) => {
           }  
 
           // no image will revert to 'no image available' icon
-          if(!obj[i].image_url) obj[i].image_url = noImage;         
+          if(!yelp.image_url) yelp.image_url = noImage;         
             
           let businesscard = 'businesscard_' + i;
           return (
             <div id = {businesscard} className = 'container' key = {i}>
               <h2 className = 'smallScreen' title = 'Yelp business page'>
-                <a href   = {obj[i].url}
+                <a href   = {yelp.url}
                    target ='_blank'
                    rel    ='external'
-                   dangerouslySetInnerHTML = {{__html: obj[i].name}} />
+                   dangerouslySetInnerHTML = {{__html: yelp.name}} />
               </h2>
               <div className='img-holder'>
                 <img className ='img-thumbnail' 
                            alt ='img-url'
-                           src ={obj[i].image_url} />
+                           src ={yelp.image_url} />
                 <br />
                 <button className = 'bttn'
                             title = 'Let people know you are going by pushing the button'
                              type = 'button'
                             value = 'submit'
-                        data-name = {obj[i].name}>Going <span id={obj[i].id} className = 'badge'>0</span>
+                        data-name = {yelp.name}>Going <span id={yelp.id} className = 'badge'>0</span>
                 </button>
               </div>
               <div className='business'>
                 <h2 className = 'avgScreen' title = 'Yelp business page'>
-                  <a href   = {obj[i].url}
+                  <a href   = {yelp.url}
                      target = '_blank'
                      rel    = 'external'
-                     dangerouslySetInnerHTML = {{__html: obj[i].name}} />
+                     dangerouslySetInnerHTML = {{__html: yelp.name}} />
                 </h2>
                 <p className = 'address'>
-                  <a href   = {'https://www.yelp.com/map/' + obj[i].alias}
+                  <a href   = {'https://www.yelp.com/map/' + yelp.alias}
                      target = '_blank'
                      title  = 'Get Directions'
                      rel    = 'external'
                      dangerouslySetInnerHTML = {{__html:  
-                         obj[i].location.address1 + `.<br>` 
-                         + obj[i].location.city + `, ` 
-                         + obj[i].location.state + `. ` 
-                         + obj[i].location.zip_code }} />
+                         yelp.location.address1 + `.<br>` 
+                         + yelp.location.city + `, ` 
+                         + yelp.location.state + `. ` 
+                         + yelp.location.zip_code }} />
                   <br />
                   <span className = 'phone'>Telephone:
-                    <a href   = {obj[i].phone}
+                    <a href   = {yelp.phone}
                        target = '_blank'
                        title  = 'Call Number'
                        dangerouslySetInnerHTML={
-                             {__html : ` ` + obj[i].display_phone}
+                             {__html : ` ` + yelp.display_phone}
                            } />
                   </span>
                   <br />
@@ -375,7 +375,7 @@ const SearchResults = (props) => {
                   } />
                   <br />
                   <span dangerouslySetInnerHTML = {
-                    {__html : `Rating: `+ obj[i].rating}
+                    {__html : `Rating: `+ yelp.rating}
                   } />
                 </p>
               </div>
