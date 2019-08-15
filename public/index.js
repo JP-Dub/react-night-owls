@@ -300,7 +300,7 @@ const SearchResults = (props) => {
         if(load.classList.value === 'loading') load.classList.remove('loading');
         
         const results = arr.map( (key, i) => {
-
+          
           let price = obj[i].price;
           if(!price) price = "";
 
@@ -324,7 +324,7 @@ const SearchResults = (props) => {
           let businesscard = 'businesscard_' + i;
           return (
             <div id = {businesscard} className = 'container' key = {i}>
-              <h2 className = 'smallScreen' title = 'Visit Website'>
+              <h2 className = 'smallScreen' title = 'Yelp business page'>
                 <a href   = {obj[i].url}
                    target ='_blank'
                    rel    ='external'
@@ -343,7 +343,7 @@ const SearchResults = (props) => {
                 </button>
               </div>
               <div className='business'>
-                <h2 className = 'avgScreen' title = 'Visit Website'>
+                <h2 className = 'avgScreen' title = 'Yelp business page'>
                   <a href   = {obj[i].url}
                      target = '_blank'
                      rel    = 'external'
