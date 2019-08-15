@@ -1,7 +1,7 @@
 Welcome to Night Owls
 =========================
 
-Nightlife coordination app written with React.js<br>
+Nightlife coordination app written with React.js and using the Yelp Fusion api<br>
 
 Users can see which places are RSVP'd and how many. Authenticated users (via Twitter) are able to RSVP ahead of time with a single click to join and another to cancel. Authenticated users sessions are saved so when you login, the last location you were viewing will be restored.<br>
 
