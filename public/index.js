@@ -23,12 +23,14 @@ class App extends Component {
         let path  = window.location.pathname,
             local = sessionStorage.getItem('current');
         console.log('componentDidMount')
-        this.setState({
-            demo : RegExp('^/rsvp/.*').test(path),
-            login: RegExp('^/login/.*').test(path),
-            title: RegExp('^/rsvp/.*').test(path) ? 'Night Owls Demo' : 'Night Owls'
+        this.setState((state) => {
+          console.log('current state', state)
+          return {  
+            demo : state.demo = RegExp('^/rsvp/.*').test(path),
+            login: state.login = RegExp('^/login/.*').test(path),
+            title: state.title = RegExp('^/rsvp/.*').test(path) ? 'Night Owls Demo' : 'Night Owls'
           }
-        )
+        })
       
         // this.loggedIn = RegExp('^/login/.*').test(path);
         // this.demo     = RegExp('^/rsvp/.*').test(path);              
@@ -47,7 +49,8 @@ class App extends Component {
         });
         console.log('this.state', this.state)
         // checks window path /  returns previous session
-        if( this.state.login ) {     
+        if( this.state.login ) { 
+          console.log('user login')
           ajax.ready(ajax.request('GET', '/user/location', {}, (req) => {
              
              let user        = req.twitter,
@@ -78,10 +81,10 @@ class App extends Component {
     }
   
     componentDidUpdate(prevProps, prevState) {
-      console.log('state', prevState)
-      // if(prevState.login === this.state.login) {
-      //  return this.setState({ login :  RegExp('^/login/.*').test(window.location.pathname)})
-      // }
+      console.log('componentDidUpdate', prevState)
+      if(prevState.login !== this.state.login) {
+       return this.setState({ login :  RegExp('^/login/.*').test(window.location.pathname)})
+      }
     }
     
     changeHandler(evt) {
