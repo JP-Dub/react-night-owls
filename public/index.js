@@ -31,6 +31,7 @@ class App extends Component {
         this.demo     = RegExp('^/rsvp/.*').test(path);              
         this.load     = document.getElementById('load');
         this.input    = document.getElementById('location-input');
+        this.rsvpBttn = document.getElementsByClassName('bttn');
         this.searchInput = document.getElementById('search');
       
         this.searchInput.addEventListener('click', (evt)  => {
@@ -69,7 +70,7 @@ class App extends Component {
 
     componentWillUnmount() {
       this.searchInput.removeEventListener('click');
-      for(let i = 0; i < this.twitterBttn.length; i++) {
+      for(let i = 0; i < this.rsvpBttn.length; i++) {
         this.twitterBttn[i].removeEventListener('click');
       }
     }
@@ -112,10 +113,8 @@ class App extends Component {
         }));
     }
 
-    loadBttnEvents() {
-        this.twitterBttn = document.getElementsByClassName('bttn');
-        let badge       = document.getElementsByClassName('badge'),
-            bttnLength  = this.twitterBttn.length,
+    loadBttnEvents() {       
+        let bttnLength  = this.twitterBttn.length,
             state       = this.state.userId,
             demo        = this.demo,
             path        = '/rsvp/clicks';
@@ -123,13 +122,11 @@ class App extends Component {
         for(let i = 0; i < bttnLength; i++) {                  
             this.twitterBttn[i].addEventListener('click', function(event) {
                 event.preventDefault();
-                console.log({firstchild : this.firstElementChild,
-                             id : this.firstElementChild.id,
-                             html : this.firstElementChild.innerHTML})
+
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!state) return alert('You have to be logged in to perform this action!');
                 
-                let obj   = {
+                let obj = {
                       id     : this.firstElementChild.getAttribute('id'),
                       name   : this.getAttribute('data-name'),
                       userId : state
@@ -150,22 +147,18 @@ class App extends Component {
           ajax.ready(ajax.request("GET", path, {}, (clicks) => {
 
             for(let i = 0; i < bttnLength; i++) {
-              let count = 0;
+              let count = 0,
+                  bttn  = this.twitterBttn[i].firstElementChild;
               for(let j = 0; j < clicks.length; j++) {
-                if(this.twitterBttn[i].id === clicks[j].id) {
+                if(bttn.id === clicks[j].id) {
                   count = clicks[j].count;
                 } 
               }
-              badge[i].innerHTML = count;
+              bttn.innerHTML = count;
             }        
           }));           
         }      
     }
-  
-            // for(let i = 0; i < badge.length; i++) {    
-          //   //badge[i].innerHTML = Math.floor(Math.random() * Math.floor(201))   
-          
-          // }
 
     getLocation(next) {
       if (navigator.geolocation) {
