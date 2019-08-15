@@ -123,6 +123,9 @@ class App extends Component {
         for(let i = 0; i < bttnLength; i++) {                  
             this.twitterBttn[i].addEventListener('click', function(event) {
                 event.preventDefault();
+                console.log({firstchild : this.firstElementChild,
+                             id : this.firstElementChild.id,
+                             html : this.firstElementChild.innerHTML})
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!state) return alert('You have to be logged in to perform this action!');
                 
@@ -138,18 +141,18 @@ class App extends Component {
                 }));
             }); 
         };   
-      
+        
         if(demo) {       
-          for(let i = 0; i < badge.length; i++) {    
-            badge[i].innerHTML = Math.floor(Math.random() * Math.floor(201))   
+          for(let i = 0; i < bttnLength; i++) {
+            this.twitterBttn[i].firstElementChild.innerHTML = Math.floor(Math.random() * Math.floor(201));
           }
         } else {       
           ajax.ready(ajax.request("GET", path, {}, (clicks) => {
 
-            for(let i = 0; i < badge.length; i++) {
+            for(let i = 0; i < bttnLength; i++) {
               let count = 0;
               for(let j = 0; j < clicks.length; j++) {
-                if(badge[i].id === clicks[j].id) {
+                if(this.twitterBttn[i].id === clicks[j].id) {
                   count = clicks[j].count;
                 } 
               }
@@ -158,6 +161,11 @@ class App extends Component {
           }));           
         }      
     }
+  
+            // for(let i = 0; i < badge.length; i++) {    
+          //   //badge[i].innerHTML = Math.floor(Math.random() * Math.floor(201))   
+          
+          // }
 
     getLocation(next) {
       if (navigator.geolocation) {
