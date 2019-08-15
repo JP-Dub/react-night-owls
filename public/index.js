@@ -16,7 +16,7 @@ class App extends Component {
           title  : ""
         }
     }
-//window.location.pathname === '/rsvp/demo' ? 'Night Owls Demo' : 'Night Owls'
+
     componentDidMount() {
         let path  = window.location.pathname,
             local = sessionStorage.getItem('current');
@@ -238,8 +238,7 @@ class App extends Component {
 }
 
 // Error class React Component
-class ErrorBoundary extends Component {
-		
+class ErrorBoundary extends Component {		
 		constructor(props) {
 			super(props);
 			this.state = { hasError: false };
@@ -397,7 +396,7 @@ const SearchResults = (props) => {
  
 }
 
-// Configure ajax call
+// configure ajax call
 const ajax = {
   ready: function ready(fn) {
         
@@ -432,6 +431,7 @@ const ajax = {
   }
 };
 
+// render to DOM
 ReactDOM.render(
     <Main />, 
     document.getElementById('root')
