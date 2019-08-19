@@ -60,7 +60,7 @@ body {
 }
 
 .business {
-  padding-left: 10px;
+  padding-left: .75em;
 }
   
 h1 {
@@ -162,7 +162,7 @@ p {
 
 .bttn {
  	width: 9.5em; 
-  padding: 0;
+  padding: 0 0 2px 0;
  	text-align: center;
 	outline: none;
   -webkit-border-radius: 0 .3125em .3125em .3125em;
@@ -238,7 +238,9 @@ a:active {
   margin-right: 50%;
   border: .15em solid #000000;
   border-top: .15em solid #e60000; 
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
   width: 1.5em;
   height: 1.5em;
   -webkit-animation: spin .5s linear infinite;
@@ -313,7 +315,7 @@ a:active {
     padding-left: 4px;
   }
   .address {
-    margin-top: 0em;
+    margin-top: 0;
     padding-left: 0;
   }  
 }
