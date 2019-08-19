@@ -48,7 +48,9 @@ body {
 [id*='businesscard_'] {
   margin-top: .625em;
   border: 1px solid grey;
-  border-radius: .3em;
+  -webkit-border-radius: .3em;
+     -moz-border-radius: .3em;
+          border-radius: .3em;
   background-color: #daf1e0; 
   padding: 0;
 }
@@ -160,6 +162,7 @@ p {
 
 .bttn {
  	width: 9.5em; 
+  padding: 0;
  	text-align: center;
 	outline: none;
   -webkit-border-radius: 0 .3125em .3125em .3125em;
