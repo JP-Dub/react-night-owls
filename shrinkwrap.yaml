@@ -1,10 +1,10 @@
 dependencies:
   body-parser: 1.19.0
   cors: 2.8.5
-  dotenv: 8.0.0
+  dotenv: 8.1.0
   express: 4.16.4
   express-session: 1.16.2
-  mongoose: 5.6.9
+  mongoose: 5.7.0
   passport: 0.4.0
   passport-twitter: 1.0.4
   react: 16.9.0
@@ -741,12 +741,12 @@ packages:
       '@babel/core': ^7.0.0-0
     resolution:
       integrity: sha512-oayxyPS4Zj+hF6Et11BwuBkmpgT/zMxyuZgFrMeZID6Hdh3dGlk4sHCAhdBCpuCKW2ppBfl2uCCetlrUIJRY3w==
-  /@babel/runtime/7.4.5:
+  /@babel/runtime/7.6.0:
     dependencies:
-      regenerator-runtime: 0.13.2
+      regenerator-runtime: 0.13.3
     dev: false
     resolution:
-      integrity: sha512-TuI4qpWZP6lGOGIuGWtp9sPluqYICmbk8T/1vpSysqJxRPkudh/ofFWyqdcMsDf2s7KvDL4/YHgKyvcS3g9CJQ==
+      integrity: sha512-89eSBLJsxNxOERC0Op4vd+0Bqm6wRMqMbFtV3i0/fbaWw/mJ8Q3eBvgX0G4SyrOOLCtbu98HspF8o09MRT+KzQ==
   /@babel/template/7.4.4:
     dependencies:
       '@babel/code-frame': 7.5.5
@@ -2039,12 +2039,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-Lgd2XcJ/NjEw+7tFvfKxOzCYKZsdct5lczQ2ZaQY8Djz7pfAD3Gbp8ySJWtreII/vDlMVmxwa6pHmdxIYgttDg==
-  /dotenv/8.0.0:
+  /dotenv/8.1.0:
     dev: false
     engines:
       node: '>=8'
     resolution:
-      integrity: sha512-30xVGqjLjiUOArT4+M5q9sYdvuR4riM6yK9wMcas9Vbp6zZa+ocC9dp6QoftuhTPhFAiLK/0C5Ni2nou/Bk8lg==
+      integrity: sha512-GUE3gqcDCaMltj2++g6bRQ5rBJWtkWTmqmD0fo1RnnMuUqHNCt2oTPeDnS9n6fKYvlhn7AeBkb38lymBtWBQdA==
   /duplexify/3.7.1:
     dependencies:
       end-of-stream: 1.4.1
@@ -2757,11 +2757,11 @@ packages:
       integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
   /history/4.9.0:
     dependencies:
-      '@babel/runtime': 7.4.5
+      '@babel/runtime': 7.6.0
       loose-envify: 1.4.0
       resolve-pathname: 2.2.0
-      tiny-invariant: 1.0.4
-      tiny-warning: 1.0.2
+      tiny-invariant: 1.0.6
+      tiny-warning: 1.0.3
       value-equal: 0.4.0
     dev: false
     resolution:
@@ -3316,10 +3316,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-8Mh9h6xViijj36g7Dxi+Y4S6hNGV96vcJZr/SrlHh1LR/pEn/8j/+qIBbs44YKl69Lrfctp4QD+AdWLTMqEZAQ==
-  /kareem/2.3.0:
+  /kareem/2.3.1:
     dev: false
     resolution:
-      integrity: sha512-6hHxsp9e6zQU8nXsP+02HGWXwTkOEw6IROhF2ZA28cYbUk4eJ6QbtZvdqZOdD9YPKghG3apk5eOCvs+tLl3lRg==
+      integrity: sha512-l3hLhffs9zqoDe8zjmb/mAN4B8VT3L56EUvKNqLFVs9YlFA+zx7ke1DO8STAdDyYNkeSo1nKmjuvQeI12So8Xw==
   /killable/1.0.1:
     dev: true
     resolution:
@@ -3493,11 +3493,6 @@ packages:
     dev: true
     resolution:
       integrity: sha1-OpoguEYlI+RHz7x+i7gO1me/xVI=
-  /memory-pager/1.5.0:
-    dev: false
-    optional: true
-    resolution:
-      integrity: sha512-ZS4Bp4r/Zoeq6+NLJpP+0Zzm0pR8whtGPf1XExKLJBAczGMnSi3It14OiNCStjQjM6NU1okjQGSxgEZN8eBYKg==
   /merge-descriptors/1.0.1:
     resolution:
       integrity: sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=
@@ -3593,10 +3588,10 @@ packages:
       integrity: sha1-e9KC4/WELtKVu3SM3Z8f+iyCRoU=
   /mini-create-react-context/0.3.2/prop-types@15.7.2:
     dependencies:
-      '@babel/runtime': 7.4.5
+      '@babel/runtime': 7.6.0
       gud: 1.0.0
       prop-types: 15.7.2
-      tiny-warning: 1.0.2
+      tiny-warning: 1.0.3
     dev: false
     id: registry.npmjs.org/mini-create-react-context/0.3.2
     peerDependencies:
@@ -3659,38 +3654,28 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
-  /mongodb-core/3.2.7:
+  /mongodb/3.3.2:
     dependencies:
       bson: 1.1.1
       require_optional: 1.0.1
       safe-buffer: 5.2.0
     dev: false
-    optionalDependencies:
-      saslprep: 1.0.3
-    resolution:
-      integrity: sha512-WypKdLxFNPOH/Jy6i9z47IjG2wIldA54iDZBmHMINcgKOUcWJh8og+Wix76oGd7EyYkHJKssQ2FAOw5Su/n4XQ==
-  /mongodb/3.2.7:
-    dependencies:
-      mongodb-core: 3.2.7
-      safe-buffer: 5.2.0
-    dev: false
     engines:
       node: '>=4'
     resolution:
-      integrity: sha512-2YdWrdf1PJgxcCrT1tWoL6nHuk6hCxhddAAaEh8QJL231ci4+P9FLyqopbTm2Z2sAU6mhCri+wd9r1hOcHdoMw==
+      integrity: sha512-fqJt3iywelk4yKu/lfwQg163Bjpo5zDKhXiohycvon4iQHbrfflSAz9AIlRE6496Pm/dQKQK5bMigdVo2s6gBg==
   /mongoose-legacy-pluralize/1.0.2:
     dev: false
     peerDependencies:
       mongoose: '*'
     resolution:
       integrity: sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
-  /mongoose/5.6.9:
+  /mongoose/5.7.0:
     dependencies:
       async: 2.6.2
       bson: 1.1.1
-      kareem: 2.3.0
-      mongodb: 3.2.7
-      mongodb-core: 3.2.7
+      kareem: 2.3.1
+      mongodb: 3.3.2
       mongoose-legacy-pluralize: 1.0.2
       mpath: 0.6.0
       mquery: 3.2.1
@@ -3703,7 +3688,7 @@ packages:
     engines:
       node: '>=4.0.0'
     resolution:
-      integrity: sha512-NRW5UJSmwyJxK+MRHmq+dQKgZqMZCpW1aPkpBZESqrrgF2J15Flo/4K3RYkSSQY7oKhfbgqZTPo+J1snJ3hJ3w==
+      integrity: sha512-nE43r4kEUpUBfr32rf+zJKEtzd6I3F5YdbrSHp/DDdVQyej34Cv7gfBdcoRNehrPQDV3khOh0JpiS1aLN9/OCw==
   /move-concurrently/1.0.1:
     dependencies:
       aproba: 1.2.0
@@ -4526,13 +4511,13 @@ packages:
       integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
   /react-router-dom/5.0.1:
     dependencies:
-      '@babel/runtime': 7.4.5
+      '@babel/runtime': 7.6.0
       history: 4.9.0
       loose-envify: 1.4.0
       prop-types: 15.7.2
       react-router: 5.0.1
-      tiny-invariant: 1.0.4
-      tiny-warning: 1.0.2
+      tiny-invariant: 1.0.6
+      tiny-warning: 1.0.3
     dev: false
     peerDependencies:
       react: '>=15'
@@ -4540,16 +4525,16 @@ packages:
       integrity: sha512-zaVHSy7NN0G91/Bz9GD4owex5+eop+KvgbxXsP/O+iW1/Ln+BrJ8QiIR5a6xNPtrdTvLkxqlDClx13QO1uB8CA==
   /react-router/5.0.1:
     dependencies:
-      '@babel/runtime': 7.4.5
+      '@babel/runtime': 7.6.0
       history: 4.9.0
       hoist-non-react-statics: 3.3.0
       loose-envify: 1.4.0
       mini-create-react-context: /mini-create-react-context/0.3.2/prop-types@15.7.2
       path-to-regexp: 1.7.0
       prop-types: 15.7.2
-      react-is: 16.8.6
-      tiny-invariant: 1.0.4
-      tiny-warning: 1.0.2
+      react-is: 16.9.0
+      tiny-invariant: 1.0.6
+      tiny-warning: 1.0.3
     dev: false
     peerDependencies:
       react: '>=15'
@@ -4609,10 +4594,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-1G6jJVDWrt0rK99kBjvEtziZNCICAuvIPkSiUFIQxVP06RCVpq3dmDo2oi6ABpYaDYaTRr67BEhL8r1wgEZZKg==
-  /regenerator-runtime/0.13.2:
+  /regenerator-runtime/0.13.3:
     dev: false
     resolution:
-      integrity: sha512-S/TQAZJO+D3m9xeN1WTI8dLKBBiRgXBlTJvbWjCThHWZj9EvHK70Ff50/tYj2J/fvBY6JtFVwRuazHN2E7M9BA==
+      integrity: sha512-naKIZz2GQ8JWh///G7L3X6LaQUAMp2lvb1rvwwsURe/VXwD6VMfr+/1NuNw3ag8v2kY1aQ/go5SNn79O9JU7yw==
   /regenerator-transform/0.14.0:
     dependencies:
       private: 0.1.8
@@ -4814,15 +4799,6 @@ packages:
   /safer-buffer/2.1.2:
     resolution:
       integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
-  /saslprep/1.0.3:
-    dependencies:
-      sparse-bitfield: 3.0.3
-    dev: false
-    engines:
-      node: '>=6'
-    optional: true
-    resolution:
-      integrity: sha512-/MY/PEMbk2SuY5sScONwhUDsV2p77Znkb/q3nSVstq/yQzYJOH/Azh29p9oJLsl3LnQwSvZDKagDGBsBwSooag==
   /scheduler/0.15.0:
     dependencies:
       loose-envify: 1.4.0
@@ -5123,13 +5099,6 @@ packages:
       node: '>= 8'
     resolution:
       integrity: sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
-  /sparse-bitfield/3.0.3:
-    dependencies:
-      memory-pager: 1.5.0
-    dev: false
-    optional: true
-    resolution:
-      integrity: sha1-/0rm5oZWBWuks+eSqzM004JzyhE=
   /spdy-transport/3.0.0:
     dependencies:
       debug: 4.1.1
@@ -5377,14 +5346,14 @@ packages:
       node: '>=0.6.0'
     resolution:
       integrity: sha512-YvC1SV1XdOUaL6gx5CoGroT3Gu49pK9+TZ38ErPldOWW4j49GI1HKs9DV+KGq/w6y+LZ72W1c8cKz2vzY+qpzg==
-  /tiny-invariant/1.0.4:
+  /tiny-invariant/1.0.6:
     dev: false
     resolution:
-      integrity: sha512-lMhRd/djQJ3MoaHEBrw8e2/uM4rs9YMNk0iOr8rHQ0QdbM7D4l0gFl3szKdeixrlyfm9Zqi4dxHCM2qVG8ND5g==
-  /tiny-warning/1.0.2:
+      integrity: sha512-FOyLWWVjG+aC0UqG76V53yAWdXfH8bO6FNmyZOuUrzDzK8DI3/JRY25UD7+g49JWM1LXwymsKERB+DzI0dTEQA==
+  /tiny-warning/1.0.3:
     dev: false
     resolution:
-      integrity: sha512-rru86D9CpQRLvsFG5XFdy0KdLAvjdQDyZCsRcuu60WtzFylDM3eAWSxEVz5kzL2Gp544XiUvPbVKtOA/txLi9Q==
+      integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
   /to-arraybuffer/1.0.1:
     dev: true
     resolution:
@@ -5941,19 +5910,19 @@ specifiers:
   body-parser: ^1.19.0
   cors: ^2.8.5
   css-loader: ^3.2.0
-  dotenv: ^8.0.0
+  dotenv: ^8.1.0
   express: ^4.16.4
   express-session: ^1.16.1
   file-loader: ^4.1.0
   html-webpack-plugin: ^3.2.0
   http-proxy-middleware: ^0.19.1
-  mongoose: ^5.6.9
+  mongoose: ^5.7.0
   passport: ^0.4.0
   passport-twitter: ^1.0.4
   react: ^16.9.0
   react-dom: ^16.9.0
   react-hot-loader: ^4.12.11
-  react-router-dom: ^5.0.0
+  react-router-dom: ^5.0.1
   style-loader: ^1.0.0
   webpack: ^4.35.0
   webpack-cli: ^3.3.5
