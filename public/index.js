@@ -8,7 +8,7 @@ import noImage from "../public/img/NoProductImage_300.jpg";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.changeHandler = this.changeHandler.bind(this);
+    this.changeHandler  = this.changeHandler.bind(this);
     this.twitterHandler = this.twitterHandler.bind(this);
     this.state = {
       value: "",
@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     let path = window.location.pathname,
-      local = sessionStorage.getItem("current");
+        local= sessionStorage.getItem("current");
 
     this.setState(state => {
       return {
@@ -35,17 +35,17 @@ class App extends Component {
     this.input = document.getElementById("location-input");
     this.rsvpBttn = document.getElementsByClassName("bttn");
     this.searchInput = document.getElementById("search");
-
-    this.searchInput.addEventListener("click", evt => {
-      evt.preventDefault();
-
+    
+    this.findLocation = () => {
       let location = this.state.value;
       if (location.match(/demo/i)) return (window.location.href = "/api/demo");
-
+      
       !location
         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
         : this.yelpHandler(location);
-    });
+    }
+    
+    this.searchInput.addEventListener("click", this.findLocation);
 
     // checks window path /  returns previous session
     if (this.login) {
@@ -72,7 +72,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    this.searchInput.removeEventListener("click");
+    this.searchInput.removeEventListener("click", this.findLocation);
     // for (let i = 0; i < this.rsvpBttn.length; i++) {
     //   this.rsvpBttn[i].removeEventListener("click");
     // }
@@ -127,10 +127,8 @@ class App extends Component {
         userId = this.state.userId,
         demo = this.demo,
         path = "/rsvp/clicks";
-
-    for (let i = 0; i < bttnLength; i++) {
-      this.rsvpBttn[i].addEventListener("click", evt => {
-        evt.preventDefault();
+    
+    this.logRsvp = (i) => {
         console.log('clicks')
         if (demo)
           return alert(
@@ -152,7 +150,11 @@ class App extends Component {
             current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
           })
         );
-      });
+          
+    }
+
+    for (let i = 0; i < bttnLength; i++) {
+      this.rsvpBttn[i].addEventListener("click", this.logRsvp(i));
     }
 
     if (demo) {
