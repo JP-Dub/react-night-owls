@@ -73,9 +73,10 @@ class App extends Component {
 
   componentWillUnmount() {
     this.searchInput.removeEventListener("click");
-    for (let i = 0; i < this.rsvpBttn.length; i++) {
-      this.rsvpBttn[i].removeEventListener("click");
-    }
+    // for (let i = 0; i < this.rsvpBttn.length; i++) {
+    //   this.rsvpBttn[i].removeEventListener("click");
+    // }
+    this.rsvpBttn.removeEventListener("click");
   }
 
   changeHandler(evt) {
@@ -123,9 +124,9 @@ class App extends Component {
   loadBttnEvents() {
     
     let bttnLength = this.rsvpBttn.length,
-      userId = this.state.userId,
-      demo = this.demo,
-      path = "/rsvp/clicks";
+        userId = this.state.userId,
+        demo = this.demo,
+        path = "/rsvp/clicks";
 
     for (let i = 0; i < bttnLength; i++) {
       this.rsvpBttn[i].addEventListener("click", evt => {
@@ -137,12 +138,12 @@ class App extends Component {
           );
         if (!userId)
           return alert("You have to be logged in to perform this action!");
-        let rsvp = this.rsvpBttn[i]
-        let obj = {
-          id: this.rsvpBttn[i].firstElementChild.getAttribute("id"),
-          name: this.rsvpBttn[i].getAttribute("data-name"),
-          userId: userId
-        };
+        let rsvp = this.rsvpBttn[i],
+            obj = {
+              id: rsvp.firstElementChild.getAttribute("id"),
+              name: rsvp.getAttribute("data-name"),
+              userId: userId
+            };
 
         // add/remove rsvp for selected bar
         ajax.ready(
