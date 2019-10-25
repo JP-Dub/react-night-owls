@@ -6,6 +6,7 @@ const Server = require(process.cwd() + '/app/controllers/server.js'),
 module.exports = (app, passport, cors) => {
 	
 	function isLoggedIn (req, res, next) {
+    console.log('authentic', req.isAuthenticated)
 		if (req.isAuthenticated()) {
 			return next()
 		} else {
