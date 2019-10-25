@@ -410,7 +410,7 @@ const ajax = {
         url     = '../api' + path,        
         params  = typeof data === 'string' ? data 
                   : Object.keys(data).map( k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) ).join('&');  
-
+console.log(params, url)
     xmlhttp.open(method, url, true);
 
     xmlhttp.onreadystatechange = function () {
