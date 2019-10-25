@@ -121,14 +121,14 @@ class App extends Component {
      
         for(let i = 0; i < bttnLength; i++) {                  
             this.rsvpBttn[i].addEventListener('click', (evt) => {
-                //evt.preventDefault();
-                console.log(evt, this)
+                evt.preventDefault();
+                
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!userId) return alert('You have to be logged in to perform this action!');
-                
+               
                 let obj = {
-                      id     : this.firstElementChild.getAttribute('id'),
-                      name   : this.getAttribute('data-name'),
+                      id     : this.rsvpBttn[i].firstElementChild.getAttribute('id'),
+                      name   : this.rsvpBttn[i].getAttribute('data-name'),
                       userId : userId
                     };           
                 
