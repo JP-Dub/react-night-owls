@@ -51,7 +51,7 @@ app.use('/api', proxy({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.set('trust proxy', 1);
+
 app.use(session({
 	secret: 'secretClementine',
 	resave: false,
@@ -61,6 +61,10 @@ app.use(session({
 		}
 }));
 
+if( app.get('env') === 'production') {
+  app.set('trust proxy', 1);
+}
+
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(passport.initialize());
@@ -68,7 +72,7 @@ app.use(passport.session());
 
 routes(app, passport, cors);
 
-const client       = process.env.PORT,
+const client = process.env.PORT,
       server = 3000;
 
 app.listen(client,  function () {
