@@ -36,16 +36,25 @@ class App extends Component {
     this.rsvpBttn = document.getElementsByClassName("bttn");
     this.searchInput = document.getElementById("search");
     
-    this.findLocation = () => {
+//     this.findLocation = (evt) => {
+//       console.log('called', evt)
+//       let location = this.state.value;
+//       if (location.match(/demo/i)) return (window.location.href = "/api/demo");
+      
+//       !location
+//         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
+//         : this.yelpHandler(location);
+//     }
+    
+    this.searchInput.addEventListener("click", (evt) => {
       let location = this.state.value;
       if (location.match(/demo/i)) return (window.location.href = "/api/demo");
       
       !location
         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
-        : this.yelpHandler(location);
-    }
-    
-    this.searchInput.addEventListener("click", this.findLocation);
+        : this.yelpHandler(location);      
+      
+    });
 
     // checks window path /  returns previous session
     if (this.login) {
@@ -72,7 +81,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    this.searchInput.removeEventListener("click", this.findLocation);
+    this.searchInput.removeEventListener("click");
     // for (let i = 0; i < this.rsvpBttn.length; i++) {
     //   this.rsvpBttn[i].removeEventListener("click");
     // }
@@ -128,7 +137,7 @@ class App extends Component {
         demo = this.demo,
         path = "/rsvp/clicks";
     
-    this.logRsvp = (i) => {
+    this.logRsvp = (evt, i) => {
         console.log('clicks')
         if (demo)
           return alert(
@@ -154,7 +163,29 @@ class App extends Component {
     }
 
     for (let i = 0; i < bttnLength; i++) {
-      this.rsvpBttn[i].addEventListener("click", this.logRsvp(i));
+      this.rsvpBttn[i].addEventListener("click", evt => {
+        console.log('clicks')
+        if (demo)
+          return alert(
+            "This is the demo version. Please return to the home page."
+          );
+        if (!userId)
+          return alert("You have to be logged in to perform this action!");
+        let rsvp = this.rsvpBttn[i],
+            obj = {
+              id: rsvp.firstElementChild.getAttribute("id"),
+              name: rsvp.getAttribute("data-name"),
+              userId: userId
+            };
+
+        // add/remove rsvp for selected bar
+        ajax.ready(
+          ajax.request("POST", path, obj, bar => {
+            let current = document.getElementById(bar.id);
+            current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
+          })
+        );        
+      });
     }
 
     if (demo) {
