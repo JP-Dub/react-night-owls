@@ -30,8 +30,8 @@ class App extends Component {
     });
 
     this.login = RegExp("^/login/.*").test(path);
-    this.demo = RegExp("^/rsvp/.*").test(path);
-    this.load = document.getElementById("load");
+    this.demo  = RegExp("^/rsvp/.*").test(path);
+    this.load  = document.getElementById("load");
     this.input = document.getElementById("location-input");
     this.rsvpBttn = document.getElementsByClassName("bttn");
     this.searchInput = document.getElementById("search");
@@ -130,14 +130,14 @@ class App extends Component {
     for (let i = 0; i < bttnLength; i++) {
       this.rsvpBttn[i].addEventListener("click", evt => {
         evt.preventDefault();
-
+        console.log('clicks')
         if (demo)
           return alert(
             "This is the demo version. Please return to the home page."
           );
         if (!userId)
           return alert("You have to be logged in to perform this action!");
-
+        let rsvp = this.rsvpBttn[i]
         let obj = {
           id: this.rsvpBttn[i].firstElementChild.getAttribute("id"),
           name: this.rsvpBttn[i].getAttribute("data-name"),
