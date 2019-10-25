@@ -61,7 +61,6 @@ function ClickHandler () {
 
   // for authenticated users to add or remove rsvp  
 	this.addClick = (req, res) => {
-    console.log(req.body)
 		Users
 			.findOne({'twitter.id': req.body.userId})
       .select({'twitter.nightlife': 1})
@@ -107,8 +106,8 @@ function ClickHandler () {
 	
 	// queries the Yelp api and stores session data and location
 	this.getNightlife = (req, res) => {
-		 var Client = yelp.client(process.env.API_KEY);
-     var request = {
+		 let Client = yelp.client(process.env.API_KEY),
+         request = {
         		term    : 'bars',
     	    	location: req.query.location,
             sort_by : 'rating',

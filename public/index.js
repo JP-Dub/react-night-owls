@@ -121,7 +121,7 @@ class App extends Component {
   }
 
   loadBttnEvents() {
-    console.log("clicked button");
+    
     let bttnLength = this.rsvpBttn.length,
       userId = this.state.userId,
       demo = this.demo,
@@ -448,7 +448,7 @@ const ajax = {
                 k => encodeURIComponent(k) + "=" + encodeURIComponent(data[k])
               )
               .join("&");
-    console.log(params, url);
+   
     xmlhttp.open(method, url, true);
 
     xmlhttp.onreadystatechange = function() {
