@@ -112,7 +112,8 @@ class App extends Component {
         }));
     }
 
-    loadBttnEvents() {       
+    loadBttnEvents() {  
+      console.log('clicked button')
         let bttnLength = this.rsvpBttn.length,
             userId     = this.state.userId,
             demo       = this.demo,
@@ -120,8 +121,8 @@ class App extends Component {
      
         for(let i = 0; i < bttnLength; i++) {                  
             this.rsvpBttn[i].addEventListener('click', (evt) => {
-                evt.preventDefault();
-
+                //evt.preventDefault();
+                console.log(evt, this)
                 if(demo) return alert('This is the demo version. Please return to the home page.')
                 if(!userId) return alert('You have to be logged in to perform this action!');
                 
