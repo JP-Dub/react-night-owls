@@ -81,10 +81,10 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    this.searchInput.removeEventListener("click");
-    for (let i = 0; i < this.rsvpBttn.length; i++) {
-      this.rsvpBttn[i].removeEventListener("click");
-    }
+    // this.searchInput.removeEventListener("click");
+    // for (let i = 0; i < this.rsvpBttn.length; i++) {
+    //   this.rsvpBttn[i].removeEventListener("click");
+    // }
     //this.rsvpBttn.removeEventListener("click"), false;
   }
 
