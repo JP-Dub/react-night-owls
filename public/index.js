@@ -464,7 +464,7 @@ const ajax = {
                 k => encodeURIComponent(k) + "=" + encodeURIComponent(data[k])
               )
               .join("&");
-   //console.log('url', url)
+    console.log('url', url, params)
     xmlhttp.open(method, url, true);
 
     xmlhttp.onreadystatechange = function() {
