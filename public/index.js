@@ -110,8 +110,7 @@ class App extends Component {
     let path = "/businesses/search?term=bars&location=" + locale;
     let data = !this.userId ? {} : { user: this.userId };
 
-    ajax.ready(
-      ajax.request("POST", path, data, res => {
+    ajax.ready(ajax.request("POST", path, data, res => {
         let obj = JSON.parse(res);
         if (obj.error) return alert(res);
 
@@ -482,7 +481,7 @@ const ajax = {
                 k => encodeURIComponent(k) + "=" + encodeURIComponent(data[k])
               )
               .join("&");
-   
+   console.log('url', url)
     xmlhttp.open(method, url, true);
 
     xmlhttp.onreadystatechange = function() {

@@ -56,7 +56,7 @@ let config = {
 	secret: 'secretClementine',
 	resave: false,
 	saveUninitialized: true,
-	cookie : {
+	cookie : { 
     secure: true
   }
 }
