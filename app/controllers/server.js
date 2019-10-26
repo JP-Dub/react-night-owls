@@ -136,7 +136,7 @@ function ClickHandler () {
      Client.search(request).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
-          console.log(json)
+          console.log(constructor json)
            res.json(json);
      }).catch(error => {
        console.log('error returned')
