@@ -43,8 +43,8 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 const wpServer = new webpackDevServer(compiler, devServerOptions);
 
 app.use('/api', proxy({
-  target : 'localhost',
-  port: 3000
+  target:'localhost',
+  port  : 3000
   })
 );
 
@@ -57,7 +57,7 @@ let config = {
 	saveUninitialized: true,
 	cookie : {}
 }
-
+app.set('trust proxy', 1);
 app.use(session(config));
 
 if( app.get('env') === 'production') {
