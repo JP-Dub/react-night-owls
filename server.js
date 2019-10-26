@@ -45,7 +45,7 @@ const wpServer = new webpackDevServer(compiler, devServerOptions);
 app.use('/api', 
   proxy({
     target:'localhost',
-    port  : 3000
+  
   })
 );
 //target:'localhost',
@@ -57,9 +57,7 @@ let config = {
 	secret: 'secretClementine',
 	resave: false,
 	saveUninitialized: true,
-	cookie : { 
-    secure: false
-  }
+	cookie : { }
 }
 
 app.set('trust proxy', 1);
