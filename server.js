@@ -42,30 +42,43 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 
 const wpServer = new webpackDevServer(compiler, devServerOptions);
 
-app.use('/api', 
-  proxy({
-    target:'localhost',
-    port: 3000
-  })
-);
-//target:'localhost',
+// app.use('/api', proxy({
+//     target:'localhost',
+//     port: 3000
+//   })
+// );
+
+app.use('/api' , proxy({
+         target: 'http://localhost:8080',
+         pathRewrite : {'^/api' : ''},
+         secure: true
+       }))
+
+//target:'http://localhost',
 //port was 3000
 // pathRewrite : {'^/api' : ''},
 // secure: true
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-let config = {
+// let config = {
+// 	secret: 'NightOwlsReact',
+// 	resave: false,
+// 	saveUninitialized: true,
+// 	cookie : { 
+//     secure : true
+//   }
+// }
+
+app.set('trust proxy', 1);
+app.use(session({
 	secret: 'NightOwlsReact',
 	resave: false,
 	saveUninitialized: true,
 	cookie : { 
     secure : true
   }
-}
-
-app.set('trust proxy', 1);
-app.use(session(config));
+}));
 
 // if( app.get('env') === 'production') {
 //   app.set('trust proxy', 1);

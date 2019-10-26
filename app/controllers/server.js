@@ -19,7 +19,7 @@ function ClickHandler () {
   
   // return all rsvps for users
 	this.getClicks = (req, res) => {
-    console.log('server, getClicks')
+    console.log('server getClicks')
     let nightlife = [];
     // check if id exists in nightlife array
     function findId(id) {
