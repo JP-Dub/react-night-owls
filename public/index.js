@@ -35,7 +35,7 @@ class App extends Component {
     this.input = document.getElementById("location-input");
     this.rsvpBttn = document.getElementsByClassName("bttn");
     this.searchBttn = document.getElementById("search");
-    console.log('this.demo', this.demo)
+   
 //     this.findLocation = (evt) => {
 //       console.log('called', evt)
 //       let location = this.state.value;
@@ -468,8 +468,9 @@ const ajax = {
     xmlhttp.open(method, url, true);
 
     xmlhttp.onreadystatechange = function() {
+      console.log(xmlhttp)
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-        console.log(xmlhttp.response)
+        //console.log(xmlhttp.response)
         let res = JSON.parse(xmlhttp.response);
 
         if (res.statusCode === 400) return alert(res.response.body);
@@ -479,10 +480,7 @@ const ajax = {
     };
 
     xmlhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-    xmlhttp.setRequestHeader(
-      "Content-Type",
-      "application/x-www-form-urlencoded"
-    );
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xmlhttp.send(params);
     xmlhttp;
