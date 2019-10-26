@@ -49,15 +49,19 @@ class App extends Component {
     this.searchBttn.addEventListener("click", (evt) => {
       console.log('searchBttn clicks')
       let location = this.state.value;
-      console.log(location, location.match(/demo/i))
-      if (location.match(/demo/i)) {
-        console.log('location.match')
-        window.location.href = "/rsvp/demo";
-      }
      
-      !location
-        ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
-        : this.yelpHandler(location);      
+      if (location.match(/demo/i)) return window.location.href = "/rsvp/demo";
+            
+      
+      if(!location) {
+        this.input.removeAttribute('required');
+        this.getLocation(geoLocation => this.yelpHandler(geoLocation));
+      } else {
+        this.yelpHandler(location);  
+      }
+      // !location
+      //   ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
+      //   : this.yelpHandler(location);      
       
     });
 
@@ -118,7 +122,7 @@ class App extends Component {
     let data = !this.userId ? {} : { user: this.userId };
     console.log('yelpHandler path', path)
     ajax.ready(ajax.request("POST", path, data, res => {
-      console.log('ajax  yelpHandler', path)
+      console.log('ajax  return', path)
         let obj = JSON.parse(res);
         if (obj.error) return alert(res);
 
@@ -161,7 +165,7 @@ class App extends Component {
             };
 
         // add/remove rsvp for selected bar
-        return ajax.ready(ajax.request("POST", path, obj, bar => {
+        ajax.ready(ajax.request("POST", path, obj, bar => {
           console.log('ajax rsvpBttn', path)
           let current = document.getElementById(bar.id);
           current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;

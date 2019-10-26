@@ -19,13 +19,13 @@ module.exports = (app, passport, cors) => {
     res.redirect('/rsvp/demo');
   });
  
-	app.route( '/user/:location' )	
+	app.route('/user/:location' )	
 		.get( handleServer.userLocation );
 			
-	app.route( '/businesses/:search' )
+	app.route('/businesses/:search' )
 		.post( handleServer.getNightlife );
 	
-	app.route( '/rsvp/clicks' )
+	app.route('/rsvp/clicks' )
 		.get(  handleServer.getClicks )
 		.post( isLoggedIn, handleServer.addClick );	
   

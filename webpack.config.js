@@ -15,7 +15,7 @@ module.exports = {
      stats: 'errors-only',    
      historyApiFallback: true,
      inline: true,
-     port: 8080,
+     port: 3000,
      public: 'react-night-owls.glitch.me',
      allowedHosts: ['*.react-night-owls.glitch.me',
                     '*.api.glitch.com',
