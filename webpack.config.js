@@ -21,13 +21,7 @@ module.exports = {
                     '*.api.glitch.com',
                     '*.glitch.com'
                    ],
-     proxy: {
-       '/api' : {
-         target: 'http://localhost:3000',
-         pathRewrite : {'^/api' : ''},
-         secure: false
-       }
-     }      
+    
   
    },
    module: {
@@ -77,4 +71,15 @@ module.exports = {
          secure: true
        }
      }   
+*/
+
+/*
+
+     proxy: {
+       '/api' : {
+         target: 'http://localhost:3000',
+         pathRewrite : {'^/api' : ''},
+         secure: false
+       }
+     }  
 */
