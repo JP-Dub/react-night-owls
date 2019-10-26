@@ -44,14 +44,14 @@ const wpServer = new webpackDevServer(compiler, devServerOptions);
 
 app.use('/api', 
   proxy({
-    target:'http://localhost',
+    target:"http://localhost",
     port: 3000,
-    pathRewrite : {'/api' : ''},
-    secure: true
   })
 );
 //target:'localhost',
 //port was 3000
+// pathRewrite : {'^/api' : ''},
+// secure: true
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
