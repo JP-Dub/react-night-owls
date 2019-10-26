@@ -44,7 +44,7 @@ const wpServer = new webpackDevServer(compiler, devServerOptions);
 
 app.use('/api', 
   proxy({
-    target:"localhost",
+    target:'localhost',
     port: 3000
   })
 );
@@ -56,7 +56,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 let config = {
-	secret: 'secretClementine',
+	secret: 'NightOwlsReact',
 	resave: false,
 	saveUninitialized: true,
 	cookie : { 

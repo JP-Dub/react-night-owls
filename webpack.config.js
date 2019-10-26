@@ -8,10 +8,12 @@ module.exports = {
    entry: './public/index.js',
    output: {
       path: path.join(__dirname, 'dist'),
-      filename: '[name].bundle.js',
+      filename: 'bundle.js',
       publicPath: '/'
    },
-   devServer: {    
+   devServer: {  
+     contentBase: path.join(__dirname, 'dist'),
+     compress: true,
      stats: 'errors-only',    
      historyApiFallback: true,
      inline: true,
