@@ -44,8 +44,8 @@ const wpServer = new webpackDevServer(compiler, devServerOptions);
 
 app.use('/api', 
   proxy({
-    target:"http://localhost",
-    port: 3000,
+    target:"localhost",
+    port: 3000
   })
 );
 //target:'localhost',
