@@ -52,7 +52,7 @@ class App extends Component {
       console.log(location, location.match(/demo/i))
       if (location.match(/demo/i)) {
         console.log('location.match')
-        return window.location.href = "/rsvp/demo";
+        window.location.href = "/rsvp/demo";
       }
      
       !location
