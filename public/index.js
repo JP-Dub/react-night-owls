@@ -35,7 +35,7 @@ class App extends Component {
     this.input = document.getElementById("location-input");
     this.rsvpBttn = document.getElementsByClassName("bttn");
     this.searchBttn = document.getElementById("search");
-    
+    console.log('this.demo', this.demo)
 //     this.findLocation = (evt) => {
 //       console.log('called', evt)
 //       let location = this.state.value;
@@ -116,7 +116,7 @@ class App extends Component {
 
     let path = "/businesses/search?term=bars&location=" + locale;
     let data = !this.userId ? {} : { user: this.userId };
-    console.log('path', path)
+    console.log('yelpHandler path', path)
     ajax.ready(ajax.request("POST", path, data, res => {
       console.log('ajax  yelpHandler', path)
         let obj = JSON.parse(res);
