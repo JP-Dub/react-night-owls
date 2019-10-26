@@ -49,7 +49,7 @@ class App extends Component {
     this.searchInput.addEventListener("click", (evt) => {
       let location = this.state.value;
       if (location.match(/demo/i)) return (window.location.href = "/api/demo");
-      
+      console.log(location)
       !location
         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
         : this.yelpHandler(location);      
