@@ -49,15 +49,11 @@ const wpServer = new webpackDevServer(compiler, devServerOptions);
 // );
 
 app.use('/api' , proxy({
-         target: 'http://localhost:8080',
-         pathRewrite : {'^/api' : ''},
-         secure: true
-       }))
+  target: 'http://localhost',
+  port: 3000,
+  pathRewrite : {'^/api' : ''}
+}))
 
-//target:'http://localhost',
-//port was 3000
-// pathRewrite : {'^/api' : ''},
-// secure: true
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -100,6 +96,8 @@ app.listen(client,  function () {
 	console.log('Node.js listening on port ' + client + '...');
 });
 
-wpServer.listen(server, '127.0.0.1', () => {
+wpServer.listen(server, 'localhost', () => {
 	console.log('Webpack Dev Server listening on ' +  server + '...')
 });
+
+//'127.0.0.1'
