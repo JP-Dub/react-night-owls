@@ -469,6 +469,7 @@ const ajax = {
 
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+        console.log(xmlhttp.response)
         let res = JSON.parse(xmlhttp.response);
 
         if (res.statusCode === 400) return alert(res.response.body);
@@ -484,7 +485,7 @@ const ajax = {
     );
 
     xmlhttp.send(params);
-    // return xmlhttp;
+    xmlhttp;
   }
 };
 
