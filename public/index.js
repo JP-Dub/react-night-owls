@@ -47,9 +47,13 @@ class App extends Component {
 //     }
     
     this.searchBttn.addEventListener("click", (evt) => {
-    
+      
       let location = this.state.value;
-      if (location.match(/demo/i)) return (window.location.href = "/api/demo");
+      
+      if (location.match(/demo/i)) {
+        console.log('location.match')
+        return (window.location.href = "/api/demo");
+      }
      
       !location
         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
@@ -59,8 +63,7 @@ class App extends Component {
 
     // checks window path /  returns previous session
     if (this.login) {
-      ajax.ready(
-        ajax.request("GET", "/user/location", {}, req => {
+      ajax.ready(ajax.request("GET", "/user/location", {}, req => {
           let user = req.twitter,
             location = user.previousSession || local;
 
@@ -82,7 +85,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    // this.searchInput.removeEventListener("click");
+    this.searchInput.removeEventListener("click");
     // for (let i = 0; i < this.rsvpBttn.length; i++) {
     //   this.rsvpBttn[i].removeEventListener("click");
     // }
@@ -111,7 +114,7 @@ class App extends Component {
 
     let path = "/businesses/search?term=bars&location=" + locale;
     let data = !this.userId ? {} : { user: this.userId };
-
+    console.log('path', path)
     ajax.ready(ajax.request("POST", path, data, res => {
         let obj = JSON.parse(res);
         if (obj.error) return alert(res);
@@ -180,8 +183,7 @@ class App extends Component {
             };
 
         // add/remove rsvp for selected bar
-        ajax.ready(
-          ajax.request("POST", path, obj, bar => {
+        ajax.ready(ajax.request("POST", path, obj, bar => {
             let current = document.getElementById(bar.id);
             current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
           })
