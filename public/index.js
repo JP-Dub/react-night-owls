@@ -138,36 +138,11 @@ class App extends Component {
   }
 
   loadBttnEvents() {
-    //console.log()
+    console.log('loadBttnEvents')
     let bttnLength = this.rsvpBttn.length,
         userId = this.state.userId,
-        demo = this.demo,
-        path = "/rsvp/demo";
-    
-//     this.logRsvp = (evt, i) => {
-//         console.log('clicks')
-//         if (demo)
-//           return alert(
-//             "This is the demo version. Please return to the home page."
-//           );
-//         if (!userId)
-//           return alert("You have to be logged in to perform this action!");
-//         let rsvp = this.rsvpBttn[i],
-//             obj = {
-//               id: rsvp.firstElementChild.getAttribute("id"),
-//               name: rsvp.getAttribute("data-name"),
-//               userId: userId
-//             };
-
-//         // add/remove rsvp for selected bar
-//         ajax.ready(
-//           ajax.request("POST", path, obj, bar => {
-//             let current = document.getElementById(bar.id);
-//             current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
-//           })
-//         );
-          
-//     }
+        demo   = this.demo,
+        path   = "/rsvp/demo";
 
     for (let i = 0; i < bttnLength; i++) {
       this.rsvpBttn[i].addEventListener("click", evt => {
@@ -193,6 +168,7 @@ class App extends Component {
     }
 
     if (demo) {
+      console.log('if demo is true')
       // demo mode populates rsvp bttn
       for (let i = 0; i < bttnLength; i++) {
         this.rsvpBttn[i].firstElementChild.innerHTML = Math.floor(
@@ -200,6 +176,7 @@ class App extends Component {
         );
       }
     } else {
+      console.log('if demo is false')
       // fetch all user rsvps
       ajax.ready(ajax.request("GET", path, {}, clicks => {
         console.log('ajax demo', path)
@@ -342,26 +319,27 @@ class Main extends Component {
 const SearchResults = props => {
   //const input = document.getElementById('location-input');
   let obj = props.data,
-    locale = props.searchLocation,
-    dist = obj[obj.length - 1].distance,
-    input = props.input,
-    load = props.load,
-    city;
+      locale = props.searchLocation,
+      dist   = obj[obj.length - 1].distance,
+      input  = props.input,
+      load   = props.load,
+      city;
 
   const costDescription = {
-    0: "Unavailable",
-    1: "Inexpensive",
-    2: "Moderate",
-    3: "Pricey",
-    4: "Ultra High End"
-  };
+          0: "Unavailable",
+          1: "Inexpensive",
+          2: "Moderate",
+          3: "Pricey",
+          4: "Ultra High End"
+        };
 
   const data = function(arr) {
     if (load.classList.value === "loading") load.classList.remove("loading");
 
     const results = arr.map((key, i) => {
       let yelp = obj[i],
-        price = yelp.price;
+          price = yelp.price;
+      
       if (!price) price = "";
 
       // find closest zip code to coordinates
@@ -518,3 +496,29 @@ ReactDOM.render(<Main />, document.getElementById("root"));
 setInterval(() => {
   ajax.ready(ajax.request("PUT", "/resetRSVP", {}));
 }, 3600000);
+
+
+//     this.logRsvp = (evt, i) => {
+//         console.log('clicks')
+//         if (demo)
+//           return alert(
+//             "This is the demo version. Please return to the home page."
+//           );
+//         if (!userId)
+//           return alert("You have to be logged in to perform this action!");
+//         let rsvp = this.rsvpBttn[i],
+//             obj = {
+//               id: rsvp.firstElementChild.getAttribute("id"),
+//               name: rsvp.getAttribute("data-name"),
+//               userId: userId
+//             };
+
+//         // add/remove rsvp for selected bar
+//         ajax.ready(
+//           ajax.request("POST", path, obj, bar => {
+//             let current = document.getElementById(bar.id);
+//             current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
+//           })
+//         );
+          
+//     }
