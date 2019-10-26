@@ -42,12 +42,13 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 
 const wpServer = new webpackDevServer(compiler, devServerOptions);
 
-// app.use('/api', proxy({
-//   target:'localhost',
-//   port  : 3000
-//   })
-// );
-
+app.use('/api', proxy({
+  pathRewrite : {'^/api' : ''},
+  target:'localhost',
+  port  : 8080
+  })
+);
+//port was 3000
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -78,7 +79,7 @@ routes(app, passport, cors);
 
 const client = process.env.PORT,
       server = 3000;
-console.log(client, server)
+console.log(client, server, app.get('env'))
 app.listen(client,  function () {
 	console.log('Node.js listening on port ' + client + '...');
 });
