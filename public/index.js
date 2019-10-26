@@ -49,10 +49,10 @@ class App extends Component {
     this.searchBttn.addEventListener("click", (evt) => {
       console.log('searchBttn clicks')
       let location = this.state.value;
-      
+      console.log(location, location.match(/demo/i))
       if (location.match(/demo/i)) {
         console.log('location.match')
-        return (window.location.href = "/api/demo");
+        return window.location.href = "/rsvp/demo";
       }
      
       !location
@@ -142,13 +142,16 @@ class App extends Component {
     let bttnLength = this.rsvpBttn.length,
         userId = this.state.userId,
         demo   = this.demo,
-        path   = "/rsvp/demo";
+        path   = "/rsvp/clicks";
 
     for (let i = 0; i < bttnLength; i++) {
       this.rsvpBttn[i].addEventListener("click", evt => {
         console.log('clicks')
-        if (demo) return alert( "This is the demo version. Please return to the home page.");
-        if (!userId) return alert("You have to be logged in to perform this action!");
+        if (demo) 
+          return alert( "This is the demo version. Please return to the home page.");
+        
+        if (!userId) 
+          return alert("You have to be logged in to perform this action!");
         
         let rsvp = this.rsvpBttn[i],
             obj = {
@@ -158,28 +161,25 @@ class App extends Component {
             };
 
         // add/remove rsvp for selected bar
-        ajax.ready(ajax.request("POST", path, obj, bar => {
+        return ajax.ready(ajax.request("POST", path, obj, bar => {
           console.log('ajax rsvpBttn', path)
-            let current = document.getElementById(bar.id);
-            current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
-          })
-        );        
+          let current = document.getElementById(bar.id);
+          current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
+        }));        
       });
     }
 
     if (demo) {
-      console.log('if demo is true')
       // demo mode populates rsvp bttn
       for (let i = 0; i < bttnLength; i++) {
         this.rsvpBttn[i].firstElementChild.innerHTML = Math.floor(
           Math.random() * Math.floor(201)
         );
       }
-    } else {
-      console.log('if demo is false')
-      // fetch all user rsvps
+    } else {   
+      // fetch all user rsvps       
       ajax.ready(ajax.request("GET", path, {}, clicks => {
-        console.log('ajax demo', path)
+       
           for (let i = 0; i < bttnLength; i++) {
             let count = 0,
                 bttn = this.rsvpBttn[i].firstElementChild;
