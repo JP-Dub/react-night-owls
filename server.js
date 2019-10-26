@@ -43,8 +43,7 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 const wpServer = new webpackDevServer(compiler, devServerOptions);
 
 app.use('/api', proxy({
-  pathRewrite : {'^/api' : ''},
-  target:'localhost',
+  target:'127.0.0.1',
   port  : 3000
   })
 );

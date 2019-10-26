@@ -47,7 +47,7 @@ class App extends Component {
 //     }
     
     this.searchBttn.addEventListener("click", (evt) => {
-      
+      console.log('searchBttn clicks')
       let location = this.state.value;
       
       if (location.match(/demo/i)) {
@@ -64,6 +64,7 @@ class App extends Component {
     // checks window path /  returns previous session
     if (this.login) {
       ajax.ready(ajax.request("GET", "/user/location", {}, req => {
+        console.log('ajax for this.login', '/user/location')
           let user = req.twitter,
             location = user.previousSession || local;
 
@@ -85,6 +86,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
+    console.log('compWillUnmount')
     this.searchInput.removeEventListener("click");
     // for (let i = 0; i < this.rsvpBttn.length; i++) {
     //   this.rsvpBttn[i].removeEventListener("click");
@@ -106,7 +108,7 @@ class App extends Component {
   }
 
   yelpHandler(locale) {
-    console.log('yelpHandler')
+    console.log('yelpHandler()')
     this.load.classList.add("loading");
 
     if (typeof locale === "object")
@@ -116,6 +118,7 @@ class App extends Component {
     let data = !this.userId ? {} : { user: this.userId };
     console.log('path', path)
     ajax.ready(ajax.request("POST", path, data, res => {
+      console.log('ajax  yelpHandler', path)
         let obj = JSON.parse(res);
         if (obj.error) return alert(res);
 
@@ -135,7 +138,7 @@ class App extends Component {
   }
 
   loadBttnEvents() {
-    
+    //console.log()
     let bttnLength = this.rsvpBttn.length,
         userId = this.state.userId,
         demo = this.demo,
@@ -169,12 +172,9 @@ class App extends Component {
     for (let i = 0; i < bttnLength; i++) {
       this.rsvpBttn[i].addEventListener("click", evt => {
         console.log('clicks')
-        if (demo)
-          return alert(
-            "This is the demo version. Please return to the home page."
-          );
-        if (!userId)
-          return alert("You have to be logged in to perform this action!");
+        if (demo) return alert( "This is the demo version. Please return to the home page.");
+        if (!userId) return alert("You have to be logged in to perform this action!");
+        
         let rsvp = this.rsvpBttn[i],
             obj = {
               id: rsvp.firstElementChild.getAttribute("id"),
@@ -184,6 +184,7 @@ class App extends Component {
 
         // add/remove rsvp for selected bar
         ajax.ready(ajax.request("POST", path, obj, bar => {
+          console.log('ajax rsvpBttn', path)
             let current = document.getElementById(bar.id);
             current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
           })
@@ -200,8 +201,8 @@ class App extends Component {
       }
     } else {
       // fetch all user rsvps
-      ajax.ready(
-        ajax.request("GET", path, {}, clicks => {
+      ajax.ready(ajax.request("GET", path, {}, clicks => {
+        console.log('ajax demo', path)
           for (let i = 0; i < bttnLength; i++) {
             let count = 0,
               bttn = this.rsvpBttn[i].firstElementChild;
@@ -218,6 +219,7 @@ class App extends Component {
   }
 
   getLocation(next) {
+    console.log('getLocation()')
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         next({
@@ -505,7 +507,7 @@ const ajax = {
     );
 
     xmlhttp.send(params);
-    return xmlhttp;
+    // return xmlhttp;
   }
 };
 
