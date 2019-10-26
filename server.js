@@ -42,9 +42,10 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 
 const wpServer = new webpackDevServer(compiler, devServerOptions);
 
-app.use('/api', proxy({
-  target:'localhost',
-  port  : 3000
+app.use('/api', 
+  proxy({
+    target:'localhost',
+    port  : 3000
   })
 );
 //target:'localhost',
@@ -57,18 +58,18 @@ let config = {
 	resave: false,
 	saveUninitialized: true,
 	cookie : { 
-    secure: true
+    secure: false
   }
 }
 
 app.set('trust proxy', 1);
 app.use(session(config));
 
-if( app.get('env') === 'production') {
-  app.set('trust proxy', 1);
-  config.cookie.secure = true;
-  // config.cookie.sameSite = true;
-}
+// if( app.get('env') === 'production') {
+//   app.set('trust proxy', 1);
+//   config.cookie.secure = true;
+//   // config.cookie.sameSite = true;
+// }
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -79,7 +80,7 @@ routes(app, passport, cors);
 
 const client = process.env.PORT,
       server = 3000;
-
+console.log('client: ', client, server)
 app.listen(client,  function () {
 	console.log('Node.js listening on port ' + client + '...');
 });
