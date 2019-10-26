@@ -468,11 +468,11 @@ const ajax = {
                 k => encodeURIComponent(k) + "=" + encodeURIComponent(data[k])
               )
               .join("&");
-    console.log('url', url, params)
+    console.log({'url': url})
     xmlhttp.open(method, url, true);
 
     xmlhttp.onreadystatechange = function() {
-      console.log(xmlhttp)
+      //console.log(xmlhttp)
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
         //console.log(xmlhttp.response)
         let res = JSON.parse(xmlhttp.response);
