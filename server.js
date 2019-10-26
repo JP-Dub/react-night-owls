@@ -63,7 +63,7 @@ app.use(session(config));
 if( app.get('env') === 'production') {
   app.set('trust proxy', 1);
   config.cookie.secure = true;
-  config.cookie.sameSite = true;
+  // config.cookie.sameSite = true;
 }
 
 app.use(express.static(path.join(__dirname, 'dist')));
