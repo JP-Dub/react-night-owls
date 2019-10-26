@@ -34,7 +34,7 @@ class App extends Component {
     this.load  = document.getElementById("load");
     this.input = document.getElementById("location-input");
     this.rsvpBttn = document.getElementsByClassName("bttn");
-    this.searchInput = document.getElementById("search");
+    this.searchBttn = document.getElementById("search");
     
 //     this.findLocation = (evt) => {
 //       console.log('called', evt)
@@ -46,10 +46,11 @@ class App extends Component {
 //         : this.yelpHandler(location);
 //     }
     
-    this.searchInput.addEventListener("click", (evt) => {
+    this.searchBttn.addEventListener("click", (evt) => {
+    
       let location = this.state.value;
       if (location.match(/demo/i)) return (window.location.href = "/api/demo");
-      console.log(location)
+     
       !location
         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
         : this.yelpHandler(location);      
@@ -102,6 +103,7 @@ class App extends Component {
   }
 
   yelpHandler(locale) {
+    console.log('yelpHandler')
     this.load.classList.add("loading");
 
     if (typeof locale === "object")
@@ -134,7 +136,7 @@ class App extends Component {
     let bttnLength = this.rsvpBttn.length,
         userId = this.state.userId,
         demo = this.demo,
-        path = "/rsvp/clicks";
+        path = "/rsvp/demo";
     
 //     this.logRsvp = (evt, i) => {
 //         console.log('clicks')
