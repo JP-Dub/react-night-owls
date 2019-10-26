@@ -182,7 +182,7 @@ class App extends Component {
         console.log('ajax demo', path)
           for (let i = 0; i < bttnLength; i++) {
             let count = 0,
-              bttn = this.rsvpBttn[i].firstElementChild;
+                bttn = this.rsvpBttn[i].firstElementChild;
             for (let j = 0; j < clicks.length; j++) {
               if (bttn.id === clicks[j].id) {
                 count = clicks[j].count;
@@ -190,8 +190,7 @@ class App extends Component {
             }
             bttn.innerHTML = count;
           }
-        })
-      );
+        }));
     }
   }
 
@@ -465,7 +464,7 @@ const ajax = {
                 k => encodeURIComponent(k) + "=" + encodeURIComponent(data[k])
               )
               .join("&");
-   console.log('url', url)
+   //console.log('url', url)
     xmlhttp.open(method, url, true);
 
     xmlhttp.onreadystatechange = function() {
