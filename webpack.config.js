@@ -27,7 +27,8 @@ module.exports = {
          pathRewrite : {'^/api' : ''},
          secure: true
        }
-     }     
+     }      
+  
    },
    module: {
       rules: [
@@ -67,3 +68,13 @@ module.exports = {
    ]
 }
 //'http://localhost:8080'
+
+/*
+     proxy: {
+       '/api' : {
+         target: 'http://localhost:3000',
+         pathRewrite : {'^/api' : ''},
+         secure: true
+       }
+     }   
+*/

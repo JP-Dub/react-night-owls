@@ -44,7 +44,7 @@ const wpServer = new webpackDevServer(compiler, devServerOptions);
 
 app.use('/api', proxy({
   pathRewrite : {'^/api' : ''},
-  
+  target:'localhost',
   port  : 3000
   })
 );
@@ -80,7 +80,7 @@ routes(app, passport, cors);
 
 const client = process.env.PORT,
       server = 3000;
-console.log(client, server, app.get('env'))
+
 app.listen(client,  function () {
 	console.log('Node.js listening on port ' + client + '...');
 });
