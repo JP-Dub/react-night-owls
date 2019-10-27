@@ -49,10 +49,10 @@ const wpServer = new webpackDevServer(compiler, devServerOptions);
 //   })
 // );
 
-// app.use('/api' , proxy({
-//   target: 'localhost',
-//   port: 3000,
-// }))
+app.use('/api' , proxy({
+  target: 'localhost',
+  port: 3000,
+}))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

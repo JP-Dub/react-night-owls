@@ -83,7 +83,9 @@ p {
  	line-height: 1.5em;
 }
 
-
+label {
+  width: 100%;
+}
 /****** twitter/search button and input styling ******/
 
 .fa {

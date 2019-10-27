@@ -225,6 +225,7 @@ class App extends Component {
                   <i className="fa fa-twitter"></i>
                 </button>
               </div>
+              <label>
               <input
                 id="location-input"
                 className="form-control"
@@ -233,6 +234,7 @@ class App extends Component {
                 value={this.state.value}
                 onChange={this.changeHandler}                
               />
+              </label>
               <div className="input-group-btn">
                 <button id="search" className="btn btn-default" type="submit">
                   <span className="glyphicon glyphicon-search" />
@@ -345,7 +347,7 @@ const SearchResults = props => {
             <a
               href={yelp.url}
               target="_blank"
-              rel="external"
+              rel="external noopener noreferrer"
               dangerouslySetInnerHTML={{ __html: yelp.name }}
             />
           </h2>
@@ -353,6 +355,7 @@ const SearchResults = props => {
             <img className="img-thumbnail" alt="img-url" src={yelp.image_url} />
             <br />
             <button
+              name='rsvp to this location'
               className="bttn"
               title="Let people know you are going by pushing the button"
               type="button"
@@ -371,7 +374,7 @@ const SearchResults = props => {
               <a
                 href={yelp.url}
                 target="_blank"
-                rel="external"
+                rel="external noopener noreferrer"
                 dangerouslySetInnerHTML={{ __html: yelp.name }}
               />
             </h2>
