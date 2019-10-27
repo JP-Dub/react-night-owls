@@ -139,6 +139,7 @@ function ClickHandler () {
            console.log('json data being returned')
            res.json(json);
      }).catch(error => {
+          console.log('found error')
        	  res.json(error);
     }); 
 	};
