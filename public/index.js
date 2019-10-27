@@ -10,6 +10,7 @@ class App extends Component {
     super(props);
     this.changeHandler  = this.changeHandler.bind(this);
     this.twitterHandler = this.twitterHandler.bind(this);
+    this.rsvpHandler    = this.rsvpHandler.bind(this);
     this.state = {
       value : "",
       userId: "",
@@ -35,7 +36,6 @@ class App extends Component {
     this.input = document.getElementById("location-input");
     this.rsvpBttn = document.getElementsByClassName("bttn");
     this.searchBttn = document.getElementById("search");
-    console.log('this.rsvpBttn', this.rsvpBttn)
     
     this.findLocation = (evt) => {
       evt.preventDefault();
@@ -48,16 +48,15 @@ class App extends Component {
         : this.yelpHandler(location);        
     };
     
-    this.addRsvpBttnEvents = () => {
-      for (let i = 0; i < length; i++) {
-        this.rsvpBttn[i].addEventListener("click", (evt) => {
-          evt.preventDefault();
+//     this.addRsvpBttnEvents = () => {
+//       for (let i = 0; i < length; i++) {
+//         this.rsvpBttn[i].addEventListener("click", (evt) => {
+//           evt.preventDefault();
           
-          this.rsvpHandler(i);     
-         });
-      }   
-    }
-
+//           this.rsvpHandler(i);     
+//          });
+//       }   
+//     }
     
     this.searchBttn.addEventListener("click", this.findLocation );// => {
 
@@ -128,6 +127,7 @@ class App extends Component {
             load={this.load}
             input={this.input}
             searchLocation={locale}
+            rsvpHandler={this.rsvpHandler}
           />,
           document.getElementById("main")
         );
@@ -137,7 +137,9 @@ class App extends Component {
     );
   }
   
-  rsvpHandler(i) {
+  rsvpHandler(evt) {
+    evt.preventDefault();
+    //let i = Number(evt.target.path[2].id.slice(-1));
     let path = "/rsvp/clicks";
     
     if (this.demo) 
@@ -167,7 +169,6 @@ class App extends Component {
         demo   = this.demo,
         path   = "/rsvp/clicks";
     
-    if(this.bttnLength) this.addRsvp
     if (demo) {
       // demo mode populates rsvp bttn
       for (let i = 0; i < bttnLength; i++) {
@@ -321,7 +322,7 @@ const SearchResults = props => {
       input  = props.input,
       load   = props.load,
       city;
-
+ console.log(props)
   const costDescription = {
           0: "Unavailable",
           1: "Inexpensive",
@@ -376,6 +377,7 @@ const SearchResults = props => {
               type="button"
               value="submit"
               data-name={yelp.name}
+              onClick={props.rsvpHandler}
             >
               Going{" "}
               <span id={yelp.id} className="badge">
