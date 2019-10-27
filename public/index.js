@@ -54,7 +54,7 @@ class App extends Component {
             
       
       if(!location) {
-        this.input.removeAttribute('required');
+        //this.input.removeAttribute('required');
         this.getLocation(geoLocation => this.yelpHandler(geoLocation));
       } else {
         this.yelpHandler(location);  
