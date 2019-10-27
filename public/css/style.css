@@ -84,7 +84,9 @@ p {
 }
 
 label {
+  
   width: 100%;
+  display: inline;
 }
 /****** twitter/search button and input styling ******/
 
