@@ -3,9 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'),
       path    = require('path');
 
 module.exports = {
-   mode: 'production',
-   target: 'node',
-   entry: './public/index.js',
+   mode   : 'production',
+   target : 'node',
+   devtool: 'source-map',
+   entry  : './public/index.js',
    output: {
       path: path.join(__dirname, 'dist'),
       filename: 'bundle.js',

@@ -67,8 +67,9 @@ let config = {
 //app.set('trust proxy', 1);
 
 console.log(app.get('env'))
+
 if( app.get('env') === 'production') {
-  console.log('app env is = production')
+  console.log('webpack mode = production')
   app.set('trust proxy', 1);
   config.cookie.secure = true;
   config.cookie.sameSite = true;
