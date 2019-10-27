@@ -67,9 +67,10 @@ class App extends Component {
 
     // checks window path /  returns previous session
     if (this.login) {
-      ajax.ready(ajax.request("GET", "/user/location", {}, req => {
+      ajax.ready(ajax.request("GET", "/user/location", {}, (req) => {
         console.log('ajax for this.login', '/user/location')
-          let user = req.twitter,
+          if(req.error) return alert(req.error);
+          let user     = req.twitter,
               location = user.previousSession || local;
 
           this.setState(state => {

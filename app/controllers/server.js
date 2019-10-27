@@ -136,6 +136,7 @@ function ClickHandler () {
      Client.search(request).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
+           console.log('json data being returned')
            res.json(json);
      }).catch(error => {
        	  res.json(error);
@@ -144,8 +145,9 @@ function ClickHandler () {
 	
 	// returns the user location and cached search results after twitter log in
 	this.userLocation = (req, res) => {
-    if(!req.user) return res.json({error: 'User not signed in'});
-		Users.find({_id: req.user._id})
+    if(!req.user) return res.json({error: 'The User is not signed in'});
+		
+    Users.find({_id: req.user._id})
 			.exec((err, user) => {
 				if(err) throw err;       
        
