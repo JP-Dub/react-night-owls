@@ -42,17 +42,9 @@ class App extends Component {
      
       if (location.match(/demo/i)) return window.location.href = "/rsvp/demo";
             
-      
-      // if(!location) {
-      //   //this.input.removeAttribute('required');
-      //   this.getLocation(geoLocation => this.yelpHandler(geoLocation));
-      // } else {
-      //   this.yelpHandler(location);  
-      // }
       !location
         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
-        : this.yelpHandler(location);      
-      
+        : this.yelpHandler(location);           
     });
 
     // checks window path /  returns previous session
@@ -72,7 +64,7 @@ class App extends Component {
       );
     } else if (this.demo) {
       if (local) return this.yelpHandler(local);
-     
+      return;
     } else {
       this.setState(state => {
         return { userId: (state.userId = "") };
@@ -194,7 +186,7 @@ class App extends Component {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         next({
-          latitude: position.coords.latitude,
+          latitude : position.coords.latitude,
           longitude: position.coords.longitude
         });
       }, showError);
@@ -442,6 +434,7 @@ const SearchResults = props => {
 // configure ajax call
 const ajax = {
   ready: function ready(fn) {
+    
     if (typeof fn !== "function") return;
     if (document.readyState === "complete") return fn();
 
@@ -496,6 +489,14 @@ setInterval(() => {
 //       console.log('called', evt)
 //       let location = this.state.value;
 //       if (location.match(/demo/i)) return (window.location.href = "/api/demo");
+
+      
+      // if(!location) {
+      //   //this.input.removeAttribute('required');
+      //   this.getLocation(geoLocation => this.yelpHandler(geoLocation));
+      // } else {
+      //   this.yelpHandler(location);  
+      // }
       
 //       !location
 //         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
