@@ -57,31 +57,25 @@ const wpServer = new webpackDevServer(compiler, devServerOptions);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// let config = {
-// 	secret: 'NightOwlsReact',
-// 	resave: false,
-// 	saveUninitialized: true,
-// 	cookie : { 
-//     secure : true
-//   }
-// }
-
-app.set('trust proxy', 1);
-app.use(session({
+let config = {
 	secret: 'NightOwlsReact',
 	resave: false,
 	saveUninitialized: true,
-	cookie : { 
-    secure : true
-  }
-}));
+	cookie : {}
+}
 
-// if( app.get('env') === 'production') {
-//   app.set('trust proxy', 1);
-//   config.cookie.secure = true;
-//   // config.cookie.sameSite = true;
-// }
+//app.set('trust proxy', 1);
 
+console.log(app.get('env'))
+if( app.get('env') === 'production') {
+  console.log('app env is = production')
+  app.set('trust proxy', 1);
+  config.cookie.secure = true;
+  config.cookie.sameSite = true;
+}
+
+app.use(session(config));
+console.log(config)
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(passport.initialize());

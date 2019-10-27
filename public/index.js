@@ -52,7 +52,10 @@ class App extends Component {
     // checks window path /  returns previous session
     if (this.login) {
       ajax.ready(ajax.request("GET", "/user/location", {}, (req) => {
-          if(req.error) return alert(req.error);
+          if(req.error) {
+            alert(req.error);
+            window.location.href = "/" 
+          }
         
           let user     = req.twitter,
               location = user.previousSession || local;
