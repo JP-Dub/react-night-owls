@@ -42,18 +42,17 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 
 const wpServer = new webpackDevServer(compiler, devServerOptions);
 
-app.use('/api', proxy({
-    target:'http://localhost:8080',
-    logLevel: 'debug',
-    port: 3000
-  })
-);
+// app.use('/api', proxy({
+//     target:'http://localhost:8080',
+//     logLevel: 'debug',
+//     port: 3000
+//   })
+// );
 
-// app.use('/api' , proxy({
-//   target: 'http://localhost',
-//   port: 3000,
-//   pathRewrite : {'^/api' : ''}
-// }))
+app.use('/api' , proxy({
+  target: 'localhost',
+  port: 3000,
+}))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
