@@ -50,39 +50,39 @@ class App extends Component {
     
 
     
-    this.createRsvpListener = (bttnLength, userId, demo) => {
+    this.createRsvpListener = (length, rsvp) => {
       
-      const logRsvpClicks = (evt) => {
-          evt.preventDefault();
-          
-        let i = Number(evt.path[2].id.slice(-1));
-        console.log(i)
-          if (demo) 
-            return alert( "This is the demo version. Please return to the home page.");
-
-          if (!userId) 
-            return alert("You have to be logged in to perform this action!");
-
-          let rsvp = this.rsvpBttn[i],
-              obj = {
-                id: rsvp.firstElementChild.getAttribute("id"),
-                name: rsvp.getAttribute("data-name"),
-                userId: userId
-              };
-
-          // add/remove rsvp for selected bar
-          ajax.ready(ajax.request("POST", path, obj, bar => {
-            console.log('ajax rsvpBttn', path)
-            let current = document.getElementById(bar.id);
-            current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
-          }));        
-              
-    }
-      
-      
-      for (let i = 0; i < bttnLength; i++) {
-        this.rsvpBttn[i].addEventListener("click", logRsvpClicks );//=> {
+//       const logRsvpClicks = (evt) => {
 //           evt.preventDefault();
+          
+//         let i = Number(evt.path[2].id.slice(-1));
+//         console.log(i)
+//           if (demo) 
+//             return alert( "This is the demo version. Please return to the home page.");
+
+//           if (!userId) 
+//             return alert("You have to be logged in to perform this action!");
+
+//           let rsvp = this.rsvpBttn[i],
+//               obj = {
+//                 id: rsvp.firstElementChild.getAttribute("id"),
+//                 name: rsvp.getAttribute("data-name"),
+//                 userId: userId
+//               };
+
+//           // add/remove rsvp for selected bar
+//           ajax.ready(ajax.request("POST", path, obj, bar => {
+//             console.log('ajax rsvpBttn', path)
+//             let current = document.getElementById(bar.id);
+//             current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
+//           }));        
+              
+//     }
+        
+      for (let i = 0; i < length; i++) {
+        this.rsvpBttn[i].addEventListener("click", (evt) => {
+          evt.preventDefault();
+          rsvp(i);
 //           console.log('clicks')
 //           if (demo) 
 //             return alert( "This is the demo version. Please return to the home page.");
@@ -103,7 +103,7 @@ class App extends Component {
 //             let current = document.getElementById(bar.id);
 //             current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
 //           }));        
-//         });
+         });
       }
     }
     
@@ -148,7 +148,10 @@ class App extends Component {
     console.log('compWillUnmount')
     this.searchInput.removeEventListener("click", this.findLocation);
     for (let i = 0; i < this.rsvpBttn.length; i++) {
-      this.rsvpBttn[i].removeEventListener("click");
+      this.rsvpBttn[i].removeEventListener("click", (evt) => {
+        evt.preventDefault;
+      
+      });
     }
     //this.rsvpBttn.removeEventListener("click"), false;
   }
@@ -203,7 +206,29 @@ class App extends Component {
         demo   = this.demo,
         path   = "/rsvp/clicks";
     
-    this.createRsvpListener(bttnLength, userId, demo);
+    this.createRsvpListener(bttnLength, (i) => {
+          console.log('clicks')
+          if (demo) 
+            return alert( "This is the demo version. Please return to the home page.");
+
+          if (!userId) 
+            return alert("You have to be logged in to perform this action!");
+
+          let rsvp = this.rsvpBttn[i],
+              obj = {
+                id: rsvp.firstElementChild.getAttribute("id"),
+                name: rsvp.getAttribute("data-name"),
+                userId: userId
+              };
+
+          // add/remove rsvp for selected bar
+          ajax.ready(ajax.request("POST", path, obj, bar => {
+            console.log('ajax rsvpBttn', path)
+            let current = document.getElementById(bar.id);
+            current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
+          }));            
+      
+    });
 
 //     for (let i = 0; i < bttnLength; i++) {
 //       this.rsvpBttn[i].addEventListener("click", evt => {
