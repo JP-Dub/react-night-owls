@@ -20,7 +20,7 @@ class App extends Component {
   componentDidMount() {
     let path  = window.location.pathname,
         local = sessionStorage.getItem("current");
-
+    
     this.setState(state => {
       return {
         title: (state.title = RegExp("^/rsvp/.*").test(path) 
@@ -35,8 +35,6 @@ class App extends Component {
     this.input = document.getElementById("location-input");
     this.rsvpBttn = document.getElementsByClassName("bttn");
     this.searchBttn = document.getElementById("search");
-   
-
     
     this.searchBttn.addEventListener("click", (evt) => {
       console.log('searchBttn clicks')
@@ -460,11 +458,11 @@ const ajax = {
                 k => encodeURIComponent(k) + "=" + encodeURIComponent(data[k])
               )
               .join("&");
-    console.log({'ajsx call url': url})
+    console.log({'ajax call url': url})
     xmlhttp.open(method, url, true);
 
     xmlhttp.onreadystatechange = function() {
-      console.log(xmlhttp.readyState, xmlhttp.status)
+      //console.log(xmlhttp.readyState, xmlhttp.status)
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
         //console.log(xmlhttp.response)
         let res = JSON.parse(xmlhttp.response);
