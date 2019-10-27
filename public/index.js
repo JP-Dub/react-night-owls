@@ -43,15 +43,15 @@ class App extends Component {
       if (location.match(/demo/i)) return window.location.href = "/rsvp/demo";
             
       
-      if(!location) {
-        //this.input.removeAttribute('required');
-        this.getLocation(geoLocation => this.yelpHandler(geoLocation));
-      } else {
-        this.yelpHandler(location);  
-      }
-      // !location
-      //   ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
-      //   : this.yelpHandler(location);      
+      // if(!location) {
+      //   //this.input.removeAttribute('required');
+      //   this.getLocation(geoLocation => this.yelpHandler(geoLocation));
+      // } else {
+      //   this.yelpHandler(location);  
+      // }
+      !location
+        ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
+        : this.yelpHandler(location);      
       
     });
 
@@ -72,7 +72,7 @@ class App extends Component {
       );
     } else if (this.demo) {
       if (local) return this.yelpHandler(local);
-      return;
+     
     } else {
       this.setState(state => {
         return { userId: (state.userId = "") };
