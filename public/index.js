@@ -134,6 +134,7 @@ class App extends Component {
 
     for (let i = 0; i < bttnLength; i++) {
       this.rsvpBttn[i].addEventListener("click", evt => {
+        evt.preventDefault();
         console.log('clicks')
         if (demo) 
           return alert( "This is the demo version. Please return to the home page.");
@@ -167,7 +168,7 @@ class App extends Component {
     } else {   
       // fetch all user rsvps       
       ajax.ready(ajax.request("GET", path, {}, clicks => {
-       
+         
           for (let i = 0; i < bttnLength; i++) {
             let count = 0,
                 bttn = this.rsvpBttn[i].firstElementChild;
