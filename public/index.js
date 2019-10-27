@@ -11,19 +11,19 @@ class App extends Component {
     this.changeHandler  = this.changeHandler.bind(this);
     this.twitterHandler = this.twitterHandler.bind(this);
     this.state = {
-      value: "",
+      value : "",
       userId: "",
-      title: ""
+      title : ""
     };
   }
 
   componentDidMount() {
-    let path = window.location.pathname,
-        local= sessionStorage.getItem("current");
+    let path  = window.location.pathname,
+        local = sessionStorage.getItem("current");
 
     this.setState(state => {
       return {
-        title: (state.title = RegExp("^/rsvp/.*").test(path)
+        title: (state.title = RegExp("^/rsvp/.*").test(path) 
           ? "Night Owls Demo"
           : "Night Owls")
       };
@@ -36,15 +36,7 @@ class App extends Component {
     this.rsvpBttn = document.getElementsByClassName("bttn");
     this.searchBttn = document.getElementById("search");
    
-//     this.findLocation = (evt) => {
-//       console.log('called', evt)
-//       let location = this.state.value;
-//       if (location.match(/demo/i)) return (window.location.href = "/api/demo");
-      
-//       !location
-//         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
-//         : this.yelpHandler(location);
-//     }
+
     
     this.searchBttn.addEventListener("click", (evt) => {
       console.log('searchBttn clicks')
@@ -93,9 +85,9 @@ class App extends Component {
   componentWillUnmount() {
     console.log('compWillUnmount')
     this.searchInput.removeEventListener("click");
-    // for (let i = 0; i < this.rsvpBttn.length; i++) {
-    //   this.rsvpBttn[i].removeEventListener("click");
-    // }
+    for (let i = 0; i < this.rsvpBttn.length; i++) {
+      this.rsvpBttn[i].removeEventListener("click");
+    }
     //this.rsvpBttn.removeEventListener("click"), false;
   }
 
@@ -121,9 +113,9 @@ class App extends Component {
 
     let path = "/businesses/search?term=bars&location=" + locale;
     let data = !this.userId ? {} : { user: this.userId };
-    console.log('yelpHandler path', path)
+    
     ajax.ready(ajax.request("POST", path, data, res => {
-      console.log('ajax  return', path)
+      console.log('yelpHandler ajax success', path)
         let obj = JSON.parse(res);
         if (obj.error) return alert(res);
 
@@ -255,8 +247,7 @@ class App extends Component {
                 type="text"
                 placeholder="Search location"
                 value={this.state.value}
-                onChange={this.changeHandler}
-                required
+                onChange={this.changeHandler}                
               />
               <div className="input-group-btn">
                 <button id="search" className="btn btn-default" type="submit">
@@ -469,7 +460,7 @@ const ajax = {
                 k => encodeURIComponent(k) + "=" + encodeURIComponent(data[k])
               )
               .join("&");
-    console.log({'url': url})
+    console.log({'ajsx call url': url})
     xmlhttp.open(method, url, true);
 
     xmlhttp.onreadystatechange = function() {
@@ -486,7 +477,7 @@ const ajax = {
 
     xmlhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest");
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    console.log('xmlhttp', xmlhttp)
+    //console.log('xmlhttp', xmlhttp)
     xmlhttp.send(params);
     xmlhttp;
   }
@@ -499,6 +490,21 @@ ReactDOM.render(<Main />, document.getElementById("root"));
 setInterval(() => {
   ajax.ready(ajax.request("PUT", "/resetRSVP", {}));
 }, 3600000);
+
+
+
+/*
+//     this.findLocation = (evt) => {
+//       console.log('called', evt)
+//       let location = this.state.value;
+//       if (location.match(/demo/i)) return (window.location.href = "/api/demo");
+      
+//       !location
+//         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
+//         : this.yelpHandler(location);
+//     }
+*/
+
 
 
 //     this.logRsvp = (evt, i) => {
