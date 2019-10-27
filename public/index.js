@@ -70,7 +70,7 @@ class App extends Component {
       ajax.ready(ajax.request("GET", "/user/location", {}, req => {
         console.log('ajax for this.login', '/user/location')
           let user = req.twitter,
-            location = user.previousSession || local;
+              location = user.previousSession || local;
 
           this.setState(state => {
             return { userId: (state.userId = user.id) };
