@@ -37,6 +37,7 @@ class App extends Component {
     this.searchBttn = document.getElementById("search");
     
     this.searchBttn.addEventListener("click", (evt) => {
+      evt.preventDefault();
       console.log('searchBttn clicks')
       let location = this.state.value;
      
