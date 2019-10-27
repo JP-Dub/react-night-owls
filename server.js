@@ -21,7 +21,7 @@ let options = ({
   optionsSuccessStatus: 200
 });
 
-app.use(cors(options));
+app.use(cors());
 
 require('dotenv').config();
 require('./app/config/passport')(passport);

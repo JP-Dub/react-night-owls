@@ -473,7 +473,7 @@ const ajax = {
     xmlhttp.open(method, url, true);
 
     xmlhttp.onreadystatechange = function() {
-      //console.log(xmlhttp)
+      console.log(xmlhttp.readyState, xmlhttp.status)
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
         //console.log(xmlhttp.response)
         let res = JSON.parse(xmlhttp.response);
@@ -486,7 +486,7 @@ const ajax = {
 
     xmlhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest");
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
+    console.log('xmlhttp', xmlhttp)
     xmlhttp.send(params);
     xmlhttp;
   }
