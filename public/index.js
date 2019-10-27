@@ -36,7 +36,7 @@ class App extends Component {
     this.rsvpBttn = document.getElementsByClassName("bttn");
     this.searchBttn = document.getElementById("search");
     
-    this.searchBttn.addEventListener("click", (evt) => {
+    this.findLocation = (evt) => {
       evt.preventDefault();
       console.log('searchBttn clicks')
       let location = this.state.value;
@@ -45,14 +45,26 @@ class App extends Component {
             
       !location
         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
-        : this.yelpHandler(location);           
-    });
+        : this.yelpHandler(location);        
+    };
+    
+    this.searchBttn.addEventListener("click", this.findLocation );// => {
+//       evt.preventDefault();
+//       console.log('searchBttn clicks')
+//       let location = this.state.value;
+     
+//       if (location.match(/demo/i)) return window.location.href = "/rsvp/demo";
+            
+//       !location
+//         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
+//         : this.yelpHandler(location);           
+//     });
 
     // checks window path /  returns previous session
     if (this.login) {
       ajax.ready(ajax.request("GET", "/user/location", {}, (req) => {
-        console.log('ajax for this.login', '/user/location')
           if(req.error) return alert(req.error);
+        
           let user     = req.twitter,
               location = user.previousSession || local;
 
