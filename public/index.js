@@ -52,9 +52,11 @@ class App extends Component {
     
     this.createRsvpListener = (bttnLength, userId, demo) => {
       
-      const logRsvpClicks = (evt, i) => {
+      const logRsvpClicks = (evt) => {
           evt.preventDefault();
-          console.log('clicks')
+          
+        let i = Number(evt.path[2].id.slice(-1));
+        console.log(i)
           if (demo) 
             return alert( "This is the demo version. Please return to the home page.");
 
