@@ -19,7 +19,6 @@ function ClickHandler () {
   
   // return all rsvps for users
 	this.getClicks = (req, res) => {
-    console.log('server getClicks')
     let nightlife = [];
     // check if id exists in nightlife array
     function findId(id) {
@@ -62,7 +61,6 @@ function ClickHandler () {
 
   // for authenticated users to add or remove rsvp  
 	this.addClick = (req, res) => {
-    console.log('server addClicks')
 		Users
 			.findOne({'twitter.id': req.body.userId})
       .select({'twitter.nightlife': 1})
@@ -108,7 +106,6 @@ function ClickHandler () {
 	
 	// queries the Yelp api and stores session data and location
 	this.getNightlife = (req, res) => {
-    console.log('server getNightLife')
 		 let Client = yelp.client(process.env.API_KEY),
          request = {
         		term    : 'bars',
@@ -136,10 +133,9 @@ function ClickHandler () {
      Client.search(request).then(response => {
        var results = response.jsonBody.businesses,
            json    = JSON.stringify(results, null, 4);
-           console.log('json data being returned')
+           
            res.json(json);
      }).catch(error => {
-          console.log('found error')
        	  res.json(error);
     }); 
 	};

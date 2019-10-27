@@ -35,7 +35,6 @@ class App extends Component {
     this.load  = document.getElementById("load");
     this.input = document.getElementById("location-input");
     this.rsvpBttn = document.getElementsByClassName("bttn");
-    this.searchBttn = document.getElementById("search");
     
     this.findLocation = (evt) => {
       evt.preventDefault();
@@ -46,19 +45,9 @@ class App extends Component {
       !location
         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
         : this.yelpHandler(location);        
-    };
+    };  
     
-//     this.addRsvpBttnEvents = () => {
-//       for (let i = 0; i < length; i++) {
-//         this.rsvpBttn[i].addEventListener("click", (evt) => {
-//           evt.preventDefault();
-          
-//           this.rsvpHandler(i);     
-//          });
-//       }   
-//     }
-    
-    this.searchBttn.addEventListener("click", this.findLocation );// => {
+    document.getElementById("search").addEventListener("click", this.findLocation );
 
     // checks window path /  returns previous session
     if (this.login) {
@@ -87,10 +76,6 @@ class App extends Component {
 
   componentWillUnmount() {
     this.searchInput.removeEventListener("click", this.findLocation);
-    // for (let i = 0; i < this.rsvpBttn.length; i++) {
-    //   this.rsvpBttn[i].removeEventListener("click");
-    // }
-    //this.rsvpBttn.removeEventListener("click"), false;
   }
 
   changeHandler(evt) {
@@ -107,7 +92,6 @@ class App extends Component {
   }
 
   yelpHandler(locale) {
-    console.log('yelpHandler()')
     this.load.classList.add("loading");
 
     if (typeof locale === "object")
@@ -116,8 +100,7 @@ class App extends Component {
     let path = "/businesses/search?term=bars&location=" + locale;
     let data = !this.userId ? {} : { user: this.userId };
     
-    ajax.ready(ajax.request("POST", path, data, res => {
-      console.log('yelpHandler ajax success', path)
+    ajax.ready(ajax.request("POST", path, data, (res) => {
         let obj = JSON.parse(res);
         if (obj.error) return alert(res);
 
@@ -139,8 +122,7 @@ class App extends Component {
   
   rsvpHandler(evt) {
     evt.preventDefault();
-    console.log(evt.target )
-    //let i = Number(evt.target.path[2].id.slice(-1));
+ 
     let path = "/rsvp/clicks";
     
     if (this.demo) 
@@ -151,26 +133,22 @@ class App extends Component {
 
     let rsvp = evt.target,
         obj = {
-          id  : rsvp.id,
+          id  : rsvp.firstElementChild.id,
           name: rsvp.getAttribute("data-name"),
           userId: this.state.userId
         };      
 
     // add/remove rsvp for selected bar
     ajax.ready(ajax.request("POST", path, obj, bar => {   
-      //this.rsvpBttn[i].removeEventListener("click", (evt) => {});
       let current = document.getElementById(bar.id);
       current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
     }));       
   }
 
   loadBttnEvents() {
-    let bttnLength = this.rsvpBttn.length,
-        userId = this.state.userId,
-        demo   = this.demo,
-        path   = "/rsvp/clicks";
+    let bttnLength = this.rsvpBttn.length;
     
-    if (demo) {
+    if (this.demo) {
       // demo mode populates rsvp bttn
       for (let i = 0; i < bttnLength; i++) {
         this.rsvpBttn[i].firstElementChild.innerHTML = Math.floor(
@@ -179,7 +157,7 @@ class App extends Component {
       }
     } else {   
       // fetch all user rsvps       
-      ajax.ready(ajax.request("GET", path, {}, clicks => {
+      ajax.ready(ajax.request("GET", "/rsvp/clicks", {}, clicks => {
          
           for (let i = 0; i < bttnLength; i++) {
             let count = 0,
@@ -196,7 +174,6 @@ class App extends Component {
   }
 
   getLocation(next) {
-    console.log('getLocation()')
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         next({
@@ -494,107 +471,3 @@ ReactDOM.render(<Main />, document.getElementById("root"));
 setInterval(() => {
   ajax.ready(ajax.request("PUT", "/resetRSVP", {}));
 }, 3600000);
-
-
-
-//     for (let i = 0; i < bttnLength; i++) {
-//       this.rsvpBttn[i].addEventListener("click", evt => {
-//         evt.preventDefault();
-//         console.log('clicks')
-//         if (demo) 
-//           return alert( "This is the demo version. Please return to the home page.");
-        
-//         if (!userId) 
-//           return alert("You have to be logged in to perform this action!");
-        
-//         let rsvp = this.rsvpBttn[i],
-//             obj = {
-//               id: rsvp.firstElementChild.getAttribute("id"),
-//               name: rsvp.getAttribute("data-name"),
-//               userId: userId
-//             };
-
-//         // add/remove rsvp for selected bar
-//         ajax.ready(ajax.request("POST", path, obj, bar => {
-//           console.log('ajax rsvpBttn', path)
-//           let current = document.getElementById(bar.id);
-//           current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
-//         }));        
-//       });
-//     }
-
-
-//       evt.preventDefault();
-//       console.log('searchBttn clicks')
-//       let location = this.state.value;
-     
-//       if (location.match(/demo/i)) return window.location.href = "/rsvp/demo";
-            
-//       !location
-//         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
-//         : this.yelpHandler(location);           
-//     });
-
-
-//     this.createRsvpListener = (length, rsvp) => {
-      
-// //       const logRsvpClicks = (evt) => {
-// //           evt.preventDefault();
-          
-// //         let i = Number(evt.path[2].id.slice(-1));
-// //         console.log(i)
-// //           if (demo) 
-// //             return alert( "This is the demo version. Please return to the home page.");
-
-// //           if (!userId) 
-// //             return alert("You have to be logged in to perform this action!");
-
-// //           let rsvp = this.rsvpBttn[i],
-// //               obj = {
-// //                 id: rsvp.firstElementChild.getAttribute("id"),
-// //                 name: rsvp.getAttribute("data-name"),
-// //                 userId: userId
-// //               };
-
-// //           // add/remove rsvp for selected bar
-// //           ajax.ready(ajax.request("POST", path, obj, bar => {
-// //             console.log('ajax rsvpBttn', path)
-// //             let current = document.getElementById(bar.id);
-// //             current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
-// //           }));        
-              
-// //     }
-        
-//       for (let i = 0; i < length; i++) {
-//         this.rsvpBttn[i].addEventListener("click", (evt) => {
-//           evt.preventDefault();
-          
-//           rsvp(i);     
-//          });
-//       }
-//     }
-
-//     this.createRsvpListener(bttnLength, (i) => {
-//           console.log('clicks')
-//           if (demo) 
-//             return alert( "This is the demo version. Please return to the home page.");
-
-//           if (!userId) 
-//             return alert("You have to be logged in to perform this action!");
-
-//           let rsvp = this.rsvpBttn[i],
-//               obj = {
-//                 id: rsvp.firstElementChild.getAttribute("id"),
-//                 name: rsvp.getAttribute("data-name"),
-//                 userId: userId
-//               };      
-
-//           // add/remove rsvp for selected bar
-//           ajax.ready(ajax.request("POST", path, obj, bar => {
-//             console.log('ajax rsvpBttn', path)
-//              this.rsvpBttn[i].removeEventListener("click", (evt) => {});
-//             let current = document.getElementById(bar.id);
-//             current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
-//           }));            
-      
-//     });
