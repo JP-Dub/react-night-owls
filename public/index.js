@@ -82,27 +82,8 @@ class App extends Component {
       for (let i = 0; i < length; i++) {
         this.rsvpBttn[i].addEventListener("click", (evt) => {
           evt.preventDefault();
-          rsvp(i);
-//           console.log('clicks')
-//           if (demo) 
-//             return alert( "This is the demo version. Please return to the home page.");
-
-//           if (!userId) 
-//             return alert("You have to be logged in to perform this action!");
-
-//           let rsvp = this.rsvpBttn[i],
-//               obj = {
-//                 id: rsvp.firstElementChild.getAttribute("id"),
-//                 name: rsvp.getAttribute("data-name"),
-//                 userId: userId
-//               };
-
-//           // add/remove rsvp for selected bar
-//           ajax.ready(ajax.request("POST", path, obj, bar => {
-//             console.log('ajax rsvpBttn', path)
-//             let current = document.getElementById(bar.id);
-//             current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
-//           }));        
+          
+          rsvp(i);     
          });
       }
     }
@@ -146,13 +127,10 @@ class App extends Component {
 
   componentWillUnmount() {
     console.log('compWillUnmount')
-    this.searchInput.removeEventListener("click", this.findLocation);
-    for (let i = 0; i < this.rsvpBttn.length; i++) {
-      this.rsvpBttn[i].removeEventListener("click", (evt) => {
-        evt.preventDefault;
-      
-      });
-    }
+    this.searchInput.removeEventListener("click", this.findLocation, false);
+    // for (let i = 0; i < this.rsvpBttn.length; i++) {
+    //   this.rsvpBttn[i].removeEventListener("click");
+    // }
     //this.rsvpBttn.removeEventListener("click"), false;
   }
 
@@ -220,6 +198,8 @@ class App extends Component {
                 name: rsvp.getAttribute("data-name"),
                 userId: userId
               };
+       
+          this.rsvpBttn[i].removeEventListener("click", (evt) => {});
 
           // add/remove rsvp for selected bar
           ajax.ready(ajax.request("POST", path, obj, bar => {
