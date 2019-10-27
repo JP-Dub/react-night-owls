@@ -139,6 +139,7 @@ class App extends Component {
   
   rsvpHandler(evt) {
     evt.preventDefault();
+    console.log(evt.target )
     //let i = Number(evt.target.path[2].id.slice(-1));
     let path = "/rsvp/clicks";
     
@@ -148,16 +149,16 @@ class App extends Component {
     if (!this.state.userId) 
       return alert("You have to be logged in to perform this action!");
 
-    let rsvp = this.rsvpBttn[i],
+    let rsvp = evt.target,
         obj = {
-          id  : rsvp.firstElementChild.getAttribute("id"),
+          id  : rsvp.id,
           name: rsvp.getAttribute("data-name"),
           userId: this.state.userId
         };      
 
     // add/remove rsvp for selected bar
     ajax.ready(ajax.request("POST", path, obj, bar => {   
-      this.rsvpBttn[i].removeEventListener("click", (evt) => {});
+      //this.rsvpBttn[i].removeEventListener("click", (evt) => {});
       let current = document.getElementById(bar.id);
       current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
     }));       
@@ -322,7 +323,7 @@ const SearchResults = props => {
       input  = props.input,
       load   = props.load,
       city;
- console.log(props)
+
   const costDescription = {
           0: "Unavailable",
           1: "Inexpensive",
