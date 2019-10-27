@@ -48,6 +48,63 @@ class App extends Component {
         : this.yelpHandler(location);        
     };
     
+
+    
+    this.createRsvpListener = (bttnLength, userId, demo) => {
+      
+      const logRsvpClicks = (evt, i) => {
+          evt.preventDefault();
+          console.log('clicks')
+          if (demo) 
+            return alert( "This is the demo version. Please return to the home page.");
+
+          if (!userId) 
+            return alert("You have to be logged in to perform this action!");
+
+          let rsvp = this.rsvpBttn[i],
+              obj = {
+                id: rsvp.firstElementChild.getAttribute("id"),
+                name: rsvp.getAttribute("data-name"),
+                userId: userId
+              };
+
+          // add/remove rsvp for selected bar
+          ajax.ready(ajax.request("POST", path, obj, bar => {
+            console.log('ajax rsvpBttn', path)
+            let current = document.getElementById(bar.id);
+            current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
+          }));        
+              
+    }
+      
+      
+      for (let i = 0; i < bttnLength; i++) {
+        this.rsvpBttn[i].addEventListener("click", logRsvpClicks );//=> {
+//           evt.preventDefault();
+//           console.log('clicks')
+//           if (demo) 
+//             return alert( "This is the demo version. Please return to the home page.");
+
+//           if (!userId) 
+//             return alert("You have to be logged in to perform this action!");
+
+//           let rsvp = this.rsvpBttn[i],
+//               obj = {
+//                 id: rsvp.firstElementChild.getAttribute("id"),
+//                 name: rsvp.getAttribute("data-name"),
+//                 userId: userId
+//               };
+
+//           // add/remove rsvp for selected bar
+//           ajax.ready(ajax.request("POST", path, obj, bar => {
+//             console.log('ajax rsvpBttn', path)
+//             let current = document.getElementById(bar.id);
+//             current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
+//           }));        
+//         });
+      }
+    }
+    
     this.searchBttn.addEventListener("click", this.findLocation );// => {
 //       evt.preventDefault();
 //       console.log('searchBttn clicks')
@@ -87,7 +144,7 @@ class App extends Component {
 
   componentWillUnmount() {
     console.log('compWillUnmount')
-    this.searchInput.removeEventListener("click");
+    this.searchInput.removeEventListener("click", this.findLocation);
     for (let i = 0; i < this.rsvpBttn.length; i++) {
       this.rsvpBttn[i].removeEventListener("click");
     }
@@ -143,32 +200,34 @@ class App extends Component {
         userId = this.state.userId,
         demo   = this.demo,
         path   = "/rsvp/clicks";
+    
+    this.createRsvpListener(bttnLength, userId, demo);
 
-    for (let i = 0; i < bttnLength; i++) {
-      this.rsvpBttn[i].addEventListener("click", evt => {
-        evt.preventDefault();
-        console.log('clicks')
-        if (demo) 
-          return alert( "This is the demo version. Please return to the home page.");
+//     for (let i = 0; i < bttnLength; i++) {
+//       this.rsvpBttn[i].addEventListener("click", evt => {
+//         evt.preventDefault();
+//         console.log('clicks')
+//         if (demo) 
+//           return alert( "This is the demo version. Please return to the home page.");
         
-        if (!userId) 
-          return alert("You have to be logged in to perform this action!");
+//         if (!userId) 
+//           return alert("You have to be logged in to perform this action!");
         
-        let rsvp = this.rsvpBttn[i],
-            obj = {
-              id: rsvp.firstElementChild.getAttribute("id"),
-              name: rsvp.getAttribute("data-name"),
-              userId: userId
-            };
+//         let rsvp = this.rsvpBttn[i],
+//             obj = {
+//               id: rsvp.firstElementChild.getAttribute("id"),
+//               name: rsvp.getAttribute("data-name"),
+//               userId: userId
+//             };
 
-        // add/remove rsvp for selected bar
-        ajax.ready(ajax.request("POST", path, obj, bar => {
-          console.log('ajax rsvpBttn', path)
-          let current = document.getElementById(bar.id);
-          current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
-        }));        
-      });
-    }
+//         // add/remove rsvp for selected bar
+//         ajax.ready(ajax.request("POST", path, obj, bar => {
+//           console.log('ajax rsvpBttn', path)
+//           let current = document.getElementById(bar.id);
+//           current.innerHTML = parseInt(current.innerHTML, 10) + bar.count;
+//         }));        
+//       });
+//     }
 
     if (demo) {
       // demo mode populates rsvp bttn
