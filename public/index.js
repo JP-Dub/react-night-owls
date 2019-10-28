@@ -163,8 +163,14 @@ class App extends Component {
     } else {   
       // fetch all user rsvps       
       ajax.ready(ajax.request("GET", "/rsvp/clicks", {}, clicks => {
-         
+          
           for (let i = 0; i < bttnLength; i++) {
+            let teleLink = phoneClass[i].firstElementChild;
+            if(teleLink.innerHTML === " Unavailable") {
+              teleLink.style.color = "black";
+              teleLink.removeAttribute("href");
+              teleLink.removeAttribute("target");
+            }
             let count = 0,
                 bttn  = this.rsvpBttn[i].firstElementChild;
             for (let j = 0; j < clicks.length; j++) {
