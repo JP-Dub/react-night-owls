@@ -400,10 +400,10 @@ const SearchResults = props => {
               <span className="phone">
                 Telephone:
                 <a
-                  href={yelp.phone}
+                  href={yelp.display_phone? yelp.phone : }
                   target="_blank"
-                  title="Call Number"
-                  dangerouslySetInnerHTML={{ __html: ` ` + display_phone }}
+                  title="Call Restaurant"
+                  dangerouslySetInnerHTML={{ __html: ` ` + yelp.display_phone ? yelp.display_phone : 'Unavailable' }}
                 />
               </span>
               <br />
