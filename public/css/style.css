@@ -199,6 +199,10 @@ label {
   display : none
 }
 
+a {
+  color: black;
+}
+
 a:link {
   color: #e60000; 
   background-color: transparent; 

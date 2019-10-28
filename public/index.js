@@ -319,8 +319,8 @@ const SearchResults = props => {
 
     const results = arr.map((key, i) => {
       let yelp  = obj[i],
-          price = yelp.price,
-          display_phone = yelp.display_phone;
+          price = yelp.price;
+          //display_phone = yelp.display_phone;
 
       // find closest zip code to coordinates
       if (dist > yelp.distance) {
@@ -339,7 +339,7 @@ const SearchResults = props => {
       // no image will revert to 'no image available' icon
       if (!yelp.image_url) yelp.image_url = noImage;
       if (!price) price = "";
-      if (!display_phone) display_phone = " Unavailable"
+      //if (!display_phone) display_phone = " Unavailable"
 
       let businesscard = "businesscard_" + i;
       return (
@@ -374,7 +374,7 @@ const SearchResults = props => {
             <h2 className="avgScreen" title="Yelp business page">
               <a
                 href={yelp.url}
-                target="_blank"
+                target="_self"
                 rel="external noopener noreferrer"
                 dangerouslySetInnerHTML={{ __html: yelp.name }}
               />
@@ -382,7 +382,7 @@ const SearchResults = props => {
             <p className="address">
               <a
                 href={"https://www.yelp.com/map/" + yelp.alias}
-                target="_blank"
+                target="_self"
                 title="Get Directions"
                 rel="external noopener noreferrer"
                 dangerouslySetInnerHTML={{
@@ -400,10 +400,10 @@ const SearchResults = props => {
               <span className="phone">
                 Telephone:
                 <a
-                  href={yelp.display_phone? yelp.phone : }
-                  target="_blank"
+                  href={yelp.display_phone? yelp.phone : ''}
+                  target="_self"
                   title="Call Restaurant"
-                  dangerouslySetInnerHTML={{ __html: ` ` + yelp.display_phone ? yelp.display_phone : 'Unavailable' }}
+                  dangerouslySetInnerHTML={{ __html: ' ' + (yelp.display_phone ? yelp.display_phone : 'Unavailable') }}
                 />
               </span>
               <br />
