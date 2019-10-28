@@ -1,5 +1,6 @@
 dependencies:
   body-parser: 1.19.0
+  connect-mongo: 3.1.0
   cors: 2.8.5
   dotenv: 8.1.0
   express: 4.16.4
@@ -1635,6 +1636,12 @@ packages:
       node: '>=0.8'
     resolution:
       integrity: sha512-e54B99q/OUoH64zYYRf3HBP5z24G38h5D3qXu23JGRoigpX5Ss4r9ZnDk3g0Z8uQC2x2lPaJ+UlWBc1ZWBWdLg==
+  /connect-mongo/3.1.0:
+    dependencies:
+      mongodb: 3.3.3
+    dev: false
+    resolution:
+      integrity: sha512-BDn09MMBFse7Y0uVjUW8p7jjDKHWgg0veXFeETqBeJM7Eg+aWN8YBpod5FkSLiD28YknrYjT4dgHg9fq/h62ew==
   /console-browserify/1.1.0:
     dependencies:
       date-now: 0.1.4
@@ -5914,6 +5921,7 @@ specifiers:
   '@babel/preset-react': ^7.0.0
   babel-loader: ^8.0.5
   body-parser: ^1.19.0
+  connect-mongo: ^3.1.0
   cors: ^2.8.5
   css-loader: ^3.2.0
   dotenv: ^8.1.0

@@ -43,7 +43,7 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 
 const wpServer = new webpackDevServer(compiler, devServerOptions),
       client = process.env.PORT,
-      server = client === 8080? 3000 : 8080;
+      server = client === '8080'? 3000 : 8080;
 // app.use('/api', proxy({
 //     target:'http://localhost:8080',
 //     logLevel: 'debug',
