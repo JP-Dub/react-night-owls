@@ -84,6 +84,11 @@ console.log(app.get('env'))
 
 app.use(session({
   secret: 'NightOwlsReact',
+	resave: false,
+	saveUninitialized: true,
+	cookie : {
+    secure : true
+  },  
   store: new MongoStore({
     url: process.env.MONGO_URI,
     autoRemove: 'disabled'
