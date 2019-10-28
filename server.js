@@ -61,39 +61,29 @@ app.use('/api' , proxy({
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
+ 
 let config = {
 	secret: 'NightOwlsReact',
 	resave: false,
 	saveUninitialized: true,
-	cookie : {
-    secure : true
-  }
+  cookie : new Object()
 }
 
-app.set('trust proxy', 1);
+console.log(app.get('env'), config)
 
-console.log(app.get('env'))
-
-// if( app.get('env') === 'production') {
+if( app.get('env') === 'production') {
   
-//   app.set('trust proxy', 1);
-//   config.cookie.secure = true;
-//   config.cookie.sameSite = true;
-// }
+  app.set('trust proxy', 1);
+  config.cookie.secure = true;
+  //config.cookie.sameSite = true;
+}
 
-app.use(session({
-  secret: 'NightOwlsReact',
-	resave: false,
-	saveUninitialized: true,
-	cookie : {
-    secure : true
-  },  
-  store: new MongoStore({
+app.use(session(config, {
+    store: new MongoStore({
     url: process.env.MONGO_URI,
     autoRemove: 'disabled'
   })
-}));
+  }));
 
 
 console.log(config)
