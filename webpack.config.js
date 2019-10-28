@@ -18,7 +18,7 @@ module.exports = {
      stats: 'errors-only',    
      historyApiFallback: true,
      inline: true,
-     port: 3000,
+     port: process.env.PORT === 8080 ? 3000 : 8080,
      public: 'react-night-owls.glitch.me',
      allowedHosts: ['*.react-night-owls.glitch.me',
                     '*.api.glitch.com',
@@ -26,7 +26,7 @@ module.exports = {
                    ],
      proxy: {
        '/api' : {
-         target: 'http://localhost:8080',
+         target: 'http://localhost:' + process.env.PORT === 8080? 'http://localhost:8080': '',
          pathRewrite : {'^/api' : ''},
          secure: true
        }

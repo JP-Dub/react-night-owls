@@ -34,14 +34,16 @@ mongoose.connect(process.env.MONGO_URI, {
 
 mongoose.Promise = global.Promise;
 
+
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 	stats: {
 		colors: true
 	},
 });
 
-const wpServer = new webpackDevServer(compiler, devServerOptions);
-
+const wpServer = new webpackDevServer(compiler, devServerOptions),
+      client = process.env.PORT,
+      server = client === 8080? 3000 : 8080;
 // app.use('/api', proxy({
 //     target:'http://localhost:8080',
 //     logLevel: 'debug',
@@ -50,8 +52,9 @@ const wpServer = new webpackDevServer(compiler, devServerOptions);
 // );
 
 app.use('/api' , proxy({
+  pathRewrite : {'^api' : ''},
   target: 'localhost',
-  port: 3000,
+  port: server,
 }))
 
 app.use(bodyParser.json());
@@ -61,19 +64,21 @@ let config = {
 	secret: 'NightOwlsReact',
 	resave: false,
 	saveUninitialized: true,
-	cookie : {}
+	cookie : {
+    secure : true
+  }
 }
 
-//app.set('trust proxy', 1);
+app.set('trust proxy', 1);
 
 console.log(app.get('env'))
 
-if( app.get('env') === 'production') {
-  console.log('webpack mode = production')
-  app.set('trust proxy', 1);
-  config.cookie.secure = true;
-  config.cookie.sameSite = true;
-}
+// if( app.get('env') === 'production') {
+//   console.log('webpack mode = production')
+//   app.set('trust proxy', 1);
+//   config.cookie.secure = true;
+//   config.cookie.sameSite = true;
+// }
 
 app.use(session(config));
 console.log(config)
@@ -84,8 +89,7 @@ app.use(passport.session());
 
 routes(app, passport, cors);
 
-const client = process.env.PORT,
-      server = 3000;
+
 console.log('client: ', client, server)
 app.listen(client,  function () {
 	console.log('Node.js listening on port ' + client + '...');
