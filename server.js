@@ -6,8 +6,9 @@ const express    = require('express'),
       passport   = require('passport'),
 	    session    = require('express-session'),
       cors       = require('cors'),
-      proxy      = require('http-proxy-middleware'),
+      //proxy      = require('http-proxy-middleware'),
       path       = require('path'),
+      MongoDBStore = require('connect-mongodb-session')(session),
 	    app        = express();
 	
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
@@ -15,7 +16,15 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig);	
 
-const MongoStore = require('connect-mongo')(session)
+
+let store = new MongoDBStore({
+  uri: process.env.MONGO_URI,
+  collection: 'NightOwl'
+});
+
+store.on('error', (error) => {
+  console.log(error);
+});
      
 let options = ({
 	origin : 'https://night-owls.glitch.me',
@@ -53,11 +62,11 @@ const wpServer = new webpackDevServer(compiler, devServerOptions),
 //   })
 // );
 
-app.use('/api' , proxy({
-  pathRewrite : {'^api' : ''},
-  target: 'localhost',
-  port: server,
-}))
+// app.use('/api' , proxy({
+//   pathRewrite : {'^api' : ''},
+//   target: 'localhost',
+//   port: server,
+// }))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -78,11 +87,8 @@ if( app.get('env') === 'production') {
   //config.cookie.sameSite = true;
 }
 
-app.use(session(config, {
-    store: new MongoStore({
-    url: process.env.MONGO_URI,
-    autoRemove: 'disabled'
-  })
+app.use(session(config,
+              
   }));
 
 
