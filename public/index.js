@@ -321,9 +321,7 @@ const SearchResults = props => {
       let yelp  = obj[i],
           price = yelp.price,
           phone = yelp.display_phone;
-      //if(phone) {
-        console.log({phone: yelp.phone || 'NA', display_phone: yelp.display_phone || 'NA'})
-      //}
+
       // find closest zip code to coordinates
       if (dist > yelp.distance) {
         dist = yelp.distance;
@@ -402,10 +400,10 @@ const SearchResults = props => {
               <span className="phone">
                 Telephone:
                 <a
-                  href={ phone? "tel:" + yelp.phone : ''}
-                  target={ phone? "_blank" : ''}
-                  title={ phone? "Call Restaurant" : 'No listing'}
-                  dangerouslySetInnerHTML={{ __html: ` ` + ( phone ? yelp.display_phone : `Unavailable`) }}
+                  href={"tel:" + yelp.phone}
+                  target="_blank"
+                  title={ phone? "Call Restaurant" : "No listing available"}
+                  dangerouslySetInnerHTML={{ __html: phone ? " " + yelp.display_phone : " Unavailable" }}
                 />
               </span>
               <br />
@@ -413,12 +411,12 @@ const SearchResults = props => {
                 className="rate"
                 dangerouslySetInnerHTML={{
                   __html:
-                    `Price: ` + price + ` ` + costDescription[price.length]
+                    "Price: " + price + " " + costDescription[price.length]
                 }}
               />
               <br />
               <span
-                dangerouslySetInnerHTML={{ __html: `Rating: ` + yelp.rating }}
+                dangerouslySetInnerHTML={{ __html: "Rating: " + yelp.rating }}
               />
             </p>
           </div>
