@@ -168,8 +168,10 @@ class App extends Component {
             let teleLink = phoneClass[i].firstElementChild;
             if(teleLink.innerHTML === " Unavailable") {
               // teleLink.style.color = "black";
-              teleLink.removeAttribute("href");
+              //teleLink.removeAttribute("href");
               //teleLink.removeAttribute("target");
+              teleLink.remove();
+              phoneClass[i].innerHTML = 'Telephone: Unavailable'
             }
             let count = 0,
                 bttn  = this.rsvpBttn[i].firstElementChild;
@@ -406,7 +408,7 @@ const SearchResults = props => {
               />
               <br />
               <span className="phone">
-                Telephone:
+                Telephone: 
                 <a
                   href={"tel:" + yelp.phone}
                   title={ phone? "Call Restaurant" : "No listing available"}
