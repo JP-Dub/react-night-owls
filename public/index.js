@@ -299,7 +299,7 @@ class Main extends Component {
 // build the search results UI
 const SearchResults = props => {
   //const input = document.getElementById('location-input');
-  let obj = props.data,
+  let obj    = props.data,
       locale = props.searchLocation,
       dist   = obj[obj.length - 1].distance,
       input  = props.input,
@@ -318,10 +318,9 @@ const SearchResults = props => {
     if (load.classList.value === "loading") load.classList.remove("loading");
 
     const results = arr.map((key, i) => {
-      let yelp = obj[i],
-          price = yelp.price;
-      
-      if (!price) price = "";
+      let yelp  = obj[i],
+          price = yelp.price,
+          display_phone = yelp.display_phone;
 
       // find closest zip code to coordinates
       if (dist > yelp.distance) {
@@ -339,6 +338,8 @@ const SearchResults = props => {
 
       // no image will revert to 'no image available' icon
       if (!yelp.image_url) yelp.image_url = noImage;
+      if (!price) price = "";
+      if (!display_phone) display_phone = " Unavailable"
 
       let businesscard = "businesscard_" + i;
       return (
@@ -383,7 +384,7 @@ const SearchResults = props => {
                 href={"https://www.yelp.com/map/" + yelp.alias}
                 target="_blank"
                 title="Get Directions"
-                rel="external"
+                rel="external noopener noreferrer"
                 dangerouslySetInnerHTML={{
                   __html:
                     yelp.location.address1 +
@@ -402,7 +403,7 @@ const SearchResults = props => {
                   href={yelp.phone}
                   target="_blank"
                   title="Call Number"
-                  dangerouslySetInnerHTML={{ __html: ` ` + yelp.display_phone }}
+                  dangerouslySetInnerHTML={{ __html: ` ` + display_phone }}
                 />
               </span>
               <br />

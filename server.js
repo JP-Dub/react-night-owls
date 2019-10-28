@@ -78,7 +78,7 @@ let config = {
 	saveUninitialized: true
 }
 
-console.log(app.get('env'), config)
+console.log(app.get('env'))
 
 if( app.get('env') === 'production') {
   
@@ -90,7 +90,7 @@ if( app.get('env') === 'production') {
 app.use(session(config));
 
 
-//console.log(config)
+console.log(config)
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
