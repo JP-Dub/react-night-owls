@@ -150,10 +150,12 @@ class App extends Component {
 
   loadBttnEvents() {
     let bttnLength = this.rsvpBttn.length;
-    
+    let phoneClass = document.getElementsByClassName('phone');
+    console.log(phoneClass)
     if (this.demo) {
       // demo mode populates rsvp bttn
       for (let i = 0; i < bttnLength; i++) {
+        
         this.rsvpBttn[i].firstElementChild.innerHTML = Math.floor(
           Math.random() * Math.floor(201)
         );
@@ -164,7 +166,7 @@ class App extends Component {
          
           for (let i = 0; i < bttnLength; i++) {
             let count = 0,
-                bttn = this.rsvpBttn[i].firstElementChild;
+                bttn  = this.rsvpBttn[i].firstElementChild;
             for (let j = 0; j < clicks.length; j++) {
               if (bttn.id === clicks[j].id) {
                 count = clicks[j].count;
