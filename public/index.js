@@ -319,11 +319,11 @@ const SearchResults = props => {
 
     const results = arr.map((key, i) => {
       let yelp  = obj[i],
-          price = yelp.price;
-          //display_phone = yelp.display_phone;
-      if(!yelp.display_phone) {
-        console.log('yelp.phone', yelp.phone)
-      }
+          price = yelp.price,
+          phone = yelp.display_phone;
+      //if(phone) {
+        console.log({phone: yelp.phone || 'NA', display_phone: yelp.display_phone || 'NA'})
+      //}
       // find closest zip code to coordinates
       if (dist > yelp.distance) {
         dist = yelp.distance;
@@ -402,10 +402,10 @@ const SearchResults = props => {
               <span className="phone">
                 Telephone:
                 <a
-                  href={yelp.display_phone? yelp.phone : ''}
-                  target={yelp.display_phone? "_blank" : ''}
-                  title="Call Restaurant"
-                  dangerouslySetInnerHTML={{ __html: ` ` + (yelp.display_phone ? yelp.display_phone : `Unavailable`) }}
+                  href={ phone? "tel:" + yelp.phone : ''}
+                  target={ phone? "_blank" : ''}
+                  title={ phone? "Call Restaurant" : 'No listing'}
+                  dangerouslySetInnerHTML={{ __html: ` ` + ( phone ? yelp.display_phone : `Unavailable`) }}
                 />
               </span>
               <br />
