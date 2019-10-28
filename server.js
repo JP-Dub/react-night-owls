@@ -14,6 +14,8 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
 	    webpackConfig = require('./webpack.config'),
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig);	
+
+const MongoStore = require('connect-mongo')(session)
      
 let options = ({
 	origin : 'https://night-owls.glitch.me',
@@ -43,7 +45,7 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 
 const wpServer = new webpackDevServer(compiler, devServerOptions),
       client = process.env.PORT,
-      server = client === '8080'? 3000 : 8080;
+      server = 3000;
 // app.use('/api', proxy({
 //     target:'http://localhost:8080',
 //     logLevel: 'debug',
@@ -74,14 +76,23 @@ app.set('trust proxy', 1);
 console.log(app.get('env'))
 
 // if( app.get('env') === 'production') {
-//   console.log('webpack mode = production')
+  
 //   app.set('trust proxy', 1);
 //   config.cookie.secure = true;
 //   config.cookie.sameSite = true;
 // }
 
-app.use(session(config));
+app.use(session({
+  secret: 'NightOwlsReact',
+  store: new MongoStore({
+    url: process.env.MONGO_URI,
+    autoRemove: 'disabled'
+  })
+}));
+
+
 console.log(config)
+
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(passport.initialize());
@@ -89,8 +100,6 @@ app.use(passport.session());
 
 routes(app, passport, cors);
 
-
-console.log('client: ', client, server)
 app.listen(client,  function () {
 	console.log('Node.js listening on port ' + client + '...');
 });
