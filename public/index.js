@@ -169,7 +169,6 @@ class App extends Component {
             if(teleLink.innerHTML === " Unavailable") {
               // teleLink.style.color = "black";
               //teleLink.removeAttribute("href");
-              //teleLink.removeAttribute("target");
               teleLink.remove();
               phoneClass[i].innerHTML = 'Telephone: Unavailable'
             }
@@ -408,12 +407,12 @@ const SearchResults = props => {
               />
               <br />
               <span className="phone">
-                Telephone: 
+                Telephone: {!phone? "Unavailable" : 
                 <a
                   href={"tel:" + yelp.phone}
                   title={ phone? "Call Restaurant" : "No listing available"}
                   dangerouslySetInnerHTML={{ __html: phone ? " " + yelp.display_phone : " Unavailable" }}
-                />
+                />}
               </span>
               <br />
               <span
