@@ -6,7 +6,7 @@ const express    = require('express'),
       passport   = require('passport'),
 	    session    = require('express-session'),
       cors       = require('cors'),
-      //proxy      = require('http-proxy-middleware'),
+      proxy      = require('http-proxy-middleware'),
       path       = require('path'),
       MongoDBStore = require('connect-mongodb-session')(session),
 	    app        = express();
@@ -15,7 +15,6 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
 	    webpackConfig = require('./webpack.config'),
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig);	
-
 
 let store = new MongoDBStore({
   uri: process.env.MONGO_URI,
@@ -72,10 +71,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
  
 let config = {
-	secret: 'NightOwlsReact',
-	resave: false,
-	saveUninitialized: true,
-  cookie : new Object()
+	secret : 'NightOwlsReact',
+  cookie : new Object(),
+  store  : store,
+	resave : false,
+	saveUninitialized: true
 }
 
 console.log(app.get('env'), config)
@@ -87,12 +87,10 @@ if( app.get('env') === 'production') {
   //config.cookie.sameSite = true;
 }
 
-app.use(session(config,
-              
-  }));
+app.use(session(config));
 
 
-console.log(config)
+//console.log(config)
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
