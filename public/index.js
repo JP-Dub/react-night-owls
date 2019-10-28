@@ -409,7 +409,6 @@ const SearchResults = props => {
                 Telephone:
                 <a
                   href={"tel:" + yelp.phone}
-                  
                   title={ phone? "Call Restaurant" : "No listing available"}
                   dangerouslySetInnerHTML={{ __html: phone ? " " + yelp.display_phone : " Unavailable" }}
                 />
