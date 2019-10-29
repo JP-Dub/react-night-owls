@@ -105,10 +105,6 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-app.get('/', (req, res) => {
-  console.log(req.)
-})
-
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(passport.initialize());

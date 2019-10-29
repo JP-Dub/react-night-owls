@@ -150,12 +150,11 @@ class App extends Component {
 
   loadBttnEvents() {
     let bttnLength = this.rsvpBttn.length;
-    let phoneClass = document.getElementsByClassName('phone');
-    console.log(phoneClass)
+    //let phoneClass = document.getElementsByClassName('phone');
+    
     if (this.demo) {
       // demo mode populates rsvp bttn
-      for (let i = 0; i < bttnLength; i++) {
-        
+      for (let i = 0; i < bttnLength; i++) {        
         this.rsvpBttn[i].firstElementChild.innerHTML = Math.floor(
           Math.random() * Math.floor(201)
         );
@@ -165,13 +164,13 @@ class App extends Component {
       ajax.ready(ajax.request("GET", "/rsvp/clicks", {}, clicks => {
           
           for (let i = 0; i < bttnLength; i++) {
-            let teleLink = phoneClass[i].firstElementChild;
-            if(teleLink.innerHTML === " Unavailable") {
-              // teleLink.style.color = "black";
-              //teleLink.removeAttribute("href");
-              teleLink.remove();
-              phoneClass[i].innerHTML = 'Telephone: Unavailable'
-            }
+            // let teleLink = phoneClass[i].firstElementChild;
+            // if(teleLink.innerHTML === " Unavailable") {
+            //   // teleLink.style.color = "black";
+            //   //teleLink.removeAttribute("href");
+            //   teleLink.remove();
+            //   phoneClass[i].innerHTML = 'Telephone: Unavailable'
+            // }
             let count = 0,
                 bttn  = this.rsvpBttn[i].firstElementChild;
             for (let j = 0; j < clicks.length; j++) {
@@ -406,11 +405,14 @@ const SearchResults = props => {
                 }}
               />
               <br />
-              <span className="phone">
+              <span 
+                className="phone"
+                title={ phone? "Call Restaurant" : "No listing available"}
+                >
                 Telephone: {!phone? "Unavailable" : 
                 <a
                   href={"tel:" + yelp.phone}
-                  title={ phone? "Call Restaurant" : "No listing available"}
+                  
                   dangerouslySetInnerHTML={{ __html: phone ? " " + yelp.display_phone : " Unavailable" }}
                 />}
               </span>
