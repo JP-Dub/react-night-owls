@@ -4,6 +4,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import "../public/css/style.css";
 import noImage from "../public/img/NoProductImage_300.jpg";
 
+
+
 // Main Component
 class App extends Component {
   constructor(props) {
