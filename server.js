@@ -8,7 +8,7 @@ const express    = require('express'),
       cors       = require('cors'),
       proxy      = require('http-proxy-middleware'),
       path       = require('path'),
-      MongoDBStore = require('connect-mongodb-session')(session),
+      MongoDBStore = require('connect-mongodb-session')(session),      
 	    app        = express();
 	
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
@@ -16,17 +16,17 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig);	
 
-// let store = new MongoDBStore({
-//   uri: process.env.MONGO_URI,
-//   databaseName: 'mlab',
-//   collection  : 'NightOwl'
-// }, error => {
-//   if(error) console.log('error', error);
-// });
+let store = new MongoDBStore({
+  uri: process.env.MONGO_URI,
+  databaseName: 'mlab',
+  collection  : 'NightOwl'
+}, error => {
+  if(error) console.log('error', error);
+});
 
-// store.on('error', error => {
-//   console.log(error);
-// })
+store.on('error', error => {
+  console.log(error);
+})
      
 let options = ({
 	origin : 'https://night-owls.glitch.me',
@@ -47,7 +47,10 @@ mongoose.connect(process.env.MONGO_URI, {
 
 mongoose.Promise = global.Promise;
 
+let db = mongoose.connection;
 
+db.on('connected', () => { console.log('Mongoose defaulte connection done') });
+db.on('error', (err) => { console.log('Mongoose default connection error: ' + err) });
 
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 	stats: {
@@ -97,9 +100,7 @@ app.use(session({
   cookie : {
     secure: true
   },
-  store  : new MongoDBStore({
-    mongooseConnection: mongoose.connection
-  }),
+  store  : new MongoDBStore(),
 	resave : false,
 	saveUninitialized: true
 }));
