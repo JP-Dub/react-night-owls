@@ -16,13 +16,17 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig);	
 
-let store = new MongoDBStore({
-  uri: process.env.MONGO_URI,
-  databaseName: 'mlab',
-  collection  : 'NightOwl'
-}, error => {
-  if(error) console.log('error', error);
-});
+// let store = new MongoDBStore({
+//   uri: process.env.MONGO_URI,
+//   databaseName: 'mlab',
+//   collection  : 'NightOwl'
+// }, error => {
+//   if(error) console.log('error', error);
+// });
+
+// store.on('error', error => {
+//   console.log(error);
+// })
      
 let options = ({
 	origin : 'https://night-owls.glitch.me',
@@ -42,6 +46,8 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 mongoose.Promise = global.Promise;
+
+
 
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 	stats: {
@@ -91,7 +97,9 @@ app.use(session({
   cookie : {
     secure: true
   },
-  store  : store,
+  store  : new MongoDBStore({
+    mongooseConnection: mongoose.connection
+  }),
 	resave : false,
 	saveUninitialized: true
 }));
