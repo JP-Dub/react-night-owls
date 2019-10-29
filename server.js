@@ -21,7 +21,7 @@ let store = new MongoDBStore({
   databaseName: 'mlab',
   collection  : 'NightOwl'
 }, error => {
-  console.log(error);
+  if(error) console.log('error', error);
 });
      
 let options = ({
@@ -68,7 +68,25 @@ const wpServer = new webpackDevServer(compiler, devServerOptions),
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
  
-let config = {
+// let config = {
+// 	secret : 'NightOwlsReact',
+//   cookie : {
+//     secure: true
+//   },
+//   store  : store,
+// 	resave : false,
+// 	saveUninitialized: true
+// }
+
+console.log('environment=', app.get('env'))
+
+// if( app.get('env') === 'production') {
+//   config.cookie.secure = true;
+//   //config.cookie.sameSite = true;
+// }
+
+app.set('trust proxy', 1);
+app.use(session({
 	secret : 'NightOwlsReact',
   cookie : {
     secure: true
@@ -76,21 +94,7 @@ let config = {
   store  : store,
 	resave : false,
 	saveUninitialized: true
-}
-
-console.log(app.get('env'))
-
-// if( app.get('env') === 'production') {
-  
-  
-//   config.cookie.secure = true;
-//   //config.cookie.sameSite = true;
-// }
-app.set('trust proxy', 1);
-app.use(session(config));
-
-
-console.log(config)
+}));
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
