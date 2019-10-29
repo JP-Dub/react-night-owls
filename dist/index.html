@@ -21,12 +21,12 @@
     <noscript id="noscript">Your browser does not support JavaScript!</noscript>
     <script>
       let icon, bootstrap, font;
-        let arr = [icon, bootstrap, font];
+      let arr = [icon, bootstrap, font];
 
-for(var i = 0; i < arr.length; i++) {
-  
-}
-      let icon = document.createElement('link');
+      for(var i = 0; i < arr.length; i++) {
+        arr[i] = document.createElement('link');
+      }
+      
       icon.setAttribute('rel', 'icon');
       icon.setAttribute('href', 'https://cdn.glitch.com/789cbad2-e5a4-401c-a6e2-12d806d92669%2FReact%20favicon.ico?v=1572375358469');
       var head = document.getElementsByTagName('head');
