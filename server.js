@@ -18,10 +18,9 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
 
 let store = new MongoDBStore({
   uri: process.env.MONGO_URI,
-  collection: 'NightOwl'
-});
-
-store.on('error', (error) => {
+  databaseName: 'mlab',
+  collection  : 'NightOwl'
+}, error => {
   console.log(error);
 });
      
@@ -43,7 +42,6 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 mongoose.Promise = global.Promise;
-
 
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 	stats: {
@@ -72,7 +70,9 @@ app.use(bodyParser.urlencoded({extended: true}));
  
 let config = {
 	secret : 'NightOwlsReact',
-  cookie : new Object(),
+  cookie : {
+    secure: true
+  },
   store  : store,
 	resave : false,
 	saveUninitialized: true
@@ -80,13 +80,13 @@ let config = {
 
 console.log(app.get('env'))
 
-if( app.get('env') === 'production') {
+// if( app.get('env') === 'production') {
   
-  app.set('trust proxy', 1);
-  config.cookie.secure = true;
-  //config.cookie.sameSite = true;
-}
-
+  
+//   config.cookie.secure = true;
+//   //config.cookie.sameSite = true;
+// }
+app.set('trust proxy', 1);
 app.use(session(config));
 
 
