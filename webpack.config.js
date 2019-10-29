@@ -64,7 +64,8 @@ module.exports = {
    plugins:[
      new HtmlWebpackPlugin({
          template: './dist/index.html',
-         inject: 'body',
+         inject: true,
+         favicon: 'https://cdn.glitch.com/8383db98-19b9-4935-9b88-7f14c9e50cf9%2FReact%20favicon.ico?v=1563472924120',
          showErrors: true,
          cache : true
       }),
