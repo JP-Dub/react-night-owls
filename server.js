@@ -16,7 +16,7 @@ const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server')
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig);	
 
-let store = new MongoDBStore({
+const store = new MongoDBStore({
   uri: process.env.MONGO_URI,
   databaseName: 'mlab',
   collection  : 'NightOwl'
@@ -49,7 +49,7 @@ mongoose.Promise = global.Promise;
 
 let db = mongoose.connection;
 
-db.on('connected', () => { console.log('Mongoose defaulte connection done') });
+db.on('connected', () => { console.log('Mongoose default connection done') });
 db.on('error', (err) => { console.log('Mongoose default connection error: ' + err) });
 
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
@@ -96,14 +96,18 @@ console.log('environment=', app.get('env'))
 
 app.set('trust proxy', 1);
 app.use(session({
-	secret : 'NightOwlsReact',
-  cookie : {
+	secret: 'NightOwlsReact',
+  cookie: {
     secure: true
   },
-  store  : new MongoDBStore(),
-	resave : false,
+  store : store,
+	resave: false,
 	saveUninitialized: true
 }));
+
+app.get('/', (req, res) => {
+  console.log(req.)
+})
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
