@@ -11,9 +11,9 @@
       <meta name="robots" content="index, nofollow">
       <meta name="revisit-after" content="3 month">		
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-      
+<!--       
     	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	</head>
 	
 	<body>       
@@ -22,20 +22,35 @@
     <script>
       let icon, bootstrap, font;
       let arr = [icon, bootstrap, font];
-
-      for(var i = 0; i < arr.length; i++) {
-        arr[i] = document.createElement('LINK');
-        if(i > 0) {
-          arr[i].setAttribute('rel', 'stylesheet');
+      let head = document.getElementsByTagName('head');
+      let create = {      
+        link : () => {
+          return document.createElement('LINK')
+        },
+        rel : (el, data) => {
+          return el.setAttribute('rel', data )
+        },
+        href : (el, data) => {
+          return el.setAttribute('rel', data )
+        },
+        app : (el) => {
+          return head[0].append(el)
         }
+
       }
-      
-      icon.setAttribute('rel', 'icon');
-      icon.setAttribute('href', 'https://cdn.glitch.com/789cbad2-e5a4-401c-a6e2-12d806d92669%2FReact%20favicon.ico?v=1572375358469');
-      bootstrap.setAttribute('href', "https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
-      
-      var head = document.getElementsByTagName('head');
-      head[0].append(icon);
+      icon = create.link();
+      create.rel(icon, 'stylesheet');
+      create.href(icon, "https://cdn.glitch.com/789cbad2-e5a4-401c-a6e2-12d806d92669%2FReact%20favicon.ico?v=1572375358469");
+      create.app(icon)
+      console.log(icon)
+      // icon.setAttribute('rel', 'icon');
+      // icon.setAttribute('href', "https://cdn.glitch.com/789cbad2-e5a4-401c-a6e2-12d806d92669%2FReact%20favicon.ico?v=1572375358469");
+      // bootstrap.setAttribute('href', "https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+      // font.setAttribute('href', "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+      // var head = document.getElementsByTagName('head');
+      // for(let i = 0; i < arr.length; i++) {
+      //   head[0].append(arr[i]);
+      // }
       console.log(head[0])
     </script>
 	</body>
