@@ -188,11 +188,10 @@ class App extends Component {
 
   getLocation(next) {
     const showError = (error) => {
-      console.log('error', error, error.message.indexOf("Only secure origins are allowed"))
+      if(error.message.indexOf("Only secure origins are allowed") === 0) {
+        return alert(error.message);
+      }
       switch (error.code) {
-        case error.MESSAGE:
-          alert(error.message);
-          break;
         case error.PERMISSION_DENIED:
           console.log("User denied the request for Geolocation.");
           break;
