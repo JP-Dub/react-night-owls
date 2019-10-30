@@ -187,25 +187,6 @@ class App extends Component {
   }
 
   getLocation(next) {
-    const showError = (error) => {
-      if(error.message.indexOf("Only secure origins are allowed") === 0) {
-        return alert(error.message);
-      }
-      switch (error.code) {
-        case error.PERMISSION_DENIED:
-          console.log("User denied the request for Geolocation.");
-          break;
-        case error.POSITION_UNAVAILABLE:
-          console.log("Location information is unavailable.");
-          break;
-        case error.TIMEOUT:
-          console.log("The request to get user location timed out.");
-          break;
-        case error.UNKNOWN_ERROR:
-          console.log("An unknown error occurred.");
-          break;
-      }
-    };
     
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition( (position) => {
@@ -213,12 +194,28 @@ class App extends Component {
           latitude : position.coords.latitude,
           longitude: position.coords.longitude
         });
-      }, showError);
+      }, (error) => {
+        if(error.message.indexOf("Only secure origins are allowed") === 0) {
+          return alert("Only secure origins are allowed");
+        }
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            console.log("User denied the request for Geolocation.");
+            break;
+          case error.POSITION_UNAVAILABLE:
+            console.log("Location information is unavailable.");
+            break;
+          case error.TIMEOUT:
+            console.log("The request to get user location timed out.");
+            break;
+          case error.UNKNOWN_ERROR:
+            console.log("An unknown error occurred.");
+            break;
+        }        
+        });
     } else {
       alert("Geolocation is not supported by this browser.");
     }
-
-
   }
 
   render() {
