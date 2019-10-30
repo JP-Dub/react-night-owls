@@ -187,21 +187,12 @@ class App extends Component {
   }
 
   getLocation(next) {
-    console.log(navigator.geolocation)
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition( (position) => {
-        next({
-          latitude : position.coords.latitude,
-          longitude: position.coords.longitude
-        });
-      }, showError);
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
-
     const showError = (error) => {
-      console.log('error', error.message.indexOf("Only secure origins are allowed"))
+      console.log('error', error, error.message.indexOf("Only secure origins are allowed"))
       switch (error.code) {
+        case error.MESSAGE:
+          alert(error.message);
+          break;
         case error.PERMISSION_DENIED:
           console.log("User denied the request for Geolocation.");
           break;
@@ -216,6 +207,19 @@ class App extends Component {
           break;
       }
     };
+    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition( (position) => {
+        next({
+          latitude : position.coords.latitude,
+          longitude: position.coords.longitude
+        });
+      }, showError);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+
+
   }
 
   render() {
