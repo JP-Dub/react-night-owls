@@ -187,6 +187,7 @@ class App extends Component {
   }
 
   getLocation(next) {
+    alert('location?')
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         next({
@@ -199,6 +200,7 @@ class App extends Component {
     }
 
     const showError = error => {
+      console.log(error)
       switch (error.code) {
         case error.PERMISSION_DENIED:
           console.log("User denied the request for Geolocation.");
