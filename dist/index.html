@@ -24,11 +24,16 @@
       let arr = [icon, bootstrap, font];
 
       for(var i = 0; i < arr.length; i++) {
-        arr[i] = document.createElement('link');
+        arr[i] = document.createElement('LINK');
+        if(i > 0) {
+          arr[i].setAttribute('rel', 'stylesheet');
+        }
       }
       
       icon.setAttribute('rel', 'icon');
       icon.setAttribute('href', 'https://cdn.glitch.com/789cbad2-e5a4-401c-a6e2-12d806d92669%2FReact%20favicon.ico?v=1572375358469');
+      bootstrap.setAttribute('href', "https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+      
       var head = document.getElementsByTagName('head');
       head[0].append(icon);
       console.log(head[0])
