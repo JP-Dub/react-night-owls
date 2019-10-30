@@ -9,9 +9,12 @@ const compression = require('compression'),
       cors        = require('cors'),
       proxy       = require('http-proxy-middleware'),
       path        = require('path'),
-      MongoDBStore= require('connect-mongodb-session')(session),      
-	    app         = express();
+      MongoDBStore= require('connect-mongodb-session')(session);      
+	    
+const app = express();
 	
+app.use(compression());
+
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
 	    webpackConfig = require('./webpack.config'),
       webpack       = require('webpack'),
@@ -25,9 +28,9 @@ const store = new MongoDBStore({
   if(error) console.log('error', error);
 });
 
-store.on('error', error => {
-  console.log(error);
-})
+// store.on('error', error => {
+//   console.log(error);
+// })
 
 // app.set('production')
      
@@ -52,8 +55,8 @@ mongoose.Promise = global.Promise;
 
 let db = mongoose.connection;
 
-db.on('connected', () => { console.log('Mongoose default connection done') });
-db.on('error', (err) => { console.log('Mongoose default connection error: ' + err) });
+// db.on('connected', () => { console.log('Mongoose default connection done') });
+// db.on('error', (err) => { console.log('Mongoose default connection error: ' + err) });
 
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 	stats: {
