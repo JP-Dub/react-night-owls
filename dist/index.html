@@ -20,28 +20,28 @@
     <div id="root"></div>
     <noscript id="noscript">Your browser does not support JavaScript!</noscript>
     <script>
-      let icon, bootstrap, font;
-      let arr = [icon, bootstrap, font];
-      let head = document.getElementsByTagName('head');
-      let create = {      
-        link : () => {
-          return document.createElement('LINK')
-        },
-        rel : (el, data) => {
-          return el.setAttribute('rel', data )
-        },
-        href : (el, data) => {
-          return el.setAttribute('rel', data )
-        },
-        app : (el) => {
-          return head[0].append(el)
-        }
 
+      let head = document.getElementsByTagName('head');
+      
+      const create = (obj) => {
+        let el = document.createElement('LINK');
+        el.setAttribute('rel', obj.type);
+        el.setAttribute('href', obj.href);
+        head[0].append(el);
+        //return el;
       }
-      icon = create.link();
-      create.rel(icon, 'stylesheet');
-      create.href(icon, "https://cdn.glitch.com/789cbad2-e5a4-401c-a6e2-12d806d92669%2FReact%20favicon.ico?v=1572375358469");
-      create.app(icon)
+      
+      create({type : "icon",
+              href :  "https://cdn.glitch.com/789cbad2-e5a4-401c-a6e2-12d806d92669%2FReact%20favicon.ico?v=1572375358469"
+            });
+      create({
+        type: "rel",
+        href:  "https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      })
+      //icon = create.link()
+      // create.rel(icon, 'icon');
+      // create.href(icon, "https://cdn.glitch.com/789cbad2-e5a4-401c-a6e2-12d806d92669%2FReact%20favicon.ico?v=1572375358469");
+      // create.app(icon)
       console.log(icon)
       // icon.setAttribute('rel', 'icon');
       // icon.setAttribute('href', "https://cdn.glitch.com/789cbad2-e5a4-401c-a6e2-12d806d92669%2FReact%20favicon.ico?v=1572375358469");
