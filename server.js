@@ -1,15 +1,16 @@
 'use strict'
-const express    = require('express'),
-      bodyParser = require('body-parser'),
-      routes     = require('./app/routes/index.js'),
-	    mongoose   = require('mongoose'),
-      passport   = require('passport'),
-	    session    = require('express-session'),
-      cors       = require('cors'),
-      proxy      = require('http-proxy-middleware'),
-      path       = require('path'),
-      MongoDBStore = require('connect-mongodb-session')(session),      
-	    app        = express();
+const compression = require('compression'),
+      express     = require('express'),
+      bodyParser  = require('body-parser'),
+      routes      = require('./app/routes/index.js'),
+	    mongoose    = require('mongoose'),
+      passport    = require('passport'),
+	    session     = require('express-session'),
+      cors        = require('cors'),
+      proxy       = require('http-proxy-middleware'),
+      path        = require('path'),
+      MongoDBStore= require('connect-mongodb-session')(session),      
+	    app         = express();
 	
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
 	    webpackConfig = require('./webpack.config'),
@@ -27,6 +28,8 @@ const store = new MongoDBStore({
 store.on('error', error => {
   console.log(error);
 })
+
+// app.set('production')
      
 let options = ({
 	origin : 'https://night-owls.glitch.me',
