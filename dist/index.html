@@ -23,7 +23,8 @@
     <script>
       
       let head = document.head;
-      
+      console.log(document.readyState)
+      if( document.readyState == 'loading') {
       const createLink = (obj) => {
         let link  = document.createElement('LINK');
         link.rel  = obj.type;
@@ -44,6 +45,8 @@
         type: "rel",
         href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       });
+      
+      )
 
       console.log(head)
     </script>
