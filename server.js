@@ -32,7 +32,7 @@ const store = new MongoDBStore({
 //   console.log(error);
 // })
 
-// app.set('production')
+
      
 let options = ({
 	origin : 'https://night-owls.glitch.me',
@@ -78,23 +78,6 @@ const wpServer = new webpackDevServer(compiler, devServerOptions),
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
  
-// let config = {
-// 	secret : 'NightOwlsReact',
-//   cookie : {
-//     secure: true
-//   },
-//   store  : store,
-// 	resave : false,
-// 	saveUninitialized: true
-// }
-
-console.log('environment=', app.get('env'))
-
-// if( app.get('env') === 'production') {
-//   config.cookie.secure = true;
-//   //config.cookie.sameSite = true;
-// }
-
 app.set('trust proxy', 1);
 app.use(session({
 	secret: 'NightOwlsReact',
@@ -113,7 +96,7 @@ app.use(passport.session());
 
 routes(app, passport, cors);
 
-app.listen(client,  function () {
+app.listen(client, () => {
 	console.log('Node.js listening on port ' + client + '...');
 });
 

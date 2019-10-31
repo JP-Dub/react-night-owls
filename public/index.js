@@ -231,17 +231,19 @@ class App extends Component {
                   id="login"
                   className="btn btn-default"
                   type="button"
-                  title="Twitter"
+                  title="Log in with Twitter"
+                  aria-label='Log in with twitter'
                   onClick={this.twitterHandler}
                 >
                 <i className="fa fa-twitter"></i>
                 </button>
               </div>
-              <label for="input-location">
+              <label 
+                for="input-location"
+                aria-label='Enter search value'>
               <input
                 id="input-location"
                 className="form-control"
-                name="Search location input"
                 type="text"
                 placeholder="Search location"
                 value={this.state.value}
@@ -249,10 +251,12 @@ class App extends Component {
               />
               </label>
               <div className="input-group-btn">
-                <button id="search" 
+                <button 
+                  id="search" 
                   className="btn btn-default" 
                   type="submit"
-                  name='Start search'
+                  title="Start search"
+                  aria-label='Start search'
                   >
                   <span className="glyphicon glyphicon-search" />
                 </button>
