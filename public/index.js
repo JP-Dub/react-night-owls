@@ -241,6 +241,7 @@ class App extends Component {
               <input
                 id="location-input"
                 className="form-control"
+                name="Search location input"
                 type="text"
                 placeholder="Search location"
                 value={this.state.value}
@@ -248,7 +249,12 @@ class App extends Component {
               />
               </label>
               <div className="input-group-btn">
-                <button id="search" className="btn btn-default" type="submit">
+                <button id="search" 
+                  className="btn btn-default" 
+                  type="submit"
+                  type='button'
+                  name='Start search'
+                  >
                   <span className="glyphicon glyphicon-search" />
                 </button>
               </div>
