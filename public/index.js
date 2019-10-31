@@ -35,7 +35,7 @@ class App extends Component {
     this.login = RegExp("^/login/.*").test(path);
     this.demo  = RegExp("^/rsvp/.*").test(path);
     this.load  = document.getElementById("load");
-    this.input = document.getElementById("location-input");
+    this.input = document.getElementById("input-location");
     this.rsvpBttn = document.getElementsByClassName("bttn");
     
     this.findLocation = (evt) => {
@@ -96,7 +96,7 @@ class App extends Component {
     window.location.href = "/api/auth/twitter";
   }
 
-  yelpHandler(locale) {
+  yelpHandler(locale) {    
     this.load.classList.add("loading");
 
     if (typeof locale === "object")
@@ -234,12 +234,12 @@ class App extends Component {
                   title="Twitter"
                   onClick={this.twitterHandler}
                 >
-                  <i className="fa fa-twitter"></i>
+                <i className="fa fa-twitter"></i>
                 </button>
               </div>
-              <label>
+              <label for="input-location">
               <input
-                id="location-input"
+                id="input-location"
                 className="form-control"
                 name="Search location input"
                 type="text"
@@ -252,7 +252,6 @@ class App extends Component {
                 <button id="search" 
                   className="btn btn-default" 
                   type="submit"
-                  type='button'
                   name='Start search'
                   >
                   <span className="glyphicon glyphicon-search" />
