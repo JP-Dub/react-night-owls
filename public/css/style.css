@@ -309,7 +309,7 @@ a:active {
  
 @media all and (max-width: 640px) and (min-width: 300px) {
   body {
-    font-size: .8em; 
+    font-size: 1em; 
   }
   .avgScreen {
     display: none;
