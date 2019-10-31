@@ -82,7 +82,8 @@ app.set('trust proxy', 1);
 app.use(session({
 	secret: 'NightOwlsReact',
   cookie: {
-    secure: true
+    secure  : true,
+    sameSite: 'none'
   },
   store : store,
 	resave: false,
