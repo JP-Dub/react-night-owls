@@ -258,7 +258,7 @@ class App extends Component {
                   title="Start search"
                   aria-label='Start search'
                   >
-                  <span className="glyphicon glyphicon-search" />
+                  <span className="fa fa-search" />
                 </button>
               </div>
             </div>
@@ -276,7 +276,7 @@ class App extends Component {
     );
   }
 }
-
+//glyphicon glyphicon-search
 // Error class React Component
 class ErrorBoundary extends Component {
   constructor(props) {
