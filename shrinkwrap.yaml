@@ -1,4 +1,5 @@
 dependencies:
+  '@types/react': 16.9.14
   body-parser: 1.19.0
   connect-mongodb-session: 2.2.0
   cors: 2.8.5
@@ -819,6 +820,17 @@ packages:
     dev: true
     resolution:
       integrity: sha512-u/SJDyXwuihpwjXy7hOOghagLEV1KdAST6syfnOk6QZAMzZuWZqXy5aYYZbh8Jdpd4escVFP0MvftHNDb9pruA==
+  /@types/prop-types/15.7.3:
+    dev: false
+    resolution:
+      integrity: sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
+  /@types/react/16.9.14:
+    dependencies:
+      '@types/prop-types': 15.7.3
+      csstype: 2.6.7
+    dev: false
+    resolution:
+      integrity: sha512-Q4tW4RGmR+u/CgzR8VqZcsUWjP4Pz/LcHfs9AzSG+aBnwq8As3Bid3vG1eGGsXg/xuR2k2tqNlI8pzyV8kxe0g==
   /@webassemblyjs/ast/1.8.5:
     dependencies:
       '@webassemblyjs/helper-module-context': 1.8.5
@@ -1810,6 +1822,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
+  /csstype/2.6.7:
+    dev: false
+    resolution:
+      integrity: sha512-9Mcn9sFbGBAdmimWb2gLVDtFJzeKtDGIr76TUqmjZrw9LFXBMSU70lcs+C0/7fyCd6iBDqmksUcCOUIkisPHsQ==
   /cyclist/1.0.1:
     dev: true
     resolution:
@@ -5972,6 +5988,7 @@ specifiers:
   '@babel/core': ^7.7.4
   '@babel/preset-env': ^7.7.4
   '@babel/preset-react': ^7.7.4
+  '@types/react': ^16.9.14
   babel-loader: ^8.0.6
   body-parser: ^1.19.0
   connect-mongodb-session: ^2.1.1
