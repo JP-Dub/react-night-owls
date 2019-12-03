@@ -26,9 +26,11 @@ class App extends Component {
     
     this.setState(state => {
       return {
-        title: (state.title = RegExp("^/rsvp/.*").test(path) 
+        title: (
+          state.title = RegExp("^/rsvp/.*").test(path) 
           ? "Night Owls Demo"
-          : "Night Owls")
+          : "Night Owls"
+        )
       };
     });
 
@@ -43,7 +45,7 @@ class App extends Component {
       let location = this.state.value;
      
       if (location.match(/demo/i)) return window.location.href = "/rsvp/demo";
-            
+            console.log(location)
       !location
         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
         : this.yelpHandler(location);        
