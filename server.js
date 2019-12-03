@@ -1,5 +1,5 @@
 'use strict'
-const compression = require('compression'),
+const 
       express     = require('express'),
       bodyParser  = require('body-parser'),
       routes      = require('./app/routes/index.js'),
@@ -12,8 +12,8 @@ const compression = require('compression'),
       MongoDBStore= require('connect-mongodb-session')(session);      
 	    
 const app = express();
-	
-app.use(compression());
+	//compression = require('compression'),
+// app.use(compression());
 
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
 	    webpackConfig = require('./webpack.config'),
