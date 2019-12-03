@@ -1,6 +1,5 @@
 'use strict'
-const 
-      express     = require('express'),
+const express     = require('express'),
       bodyParser  = require('body-parser'),
       routes      = require('./app/routes/index.js'),
 	    mongoose    = require('mongoose'),
@@ -12,7 +11,8 @@ const
       MongoDBStore= require('connect-mongodb-session')(session);      
 	    
 const app = express();
-	//compression = require('compression'),
+
+//compression = require('compression'),
 // app.use(compression());
 
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
@@ -67,12 +67,12 @@ const wpServer = new webpackDevServer(compiler, devServerOptions),
       client = process.env.PORT,
       server = 3000;
 
-// app.use('/api', proxy({
-//   target:'localhost',
-//   pathRewrite : {'^api' : ''},
-//   logLevel: 'debug',
-//   port: server
-// }));
+app.use('/api', proxy({
+  target:'localhost',
+  pathRewrite : {'^api' : ''},
+  logLevel: 'debug',
+  port: server
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
