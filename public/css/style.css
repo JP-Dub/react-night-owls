@@ -122,8 +122,8 @@ label {
      -moz-box-shadow: 0px 1px 3px inset #333;
           box-shadow: 0px 1px 3px inset #333;
   font-weight: normal;
-  
-  }
+  text-transform: capitalize;
+}
 
 #search.btn:hover {
   -webkit-box-shadow: -1px 2px 4px inset #333;
