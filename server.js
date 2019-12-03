@@ -63,6 +63,10 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 	stats: {
 		colors: true
 	},
+  target:'localhost',
+  pathRewrite : {'^api' : ''},
+  logLevel: 'debug',
+  port: server  
 });
 
 const wpServer = new webpackDevServer(compiler, devServerOptions),
