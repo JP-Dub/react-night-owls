@@ -67,12 +67,12 @@ const wpServer = new webpackDevServer(compiler, devServerOptions),
       client = process.env.PORT,
       server = 3000;
 
-// app.use('/api', proxy({
-//   target:'localhost',
-//   pathRewrite : {'^api' : ''},
-//   logLevel: 'debug',
-//   port: server
-// }));
+app.use('/api', proxy({
+  target:'localhost',
+  pathRewrite : {'^api' : ''},
+  logLevel: 'debug',
+  port: server
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
