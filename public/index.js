@@ -156,7 +156,7 @@ class App extends Component {
     
     if (this.demo) {
       // demo mode populates rsvp bttn
-      for (let i = 0; i < bttnLength; i++) {        
+      for(let i = 0; i < bttnLength; i++) {        
         this.rsvpBttn[i].firstElementChild.innerHTML = Math.floor(
           Math.random() * Math.floor(201)
         );
@@ -165,7 +165,7 @@ class App extends Component {
       // fetch all user rsvps       
       ajax.ready(ajax.request("GET", "/rsvp/clicks", {}, clicks => {
           
-          for (let i = 0; i < bttnLength; i++) {
+          for(let i = 0; i < bttnLength; i++) {
             // let teleLink = phoneClass[i].firstElementChild;
             // if(teleLink.innerHTML === " Unavailable") {
             //   // teleLink.style.color = "black";
@@ -175,7 +175,7 @@ class App extends Component {
             // }
             let count = 0,
                 bttn  = this.rsvpBttn[i].firstElementChild;
-            for (let j = 0; j < clicks.length; j++) {
+            for(let j = 0; j < clicks.length; j++) {
               if (bttn.id === clicks[j].id) {
                 count = clicks[j].count;
               }
@@ -239,7 +239,7 @@ class App extends Component {
                 </button>
               </div>
               <label 
-                for="input-location"
+                htmlFor="input-location"
                 aria-label='Enter search value'>
               <input
                 id="input-location"
