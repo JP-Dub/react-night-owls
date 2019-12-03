@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'),
       path    = require('path');
 
 module.exports = {
-   mode   : 'development',
+   mode   : 'production',
    target : 'node',
    devtool: 'source-map',
    entry  : './public/index.js',
@@ -19,7 +19,7 @@ module.exports = {
      stats: 'errors-only',    
      historyApiFallback: true,
      inline: true,
-     port: 3000,
+     //port: 3000,
      public: 'react-night-owls.glitch.me',
      allowedHosts: ['*.react-night-owls.glitch.me',
                     '*.api.glitch.com',

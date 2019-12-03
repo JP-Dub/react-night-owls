@@ -1,6 +1,5 @@
 'use strict'
 const express     = require('express'),
-      proxy       = require('http-proxy-middleware'),
       bodyParser  = require('body-parser'),
       routes      = require('./app/routes/index.js'),
 	    mongoose    = require('mongoose'),
@@ -14,13 +13,19 @@ const express     = require('express'),
 	    
 const app = express();
 
+require('dotenv').config();
+require('./app/config/passport')(passport);
+
 //compression = require('compression'),
-// app.use(compression());
+//app.use(compression());
+//proxy       = require('http-proxy-middleware'),
 
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
 	    webpackConfig = require('./webpack.config'),
       webpack       = require('webpack'),
-	    compiler      = webpack(webpackConfig);	
+	    compiler      = webpack(webpackConfig),
+      client        = process.env.PORT,
+      server        = 3000;
 
 const store = new MongoDBStore({
   uri: process.env.MONGO_URI,
@@ -33,7 +38,6 @@ const store = new MongoDBStore({
 // store.on('error', error => {
 //   console.log(error);
 // })
-
   
 let options = ({
 	origin: 'https://night-owls.glitch.me',
@@ -43,8 +47,8 @@ let options = ({
 
 app.use(cors(options));
 
-require('dotenv').config();
-require('./app/config/passport')(passport);
+// require('dotenv').config();
+// require('./app/config/passport')(passport);
 
 mongoose.connect(process.env.MONGO_URI, {
 	useNewUrlParser   : true,
@@ -52,33 +56,29 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true 
 });
 
-mongoose.Promise = global.Promise;
+// redacted
+//mongoose.Promise = global.Promise;
 
-let db = mongoose.connection;
-
-// db.on('connected', () => { console.log('Mongoose default connection done') });
-// db.on('error', (err) => { console.log('Mongoose default connection error: ' + err) });
+/*
+ let db = mongoose.connection;
+ db.on('connected', () => { console.log('Mongoose default connection done') });
+ db.on('error', (err) => { console.log('Mongoose default connection error: ' + err) });
+*/
 
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 	stats: {
 		colors: true
-	},
-  target:'localhost',
-  pathRewrite : {'^api' : ''},
-  logLevel: 'debug',
-  port: server  
+	}
 });
 
-const wpServer = new webpackDevServer(compiler, devServerOptions),
-      client = process.env.PORT,
-      server = 3000;
+const wpServer = new webpackDevServer(compiler, devServerOptions);
 
-app.use('/api', proxy({
-  target:'localhost',
-  pathRewrite : {'^api' : ''},
-  logLevel: 'debug',
-  port: server
-}));
+// app.use('/api', proxy({
+//   target:'localhost',
+//   pathRewrite : {'^api' : ''},
+//   logLevel: 'debug',
+//   port: server
+// }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
