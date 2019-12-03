@@ -19,7 +19,7 @@ require('./app/config/passport')(passport);
 //app.use(compression());
 //proxy       = require('http-proxy-middleware'),
 
-const //webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
+const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
 	    webpackConfig = require('./webpack.config'),
       webpack       = require('webpack'),
 	    compiler      = webpack(webpackConfig),
@@ -55,9 +55,9 @@ mongoose.connect(process.env.MONGO_URI, {
 // redacted
 //mongoose.Promise = global.Promise;
 
-//const devServerOptions = Object.assign({}, webpackConfig.devServer);
+const devServerOptions = Object.assign({}, webpackConfig.devServer);
 
-//const wpServer = new webpackDevServer(compiler, devServerOptions);
+const wpServer = new webpackDevServer(compiler, devServerOptions);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -85,9 +85,9 @@ app.listen(client, () => {
 	console.log('Node.js listening on port ' + client + '...');
 });
 
-// wpServer.listen(server, 'localhost', () => {
-// 	console.log('Webpack Dev Server listening on ' +  server + '...')
-// });
+wpServer.listen(server, 'localhost', () => {
+	console.log('Webpack Dev Server listening on ' +  server + '...')
+});
 
 //'127.0.0.1'
 

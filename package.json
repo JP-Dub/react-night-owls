@@ -6,12 +6,10 @@
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JP-Dub/react-night-owls.git"
+    "url": "https://github.com/JP-Dub/react-night-owls"
   },
   "homepage": "https://github.com/JP-Dub",
-  "bugs": {
-    "url": "https://github.com/JP-Dub/react-night-owls/issues"
-  },
+  "bugs": "https://github.com/JP-Dub/react-night-owls/issues",
   "keywords": [
     "MongoDB",
     "Mongoose",
