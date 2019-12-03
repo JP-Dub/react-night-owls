@@ -7,6 +7,7 @@ const express     = require('express'),
 	    session     = require('express-session'),  
       cors        = require('cors'),     
       path        = require('path'),
+      helmet      = require('helmet'),
       MongoDBStore= require('connect-mongodb-session')(session);      
 	    
 const app = express();
@@ -38,6 +39,7 @@ let options = ({
 	preflightContinue: true,
   optionsSuccessStatus: 200
 });
+
 
 app.use(cors(options));
 
