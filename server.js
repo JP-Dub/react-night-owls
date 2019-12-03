@@ -1,12 +1,14 @@
 'use strict'
 const express     = require('express'),
+      proxy       = require('http-proxy-middleware'),
       bodyParser  = require('body-parser'),
       routes      = require('./app/routes/index.js'),
 	    mongoose    = require('mongoose'),
       passport    = require('passport'),
+      
 	    session     = require('express-session'),
-      cors        = require('cors'),
-      proxy       = require('http-proxy-middleware'),
+      
+      cors        = require('cors'),     
       path        = require('path'),
       MongoDBStore= require('connect-mongodb-session')(session);      
 	    
