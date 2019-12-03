@@ -3,7 +3,7 @@
 const Server = require(process.cwd() + '/app/controllers/server.js'),
       path   = require('path'); //process.cwd();
 
-module.exports = (app, passport, cors) => {
+module.exports = (app, passport) => {
 	
 	function isLoggedIn (req, res, next) {
 		if (req.isAuthenticated()) {

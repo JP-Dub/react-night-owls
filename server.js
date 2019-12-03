@@ -3,10 +3,8 @@ const express     = require('express'),
       bodyParser  = require('body-parser'),
       routes      = require('./app/routes/index.js'),
 	    mongoose    = require('mongoose'),
-      passport    = require('passport'),
-      
-	    session     = require('express-session'),
-      
+      passport    = require('passport'),      
+	    session     = require('express-session'),  
       cors        = require('cors'),     
       path        = require('path'),
       MongoDBStore= require('connect-mongodb-session')(session);      
@@ -79,7 +77,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-routes(app, passport, cors);
+routes(app, passport);
 
 app.listen(client, () => {
 	console.log('Node.js listening on port ' + client + '...');
