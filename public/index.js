@@ -46,7 +46,7 @@ class App extends Component {
      
       if (location.match(/demo/i)) return window.location.href = "/rsvp/demo";
 
-      !location || !this.input.value
+      !this.input.value
         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
         : this.yelpHandler(location);        
     };  
@@ -279,7 +279,7 @@ class App extends Component {
     );
   }
 }
-//glyphicon glyphicon-search
+
 // Error class React Component
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -322,7 +322,6 @@ class Main extends Component {
 
 // build the search results UI
 const SearchResults = props => {
-  //const input = document.getElementById('location-input');
   let obj    = props.data,
       locale = props.searchLocation,
       dist   = obj[obj.length - 1].distance,
