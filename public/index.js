@@ -354,10 +354,11 @@ const SearchResults = props => {
         city = obj[obj.length - 1].location.city;
       }
 
-      // write value of city or zip code to search bar
+      // write value of city or zip code to search bar or placeholder
       if (i === obj.length - 1) {
         sessionStorage.setItem("current", input.value || city);
-        (input.placeholder = !input.value ? city : locale), (input.value = "");
+        input.placeholder = !input.value ? city : locale; 
+        input.value = "";
       }
 
       // no image will revert to 'no image available' icon
