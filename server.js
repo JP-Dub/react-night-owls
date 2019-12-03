@@ -34,10 +34,6 @@ const store = new MongoDBStore({
 }, error => {
   if(error) console.log('error', error);
 });
-
-// store.on('error', error => {
-//   console.log(error);
-// })
   
 let options = ({
 	origin: 'https://night-owls.glitch.me',
@@ -113,3 +109,7 @@ app.use('/api', proxy({
  db.on('connected', () => { console.log('Mongoose default connection done') });
  db.on('error', (err) => { console.log('Mongoose default connection error: ' + err) });
 */
+
+// store.on('error', error => {
+//   console.log(error);
+// })
