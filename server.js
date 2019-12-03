@@ -59,12 +59,6 @@ mongoose.connect(process.env.MONGO_URI, {
 // redacted
 //mongoose.Promise = global.Promise;
 
-/*
- let db = mongoose.connection;
- db.on('connected', () => { console.log('Mongoose default connection done') });
- db.on('error', (err) => { console.log('Mongoose default connection error: ' + err) });
-*/
-
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 	stats: {
 		colors: true
@@ -72,13 +66,6 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 });
 
 const wpServer = new webpackDevServer(compiler, devServerOptions);
-
-// app.use('/api', proxy({
-//   target:'localhost',
-//   pathRewrite : {'^api' : ''},
-//   logLevel: 'debug',
-//   port: server
-// }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -111,3 +98,18 @@ wpServer.listen(server, 'localhost', () => {
 });
 
 //'127.0.0.1'
+
+/*
+app.use('/api', proxy({
+  target:'localhost',
+  pathRewrite : {'^api' : ''},
+  logLevel: 'debug',
+  port: server
+}));
+*/
+
+/*
+ let db = mongoose.connection;
+ db.on('connected', () => { console.log('Mongoose default connection done') });
+ db.on('error', (err) => { console.log('Mongoose default connection error: ' + err) });
+*/
