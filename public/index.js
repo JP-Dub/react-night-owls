@@ -52,14 +52,14 @@ class App extends Component {
     };  
     
     // clicking the search button
-    document.getElementById("search").addEventListener("click", this.findLocation );
+    document.getElementById("search").addEventListener("click", this.findLocation);
 
     // checks window path /  returns previous session
     if (this.login) {
       ajax.ready(ajax.request("GET", "/user/location", {}, (req) => {
           if(req.error) {
             alert(req.error);
-            window.location.href = "/" 
+            window.location.href = "/"; 
           }
         
           let user     = req.twitter,

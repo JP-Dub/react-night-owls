@@ -34,7 +34,7 @@ const store = new MongoDBStore({
 
   
 let options = ({
-	origin : 'https://night-owls.glitch.me',
+	origin: 'https://night-owls.glitch.me',
 	preflightContinue: true,
   optionsSuccessStatus: 200
 });
