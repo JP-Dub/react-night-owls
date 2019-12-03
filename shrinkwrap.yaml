@@ -21,7 +21,7 @@ devDependencies:
   '@babel/preset-react': 7.7.4
   babel-loader: 8.0.6
   css-loader: 3.2.1
-  file-loader: 4.3.0
+  file-loader: 5.0.2
   html-webpack-plugin: 3.2.0
   http-proxy-middleware: 0.20.0
   react-hot-loader: 4.12.18
@@ -2392,17 +2392,17 @@ packages:
     dev: true
     resolution:
       integrity: sha512-vNKxJHTEKNThjfrdJwHc7brvM6eVevuO5nTj6ez8ZQ1qbXTvGthucRF7S4vf2cr71QVnT70V34v0S1DyQsti0w==
-  /file-loader/4.3.0:
+  /file-loader/5.0.2:
     dependencies:
       loader-utils: 1.2.3
       schema-utils: 2.6.1
     dev: true
     engines:
-      node: '>= 8.9.0'
+      node: '>= 10.13.0'
     peerDependencies:
-      webpack: ^4.0.0
+      webpack: ^4.0.0 || ^5.0.0
     resolution:
-      integrity: sha512-aKrYPYjF1yG3oX0kWRrqrSMfgftm7oJW5M+m4owoldH5C51C0RkIwB++JbRvEW3IU6/ZG5n8UvEcdgwOt2UOWA==
+      integrity: sha512-QMiQ+WBkGLejKe81HU8SZ9PovsU/5uaLo0JdTCEXOYv7i7jfAjHZi1tcwp9tSASJPOmmHZtbdCervFmXMH/Dcg==
   /fill-range/4.0.0:
     dependencies:
       extend-shallow: 2.0.1
@@ -5968,19 +5968,19 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
-  '@babel/cli': ^7.5.5
-  '@babel/core': ^7.5.5
-  '@babel/preset-env': ^7.5.5
-  '@babel/preset-react': ^7.0.0
-  babel-loader: ^8.0.5
+  '@babel/cli': ^7.7.4
+  '@babel/core': ^7.7.4
+  '@babel/preset-env': ^7.7.4
+  '@babel/preset-react': ^7.7.4
+  babel-loader: ^8.0.6
   body-parser: ^1.19.0
   connect-mongodb-session: ^2.1.1
   cors: ^2.8.5
-  css-loader: ^3.2.0
+  css-loader: ^3.2.1
   dotenv: ^8.2.0
   express: ^4.17.1
   express-session: ^1.16.1
-  file-loader: ^4.1.0
+  file-loader: ^5.0.2
   helmet: ^3.21.2
   html-webpack-plugin: ^3.2.0
   http-proxy: ^1.18.0
@@ -5990,11 +5990,11 @@ specifiers:
   passport-twitter: ^1.0.4
   react: ^16.12.0
   react-dom: ^16.12.0
-  react-hot-loader: ^4.12.11
+  react-hot-loader: ^4.12.18
   react-router-dom: ^5.1.2
-  style-loader: ^1.0.0
-  webpack: ^4.35.0
-  webpack-cli: ^3.3.5
-  webpack-dev-middleware: ^3.7.0
+  style-loader: ^1.0.1
+  webpack: ^4.41.2
+  webpack-cli: ^3.3.10
+  webpack-dev-middleware: ^3.7.2
   webpack-dev-server: ^3.9.0
   yelp-fusion: ^3.0.0
