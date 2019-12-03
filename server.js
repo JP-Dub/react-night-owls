@@ -55,11 +55,7 @@ mongoose.connect(process.env.MONGO_URI, {
 // redacted
 //mongoose.Promise = global.Promise;
 
-const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-	stats: {
-		colors: true
-	}
-});
+const devServerOptions = Object.assign({}, webpackConfig.devServer);
 
 const wpServer = new webpackDevServer(compiler, devServerOptions);
 

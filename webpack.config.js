@@ -21,10 +21,7 @@ module.exports = {
      inline: true,
      port: 3000,
      public: 'react-night-owls.glitch.me',
-     allowedHosts: ['*.react-night-owls.glitch.me',
-                    '*.api.glitch.com',
-                    '*.glitch.com'
-                   ],
+     allowedHosts: ['*.react-night-owls.glitch.me'],
      proxy: {
        '/api' : {
          target: 'http://localhost:' + process.env.PORT,
@@ -81,12 +78,7 @@ module.exports = {
 */
 
 /*
-
-     proxy: {
-       '/api' : {
-         target: 'http://localhost:3000',
-         pathRewrite : {'^/api' : ''},
-         secure: false
-       }
-     }  
+,
+                    '*.api.glitch.com',
+                    '*.glitch.com' 
 */
