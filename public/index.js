@@ -45,12 +45,13 @@ class App extends Component {
       let location = this.state.value;
      
       if (location.match(/demo/i)) return window.location.href = "/rsvp/demo";
-            console.log(location)
-      !location
+ 
+      !location && !this.input.value
         ? this.getLocation(geoLocation => this.yelpHandler(geoLocation))
         : this.yelpHandler(location);        
     };  
     
+    // clicking the search button
     document.getElementById("search").addEventListener("click", this.findLocation );
 
     // checks window path /  returns previous session
