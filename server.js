@@ -19,8 +19,6 @@ require('./app/config/passport')(passport);
 //compression = require('compression'),
 //proxy       = require('http-proxy-middleware'),
 
-process.env.ENVIRONMENT = 'development';
-console.log(process.env)
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
 	    webpackConfig = require('./webpack.config'),
       webpack       = require('webpack'),
