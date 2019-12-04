@@ -101,7 +101,7 @@ class App extends Component {
 
   yelpHandler(locale) {    
     this.load.classList.add("loading");
-
+    
     if (typeof locale === "object")
       locale = locale.latitude + "%20" + locale.longitude;
 
@@ -338,7 +338,11 @@ const SearchResults = props => {
         };
 
   const data = function(arr) {
-    if (load.classList.value === "loading") load.classList.remove("loading");
+    console.log(load)
+    if (load.classList.value === "loading") {
+      console.log('loading', true)
+      load.classList.remove("loading");
+    }
 
     const results = arr.map((key, i) => {
       let yelp  = obj[i],
