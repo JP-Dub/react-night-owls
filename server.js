@@ -18,7 +18,7 @@ require('./app/config/passport')(passport);
 
 //compression = require('compression'),
 //proxy       = require('http-proxy-middleware'),
-console.log(process.env)
+
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
 	    webpackConfig = require('./webpack.config'),
       webpack       = require('webpack'),
@@ -33,6 +33,12 @@ const store = new MongoDBStore({
 }, error => {
   if(error) console.log('error', error);
 });
+
+mongoose.connect(process.env.MONGO_URI, {
+	useNewUrlParser   : true,
+	useFindAndModify  : false,
+  useUnifiedTopology: true 
+});
   
 app.use(cors({
 	origin: 'https://night-owls.glitch.me',
@@ -40,20 +46,13 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 
-mongoose.connect(process.env.MONGO_URI, {
-	useNewUrlParser   : true,
-	useFindAndModify  : false,
-  useUnifiedTopology: true 
-});
-
 const devServerOptions = Object.assign({}, webpackConfig.devServer);
-
 const wpServer = new webpackDevServer(compiler, devServerOptions);
 
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
- 
+
 app.set('trust proxy', 1);
 app.use(session({
 	secret: 'NightOwlsReact',
