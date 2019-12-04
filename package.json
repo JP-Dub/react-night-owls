@@ -45,7 +45,8 @@
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "yelp-fusion": "^3.0.0",
-    "@types/react": "^16.9.14"
+    "@types/react": "^16.9.14",
+    "compression": "^1.7.4"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",

@@ -1,6 +1,7 @@
 dependencies:
   '@types/react': 16.9.14
   body-parser: 1.19.0
+  compression: 1.7.4
   connect-mongodb-session: 2.2.0
   cors: 2.8.5
   dotenv: 8.2.0
@@ -1394,7 +1395,6 @@ packages:
     resolution:
       integrity: sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
   /bytes/3.0.0:
-    dev: true
     engines:
       node: '>= 0.8'
     resolution:
@@ -1601,7 +1601,6 @@ packages:
   /compressible/2.0.17:
     dependencies:
       mime-db: 1.42.0
-    dev: true
     engines:
       node: '>= 0.6'
     resolution:
@@ -1615,7 +1614,6 @@ packages:
       on-headers: 1.0.2
       safe-buffer: 5.1.2
       vary: 1.1.2
-    dev: true
     engines:
       node: '>= 0.8.0'
     resolution:
@@ -5991,6 +5989,7 @@ specifiers:
   '@types/react': ^16.9.14
   babel-loader: ^8.0.6
   body-parser: ^1.19.0
+  compression: ^1.7.4
   connect-mongodb-session: ^2.1.1
   cors: ^2.8.5
   css-loader: ^3.2.1

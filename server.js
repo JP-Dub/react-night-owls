@@ -1,5 +1,6 @@
 'use strict'
-const express     = require('express'),
+const compression = require('compression'),
+      express     = require('express'),
       bodyParser  = require('body-parser'),
       routes      = require('./app/routes/index.js'),
 	    mongoose    = require('mongoose'),
@@ -34,14 +35,11 @@ const store = new MongoDBStore({
   if(error) console.log('error', error);
 });
   
-let options = ({
+app.use(cors({
 	origin: 'https://night-owls.glitch.me',
 	preflightContinue: true,
   optionsSuccessStatus: 200
-});
-
-
-app.use(cors(options));
+}));
 
 require('dotenv').config();
 require('./app/config/passport')(passport);
@@ -51,9 +49,6 @@ mongoose.connect(process.env.MONGO_URI, {
 	useFindAndModify  : false,
   useUnifiedTopology: true 
 });
-
-// redacted
-//mongoose.Promise = global.Promise;
 
 const devServerOptions = Object.assign({}, webpackConfig.devServer);
 
@@ -91,6 +86,9 @@ wpServer.listen(server, 'localhost', () => {
 
 //'127.0.0.1'
 
+// redacted
+//mongoose.Promise = global.Promise;
+
 /*
 app.use('/api', proxy({
   target:'localhost',
@@ -104,6 +102,14 @@ app.use('/api', proxy({
  let db = mongoose.connection;
  db.on('connected', () => { console.log('Mongoose default connection done') });
  db.on('error', (err) => { console.log('Mongoose default connection error: ' + err) });
+*/
+
+/*
+let options = ({
+	origin: 'https://night-owls.glitch.me',
+	preflightContinue: true,
+  optionsSuccessStatus: 200
+});
 */
 
 // store.on('error', error => {
