@@ -338,9 +338,9 @@ const SearchResults = props => {
         };
 
   const data = function(arr) {
-    console.log(load)
-    if (load.classList.value === "loading") {
-      console.log('loading', true)
+    // className if for IE 
+    let className = document.getElementById('load').className;
+    if (load.classList.value === "loading" || className === "loading") {
       load.classList.remove("loading");
     }
 
