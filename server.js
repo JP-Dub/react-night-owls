@@ -19,11 +19,11 @@ require('./app/config/passport')(passport);
 //compression = require('compression'),
 //proxy       = require('http-proxy-middleware'),
 
-const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
-	    webpackConfig = require('./webpack.config'),
-      webpack       = require('webpack'),
-	    compiler      = webpack(webpackConfig),
-      client        = process.env.PORT,
+// const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
+// 	    webpackConfig = require('./webpack.config'),
+//       webpack       = require('webpack'),
+// 	    compiler      = webpack(webpackConfig),
+ const     client        = process.env.PORT,
       server        = 3000;
 
 const store = new MongoDBStore({
@@ -46,9 +46,9 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true 
 });
 
-const devServerOptions = Object.assign({}, webpackConfig.devServer);
+// const devServerOptions = Object.assign({}, webpackConfig.devServer);
 
-const wpServer = new webpackDevServer(compiler, devServerOptions);
+// const wpServer = new webpackDevServer(compiler, devServerOptions);
 
 app.use(compression());
 app.use(bodyParser.json());
@@ -77,9 +77,9 @@ app.listen(client, () => {
 	console.log('Node.js listening on port ' + client + '...');
 });
 
-wpServer.listen(server, 'localhost', () => {
-	console.log('Webpack Dev Server listening on ' +  server + '...')
-});
+// wpServer.listen(server, 'localhost', () => {
+// 	console.log('Webpack Dev Server listening on ' +  server + '...')
+// });
 
 //'127.0.0.1'
 
