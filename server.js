@@ -17,7 +17,6 @@ require('dotenv').config();
 require('./app/config/passport')(passport);
 
 //compression = require('compression'),
-//app.use(compression());
 //proxy       = require('http-proxy-middleware'),
 
 const webpackDevServer = require('./node_modules/webpack-dev-server/lib/Server'),
@@ -41,9 +40,6 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 
-require('dotenv').config();
-require('./app/config/passport')(passport);
-
 mongoose.connect(process.env.MONGO_URI, {
 	useNewUrlParser   : true,
 	useFindAndModify  : false,
@@ -54,6 +50,7 @@ const devServerOptions = Object.assign({}, webpackConfig.devServer);
 
 const wpServer = new webpackDevServer(compiler, devServerOptions);
 
+app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
  
@@ -88,6 +85,9 @@ wpServer.listen(server, 'localhost', () => {
 
 // redacted
 //mongoose.Promise = global.Promise;
+
+// require('dotenv').config();
+// require('./app/config/passport')(passport);
 
 /*
 app.use('/api', proxy({
