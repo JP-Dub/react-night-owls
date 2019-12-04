@@ -21,7 +21,6 @@
   ],
   "scripts": {
     "start": "node server.js",
-    "start:dev" : "webpack-dev-server",
     "build": "webpack"
   },
   "engines": {
